@@ -1,0 +1,521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{fd2a897c-679f-4329-a04f-f81099463e94}</UniqueIdentifier>
+      <Extensions>.cpp</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="code\aiHelp.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\aiObj.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\aiPlugin.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\BanList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\chatmenu.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\clockhud.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\compasshud.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\cpuSpeed.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\CurWeapHud.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dataBlockManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\debris.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\decalManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dlgAddress.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dlgConnect.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dlgCreateServer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dlgIRCChat.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dlgJoinGame.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dlgMainMenu.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dlgOptions.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dlgPlay.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dlgPlayerSetup.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dlgquit.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dlgRecordings.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\dropPoints.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\editCamera.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\explosion.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\f_base.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearCSDelegate.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearDynamicDataPlugin.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiAbort.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiAddresses.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiArrayCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiBitmapCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiBool.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiBox.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiButton.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiCenterPrint.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiCFGButton.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiChat.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiChatDisplay.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiChatMenu.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiCMDObserve.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiCmdPanel.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiCmdTurretList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiCmdView.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiColumns.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiCombo.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiCommandItemList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiCommandTeamList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiControl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiControlsCombo.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiCrosshair.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiCurCmd.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiDialog.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiDlgBox.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiFilterCBList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiFilterCombo.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiFilters.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiHelpCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiHudCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiHudList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiInventory.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiInvList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiIRCActiveTextEdit.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiIRCActiveTextFormat.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiIRCBanControl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiIRCChanCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiIRCChannelList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiIRCChannelPropsCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiIRCHelpControl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiIRCJoinControl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiIRCNicks.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiIRCScroll.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiIRCTextEdit.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiIRCTopic.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiIRCView.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiJetHud.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiLag.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiMasterList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiMenu.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiMenuCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiMenuDisplay.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiMissionCombo.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiMissionList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiPage.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiPaletteCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiPlayerCombo.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiPlayerList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiPopUpMenu.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiRadio.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiRecList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiScoreList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiScrollCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiServerFilterCB.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiServerInfo.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiServerList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiShapeView.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiShellBorder.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiSimpleText.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiSkinView.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiSlider.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiSmacker.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiStandardCombo.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiSwitch.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiTabMenu.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiTestEdit.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiTextFMT.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiTextFormat.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\fearGuiTextList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiTSCommander.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearGuiUnivButton.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearHudArrayCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearHudCmdObj.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearHudInvList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearHudMatrixCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearHudRadarPing.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearMissionEditor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearMissionPlugin.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearPlayerPSC.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FearPlugin.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\filePlugin.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Flier.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\FlyingCamera.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\gamebase.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\HealthHud.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\InputHandler.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\interiorShape.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\item.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\marker.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Mine.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\missionObjectList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\moveable.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\observerCamera.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\partDebris.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Planet.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\player.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\playerCollision.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\playerInventory.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\PlayerManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\playerUpdate.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\projAttTrail.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\projBullet.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\projectile.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\projectileFactory.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\projGrenade.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\projLaser.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\projLightning.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\projRepair.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\projRocketDumb.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\projSeekMissile.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\projTargetLaser.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\ScriptPlugin.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\sensor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\sensorManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\shapebase.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\shapeCollision.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\simMoveobj.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Sky.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\smokePuff.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\snowfall.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\sound.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\StarField.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\staticBase.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\teamGroup.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\tribesShadowRenderImage.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\trigger.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\turret.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\vehicle.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="code\version.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
