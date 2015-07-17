@@ -1,0 +1,10 @@
+masterChooseRange(10, 246)
+masterRenderRange(10, 246)
+shadeHazeLevels(16,16)
+hazeColor(0, 0, 0, 1.0)
+shadeColor(0, 0, 0, 1.0)
+palOutputName(DTS\showTool.ppl)
+paletteListStart()
+DTS\showTool.ipl
+DTS\showAlpha.ipl
+

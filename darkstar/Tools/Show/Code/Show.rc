@@ -1,0 +1,303 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_EDIT2BOX DIALOG DISCARDABLE  0, 0, 240, 120
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CONTEXTHELP | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "OK",1,180,96,50,14,BS_CENTER
+    PUSHBUTTON      "Cancel",2,120,96,50,14,BS_CENTER
+    CONTROL         "Frame1",101,"Static",SS_ETCHEDFRAME,4,4,232,112
+    LTEXT           "Text1",102,8,9,224,13,NOT WS_GROUP
+    EDITTEXT        110,132,36,64,13
+    EDITTEXT        111,132,60,64,13
+    LTEXT           "Text2",105,12,36,116,9,NOT WS_GROUP
+    LTEXT           "Text3",106,12,64,116,9,NOT WS_GROUP
+    CONTROL         "Frame2",107,"Static",SS_ETCHEDFRAME,12,78,212,4
+    CONTROL         "Frame3",108,"Static",SS_ETCHEDFRAME,12,22,212,4
+END
+
+IDD_EDITBOX DIALOG DISCARDABLE  0, 0, 240, 66
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CONTEXTHELP | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "OK",1,186,48,50,14,BS_CENTER
+    PUSHBUTTON      "Cancel",2,128,48,50,14,BS_CENTER
+    CONTROL         "Frame1",101,"Static",SS_ETCHEDFRAME,4,16,228,28
+    LTEXT           "Text1",102,4,4,228,8,NOT WS_GROUP
+    EDITTEXT        110,8,24,216,14
+END
+
+IDD_LISTBOX DIALOG DISCARDABLE  0, 0, 163, 180
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CONTEXTHELP | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "OK",1,104,164,50,14,BS_CENTER
+    PUSHBUTTON      "Cancel",2,48,164,50,14,BS_CENTER
+    CONTROL         "Frame1",101,"Static",SS_ETCHEDFRAME,4,16,156,144
+    LTEXT           "Text1",102,4,4,156,8,NOT WS_GROUP
+    LISTBOX         103,8,20,148,140,LBS_SORT | LBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+IDD_MULTIBOX DIALOG DISCARDABLE  0, 0, 163, 180
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CONTEXTHELP | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_CONTEXTHELP
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "OK",1,104,164,50,14,BS_CENTER
+    PUSHBUTTON      "Cancel",2,48,164,50,14,BS_CENTER
+    CONTROL         "Frame1",101,"Static",SS_ETCHEDFRAME,4,16,156,144
+    LTEXT           "Text1",102,4,4,156,8,NOT WS_GROUP
+    LISTBOX         103,8,20,148,140,LBS_SORT | LBS_MULTIPLESEL | WS_VSCROLL | 
+                    WS_TABSTOP
+END
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+SHAPEDIALOG DIALOG DISCARDABLE  819, 37, 193, 298
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Shape Information"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "When changing seq.:",IDC_GROUPBOX1,107,88,80,37
+    LISTBOX         IDC_LISTBOX1,40,20,28,54,WS_VSCROLL | WS_TABSTOP
+    CTEXT           "Animation Threads:",-1,20,4,72,12,SS_SUNKEN | NOT 
+                    WS_GROUP
+    CTEXT           "Sequences:",-1,16,73,76,10,SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "Transitions:",-1,15,167,80,11,SS_SUNKEN | NOT WS_GROUP
+    CONTROL         "TrackBar1",IDC_MSCTLS_TRACKBAR1,"msctls_trackbar32",
+                    TBS_NOTICKS,118,253,64,13
+    PUSHBUTTON      "Play",IDC_BUTTON4,130,190,40,13,BS_CENTER
+    PUSHBUTTON      "Step",IDC_BUTTON5,130,210,40,14,BS_CENTER
+    PUSHBUTTON      "Pause",IDC_BUTTON6,129,230,44,15,BS_CENTER
+    PUSHBUTTON      "New Thread",IDC_BUTTON7,120,4,47,12,BS_CENTER
+    EDITTEXT        IDC_EDIT1,156,275,22,12,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN
+    CTEXT           "Speed:",-1,122,275,32,12,SS_SUNKEN | NOT WS_GROUP
+    CONTROL         "Set sequence",IDC_RADIOBUTTON1,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,111,111,60,12
+    CONTROL         "Transition",IDC_RADIOBUTTON2,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,111,99,65,10
+    PUSHBUTTON      "New Transition",IDC_BUTTON8,116,24,54,12,BS_CENTER
+    LISTBOX         IDC_LISTBOX2,4,88,96,76,WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LISTBOX3,2,182,104,78,LBS_MULTIPLESEL | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "Auto detail",IDC_CHECKBOX1,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,21,287,53,12
+    CONTROL         "Detail Trackbar",IDC_MSCTLS_TRACKBAR2,"msctls_trackbar32",
+                    TBS_AUTOTICKS,8,268,71,19
+    CTEXT           "Detail Levels:",-1,15,257,60,10,SS_SUNKEN | NOT 
+                    WS_GROUP
+END
+
+TRANSITIONDIALOG DIALOG DISCARDABLE  32, 492, 354, 118
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_TOPMOST
+CAPTION "Edit Transition"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "OK",IDOK,304,4,50,14,BS_CENTER
+    PUSHBUTTON      "Cancel",IDCANCEL,304,24,50,14,BS_CENTER
+    CONTROL         "TrackBar1",IDC_FromTrackbar,"msctls_trackbar32",0x0,8,
+                    24,104,13
+    CONTROL         "TrackBar2",IDC_ToTrackbar,"msctls_trackbar32",0x0,188,
+                    24,104,13
+    COMBOBOX        IDC_ToDropBox,260,4,28,86,CBS_DROPDOWNLIST | WS_TABSTOP
+    CTEXT           "From sequence:  ",-1,16,4,64,12,SS_SUNKEN | NOT 
+                    WS_GROUP
+    LTEXT           "To sequence:  ",-1,192,4,64,12,SS_SUNKEN | NOT WS_GROUP
+    EDITTEXT        IDC_EDIT2,84,4,20,12,ES_CENTER | ES_READONLY,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDC_Duration,301,70,32,12,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN,WS_EX_STATICEDGE
+    EDITTEXT        IDC_XTrans,40,60,32,12,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN,WS_EX_STATICEDGE
+    EDITTEXT        IDC_YTrans,124,60,32,12,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN,WS_EX_STATICEDGE
+    EDITTEXT        IDC_ZTrans,216,60,32,12,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN,WS_EX_STATICEDGE
+    CTEXT           "Transition duration:",-1,281,54,72,12,SS_SUNKEN | NOT 
+                    WS_GROUP
+    CTEXT           "Translation:",-1,104,36,84,8,SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "Up/down",-1,196,48,76,9,SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "Left/right",-1,20,48,76,9,SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "Forwards/backwards:",-1,108,48,76,9,SS_SUNKEN | NOT 
+                    WS_GROUP
+    CONTROL         "",IDC_ShowFrom,"Button",BS_AUTORADIOBUTTON | WS_GROUP | 
+                    WS_TABSTOP,116,16,12,11
+    CONTROL         "",IDC_ShowTo,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,
+                    171,17,12,10
+    CONTROL         "Alternate Mode",IDC_CHECKBOX4,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,280,101,76,9
+    CTEXT           "Rotation",-1,104,76,82,10,SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "Yaw",-1,208,88,49,9,SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "Pitch",-1,34,88,45,10,SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "Roll",-1,119,88,45,9,SS_SUNKEN | NOT WS_GROUP
+    EDITTEXT        IDC_rotX,40,100,33,11,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN,WS_EX_STATICEDGE
+    EDITTEXT        IDC_rotY,124,100,34,11,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN,WS_EX_STATICEDGE
+    EDITTEXT        IDC_rotZ,217,100,31,11,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN,WS_EX_STATICEDGE
+END
+
+CAMERADIALOG DIALOG DISCARDABLE  913, 5, 165, 269
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_DLGMODALFRAME
+CAPTION "Camera Controls"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "Zoom",IDC_GROUPBOX6,12,187,127,29,WS_GROUP
+    GROUPBOX        "Camera Angle Control",IDC_GROUPBOX4,9,6,130,80,WS_GROUP
+    CONTROL         "TrackBar1",IDC_MSCTLS_TRACKBAR5,"msctls_trackbar32",0x0,
+                    16,38,90,18
+    CONTROL         "TrackBar2",IDC_MSCTLS_TRACKBAR6,"msctls_trackbar32",
+                    TBS_VERT,111,11,21,73
+    GROUPBOX        "Camera Offset Control",IDC_GROUPBOX5,9,98,130,80,
+                    WS_GROUP
+    CONTROL         "",IDC_MSCTLS_TRACKBAR7,"msctls_trackbar32",0x0,16,131,
+                    90,18
+    CONTROL         "",IDC_MSCTLS_TRACKBAR1,"msctls_trackbar32",TBS_VERT,111,
+                    103,23,73
+    CONTROL         "Zoom",IDC_MSCTLS_TRACKBAR8,"msctls_trackbar32",0x0,13,
+                    197,124,17
+    CONTROL         "Stick to ground",IDC_CHECKBOX5,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,12,222,89,13
+    CONTROL         "Camera angle relative to shape",IDC_CHECKBOX6,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,12,234,127,13
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open shape...",              IDM_FILE_OPEN_SHAPE
+        MENUITEM "&Save shape",                 IDM_FILE_SAVE_SHAPE
+        MENUITEM "Save shape &As...",           IDM_FILE_SAVE_SHAPE_AS
+        MENUITEM "Import s&equence...",         IDM_FILE_IMPORT_SEQUENCE
+        MENUITEM "Import &first sequence...",   IDM_FILE_IMPORT_FIRST_SEQUENCE
+
+        MENUITEM "Import &transitions...",      IDM_FILE_IMPORT_TRANSITIONS
+        MENUITEM "&Load palette...",            IDM_FILE_LOAD_PALETTE
+        MENUITEM "E&xit",                       IDM_FILE_EXIT
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&Shape",                      IDM_WINDOW_SHAPE
+        MENUITEM "&Camera",                     IDM_WINDOW_CAMERA
+        MENUITEM "&Transition",                 IDM_WINDOW_TRANSITION
+        MENUITEM "T&errain",                    IDM_WINDOW_TERRAIN
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDM_MENU1 ACCELERATORS MOVEABLE PURE 
+BEGIN
+    VK_F1,          102,                    VIRTKEY 
+    VK_F4,          CM_FILEITEM2,           VIRTKEY 
+    "Q",            108,                    VIRTKEY, CONTROL
+    VK_F2,          301,                    VIRTKEY 
+    VK_F3,          CM_WINDOWITEM2,         VIRTKEY 
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

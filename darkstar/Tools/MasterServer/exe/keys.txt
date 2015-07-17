@@ -1,0 +1,12 @@
+g_name
+g_version
+g_id
+s_name
+num_players
+max_players
+p_id
+p_name
+p_team
+p_ping
+
+

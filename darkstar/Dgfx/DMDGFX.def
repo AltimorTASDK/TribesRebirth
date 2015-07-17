@@ -1,0 +1,9 @@
+LIBRARY DMDGFX BASE=0x6A000000
+
+EXPORTS
+	DllMain						@12
+
+	GetDeviceManager			@1
+	FreeDeviceManager			@2
+	;GetHPalette					@3
+	

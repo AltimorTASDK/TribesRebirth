@@ -1,0 +1,103 @@
+--------------------Configuration: matilda2 - Win32 Debug--------------------
+Begining build with project "E:\darkstar\Tools\Matilda\matilda2.dsp", at root.
+Active configuration is Win32 (x86) Application (based on Win32 (x86) Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /Zp4 /MDd /W3 /Gi /GR /GX /Zi /Od /I ".\inc" /I ".\res" /I "$(PHOENIXINC)" /D "DEBUG" /D "WIN32" /D "_WINDOWS" /D "MSVC" /D "M_BACK" /D "STRICT" /D "EXPORT" /D "_MBCS" /D _USERENTRY=__cdecl /D "_AFXDLL" /FR".\Obj/" /Fp".\Obj/matilda2.pch" /YX"stdafx.h" /Fo".\Obj/" /Fd".\Obj/" /FD /c "
+			"OLE Type Library Maker" with flags "/nologo /D "_DEBUG" /mktyplib203 /win32 "
+			"Win32 Resource Compiler" with flags "/l 0x409 /fo".\Obj/matilda2.res" /i ".\inc res" /d "_DEBUG" /d "MSVC" /d "_AFXDLL" "
+			"Browser Database Maker" with flags "/nologo /o".\Exe/matilda2.bsc" "
+			"COFF Linker for 80x86" with flags "comctl32.lib winmm.lib wsock32.lib rpcrt4.lib dmMl.lib dmcore.lib dmts3.lib dmgfx.lib dmgfxio.lib dmdgfx.lib dmitr.lib dmgrd.lib /nologo /subsystem:windows /incremental:yes /pdb:".\Exe/matilda2.pdb" /debug /machine:I386 /nodefaultlib:"libcmtd.lib" /out:".\Exe/matilda2.exe" /libpath:"$(PHOENIXLIB)" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating command line "rc.exe /l 0x409 /fo".\Obj/matilda2.res" /i "res" /i ".\res" /d "_DEBUG" /d "MSVC" /d "_AFXDLL" "E:\darkstar\Tools\Matilda\res\matilda2.rc"" 
+Creating temp file "D:\TEMP\RSP69.tmp" with contents </nologo /Zp4 /MDd /W3 /Gi /GR /GX /Zi /Od /I ".\inc" /I ".\res" /I "e:\darkstar\inc" /D "DEBUG" /D "WIN32" /D "_WINDOWS" /D "MSVC" /D "M_BACK" /D "STRICT" /D "EXPORT" /D "_MBCS" /D _USERENTRY=__cdecl /D "_AFXDLL" /FR".\Obj/" /Fp".\Obj/matilda2.pch" /YX"stdafx.h" /Fo".\Obj/" /Fd".\Obj/" /FD /c 
+"E:\darkstar\Tools\Matilda\Code\ChangeLighting.cpp"
+"E:\darkstar\Tools\Matilda\Code\colorPreviewFrame.cpp"
+"E:\darkstar\Tools\Matilda\Code\commonProps.cpp"
+"E:\darkstar\Tools\Matilda\Code\copyDetailDlg.cpp"
+"E:\darkstar\Tools\Matilda\Code\detailLevelsDlg.cpp"
+"E:\darkstar\Tools\Matilda\Code\gfxPreviewWind.cpp"
+"E:\darkstar\Tools\Matilda\Code\matilda2.cpp"
+"E:\darkstar\Tools\Matilda\Code\matilda2Dlg.cpp"
+"E:\darkstar\Tools\Matilda\Code\Mledit.cpp"
+"E:\darkstar\Tools\Matilda\Code\NullEditDlg.cpp"
+"E:\darkstar\Tools\Matilda\Code\palEditDlg.cpp"
+"E:\darkstar\Tools\Matilda\Code\palHelp.cpp"
+"E:\darkstar\Tools\Matilda\Code\palSelListBox.cpp"
+"E:\darkstar\Tools\Matilda\Code\RGBEditDlg.cpp"
+"E:\darkstar\Tools\Matilda\Code\StdAfx.cpp"
+"E:\darkstar\Tools\Matilda\Code\TEXEditDlg.cpp"
+>
+Creating command line "cl.exe @D:\TEMP\RSP69.tmp" 
+Creating temp file "D:\TEMP\RSP6A.tmp" with contents <comctl32.lib winmm.lib wsock32.lib rpcrt4.lib dmMl.lib dmcore.lib dmts3.lib dmgfx.lib dmgfxio.lib dmdgfx.lib dmitr.lib dmgrd.lib /nologo /subsystem:windows /incremental:yes /pdb:".\Exe/matilda2.pdb" /debug /machine:I386 /nodefaultlib:"libcmtd.lib" /out:".\Exe/matilda2.exe" /libpath:"e:\darkstar\lib" 
+.\Obj\ChangeLighting.obj
+.\Obj\colorPreviewFrame.obj
+.\Obj\commonProps.obj
+.\Obj\copyDetailDlg.obj
+.\Obj\detailLevelsDlg.obj
+.\Obj\gfxPreviewWind.obj
+.\Obj\matilda2.obj
+.\Obj\matilda2Dlg.obj
+.\Obj\Mledit.obj
+.\Obj\NullEditDlg.obj
+.\Obj\palEditDlg.obj
+.\Obj\palHelp.obj
+.\Obj\palSelListBox.obj
+.\Obj\RGBEditDlg.obj
+.\Obj\StdAfx.obj
+.\Obj\TEXEditDlg.obj
+.\Obj\matilda2.res>
+Creating command line "link.exe @D:\TEMP\RSP6A.tmp" 
+Compiling resources...
+Compiling...
+ChangeLighting.cpp
+colorPreviewFrame.cpp
+commonProps.cpp
+copyDetailDlg.cpp
+detailLevelsDlg.cpp
+gfxPreviewWind.cpp
+matilda2.cpp
+matilda2Dlg.cpp
+Mledit.cpp
+NullEditDlg.cpp
+palEditDlg.cpp
+palHelp.cpp
+palSelListBox.cpp
+RGBEditDlg.cpp
+StdAfx.cpp
+TEXEditDlg.cpp
+Linking...
+Creating temp file "D:\TEMP\RSP6B.tmp" with contents </nologo /o".\Exe/matilda2.bsc" 
+.\Obj\ChangeLighting.sbr
+.\Obj\colorPreviewFrame.sbr
+.\Obj\commonProps.sbr
+.\Obj\copyDetailDlg.sbr
+.\Obj\detailLevelsDlg.sbr
+.\Obj\gfxPreviewWind.sbr
+.\Obj\matilda2.sbr
+.\Obj\matilda2Dlg.sbr
+.\Obj\Mledit.sbr
+.\Obj\NullEditDlg.sbr
+.\Obj\palEditDlg.sbr
+.\Obj\palHelp.sbr
+.\Obj\palSelListBox.sbr
+.\Obj\RGBEditDlg.sbr
+.\Obj\StdAfx.sbr
+.\Obj\TEXEditDlg.sbr>
+Creating command line "bscmake.exe @D:\TEMP\RSP6B.tmp" 
+Creating browse info file...
+BSCMAKE: warning BK4503 : minor error in .SBR file '.\Obj\colorPreviewFrame.sbr' ignored
+BSCMAKE: warning BK4503 : minor error in .SBR file '.\Obj\commonProps.sbr' ignored
+BSCMAKE: warning BK4503 : minor error in .SBR file '.\Obj\copyDetailDlg.sbr' ignored
+BSCMAKE: warning BK4503 : minor error in .SBR file '.\Obj\detailLevelsDlg.sbr' ignored
+BSCMAKE: warning BK4503 : minor error in .SBR file '.\Obj\matilda2Dlg.sbr' ignored
+BSCMAKE: warning BK4503 : minor error in .SBR file '.\Obj\Mledit.sbr' ignored
+BSCMAKE: warning BK4503 : minor error in .SBR file '.\Obj\palHelp.sbr' ignored
+BSCMAKE: warning BK4503 : minor error in .SBR file '.\Obj\palSelListBox.sbr' ignored
+BSCMAKE: warning BK4503 : minor error in .SBR file '.\Obj\TEXEditDlg.sbr' ignored
+
+
+
+matilda2.exe - 0 error(s), 9 warning(s)

@@ -1,0 +1,43 @@
+/****************************************************************************
+
+
+bitview.rc
+
+produced by Borland Resource Workshop
+
+
+*****************************************************************************/
+
+#include <bitview.h>
+#include "bwcc.h"
+
+MainMenu MENU 
+{
+ POPUP "&File"
+ {
+  MENUITEM "&Open...", CM_FILEOPEN
+  MENUITEM SEPARATOR
+  MENUITEM "E&xit", CM_FILEEXIT
+ }
+
+ POPUP "&Control"
+ {
+  MENUITEM "&Palette", CM_PALETTE
+ }
+
+}
+
+PaletteControl DIALOG 121, 61, 118, 120
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CLASS "BorDlg_Gray"
+CAPTION "Palette Control"
+FONT 8, "MS Sans Serif"
+{
+ SCROLLBAR IDC_SC_TRANSLUCENCY, 16, 19, 87, 15, SBS_HORZ
+ SCROLLBAR IDC_SC_HAZE, 16, 55, 87, 15, SBS_HORZ
+ SCROLLBAR IDC_SC_SHADE, 16, 91, 87, 15, SBS_HORZ
+ CONTROL "Translucency Level", -1, "BorStatic", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 16, 6, 82, 10
+ CONTROL "Haze Level", -1, "BorStatic", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 16, 42, 82, 10
+ CONTROL "Shade Level", -1, "BorStatic", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 16, 78, 82, 10
+}
+

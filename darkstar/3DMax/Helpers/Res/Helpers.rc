@@ -1,0 +1,200 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_POINTPARAM DIALOG DISCARDABLE  0, 0, 108, 39
+STYLE WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "Show Axis Tripod",IDC_SHOWAXIS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,20,6,70,10
+    CONTROL         "",IDC_AXISLENGTH,"CustEdit",WS_TABSTOP,56,22,28,10
+    RTEXT           "Axis Length:",IDC_STATIC,10,22,45,8
+    CONTROL         "",IDC_AXISLENGHSPIN,"SpinnerControl",0x0,85,22,7,10
+END
+
+IDD_GRIDPARAM DIALOG DISCARDABLE  0, 0, 108, 67
+STYLE WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",IDC_LENGTHEDIT,"CustEdit",WS_TABSTOP,45,12,36,10
+    CONTROL         "",IDC_WIDTHEDIT,"CustEdit",WS_TABSTOP,45,24,36,10
+    CONTROL         "",IDC_GRID,"CustEdit",WS_TABSTOP,45,51,36,10
+    RTEXT           "Length:",IDC_STATIC,19,12,25,8
+    RTEXT           "Width:",IDC_STATIC,22,24,23,8
+    CONTROL         "",IDC_WIDTHSPINNER,"SpinnerControl",0x0,82,24,7,10
+    CONTROL         "",IDC_LENSPINNER,"SpinnerControl",0x0,82,12,7,10
+    GROUPBOX        "Spacing",IDC_STATIC,2,38,104,27
+    CONTROL         "",IDC_GRIDSPINNER,"SpinnerControl",0x0,82,51,7,10
+    LTEXT           "Grid:",IDC_STATIC,28,51,17,8
+    GROUPBOX        "Grid Size",IDC_STATIC,2,0,104,38
+END
+
+IDD_TAPEHELPER DIALOG DISCARDABLE  0, 0, 108, 56
+STYLE WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",IDC_LENGTH,"CustEdit",WS_TABSTOP,44,10,36,10
+    CONTROL         "Specify Length",IDC_SPEC_LEN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,25,26,60,10
+    CONTROL         "Tick Marks",IDC_TICKMARKS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,25,39,48,10
+    RTEXT           "Length:",IDC_STATIC,17,10,25,8
+    CONTROL         "",IDC_LENSPINNER,"SpinnerControl",0x0,81,10,7,10
+END
+
+IDD_SEQUENCEPARAMS DIALOG DISCARDABLE  0, 0, 108, 139
+STYLE WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",IDC_CEL_FRAMERATE,"CustEdit",WS_TABSTOP,35,16,28,10
+    RTEXT           "Cel Frame Rate:",IDC_STATIC,9,5,51,8
+    CONTROL         "",IDC_CEL_FRAMERATESPINNER,"SpinnerControl",0x0,65,16,7,
+                    10
+    RTEXT           "One Shot",IDC_STATIC,7,36,36,10
+    CONTROL         "",IDC_SEQ_ONESHOT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    55,35,13,12
+    RTEXT           "Force Vis Export",IDC_STATIC,7,53,55,11
+    CONTROL         "",IDC_SEQ_FORCEVIS,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,67,51,13,12
+    RTEXT           "Export Vis Only",IDC_STATIC,4,71,55,11
+    CONTROL         "",IDC_SEQ_VISONLY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    67,68,13,12
+    CTEXT           "No Transform Collapse",IDC_STATIC,3,88,61,17
+    CONTROL         "",IDC_SEQ_NOCOLLAPSE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,67,90,13,12
+    CTEXT           "Use Cel Frame Rate",IDC_STATIC,6,111,60,17
+    CONTROL         "",IDC_SEQ_USECELRATE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,67,114,13,12
+END
+
+IDD_TRANSITIONPARAMS DIALOG DISCARDABLE  0, 0, 108, 129
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "",IDC_TRANS_DIRECTION,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,9,12,13,12
+    LTEXT           "reverse transition",IDC_STATIC,34,13,54,8
+    LTEXT           "duration",IDC_STATIC,56,31,45,9
+    LTEXT           "X shift",IDC_STATIC,57,54,20,8
+    LTEXT           "Y shift",IDC_STATIC,57,72,20,8
+    LTEXT           "Z shift",IDC_STATIC,58,92,20,8
+    CONTROL         "",IDC_DURATION,"CustEdit",WS_TABSTOP,7,30,28,10
+    CONTROL         "",IDC_GND_SHIFTX,"CustEdit",0x0,7,51,28,10
+    CONTROL         "",IDC_GND_SHIFTY,"CustEdit",WS_TABSTOP,7,71,28,10
+    CONTROL         "",IDC_GND_SHIFTZ,"CustEdit",WS_TABSTOP,7,90,28,10
+    CONTROL         "",IDC_DURATIONSPINNER,"SpinnerControl",0x0,42,30,7,10
+    CONTROL         "",IDC_GND_SHIFTXSPINNER,"SpinnerControl",0x0,42,51,7,10
+    CONTROL         "",IDC_GND_SHIFTYSPINNER,"SpinnerControl",0x0,42,71,7,10
+    CONTROL         "",IDC_GND_SHIFTZSPINNER,"SpinnerControl",0x0,42,90,7,10
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_SEQUENCEPARAMS, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 134
+    END
+
+    IDD_TRANSITIONPARAMS, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 32
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DB_SEQUENCE         "Sequence"
+    IDS_DB_GENERAL          "General"
+    IDS_DB_PARAMETERS       "Parameters"
+    IDS_DB_POINT            "Point"
+    IDS_DB_POINTHELPER      "PointHelper"
+    IDS_DS_PARAMCHG         "Parameter Change"
+    IDS_DB_LINE             "Line"
+    IDS_DB_LINEHELPER       "LineHelper"
+    IDS_DB_TRANSITION       "Transition"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

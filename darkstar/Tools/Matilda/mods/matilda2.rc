@@ -1,0 +1,486 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""matilda2.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "matilda2.ico"
+ID_WARNICON             ICON    DISCARDABLE     "icon2.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 217, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About matilda2"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,18,20
+    LTEXT           "Dynamix Materials Editor, version 2.0",IDC_STATIC,40,10,
+                    119,8,SS_NOPREFIX
+    LTEXT           "Copyright © Dynamix, 1996",IDC_STATIC,40,22,119,8
+    DEFPUSHBUTTON   "OK",IDOK,170,5,40,14,WS_GROUP
+    LTEXT           "Darkstar",IDC_STATIC,40,34,119,8
+END
+
+IDD_MATILDA2_DIALOG DIALOGEX 0, 0, 336, 212
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_MINIMIZEBOX | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Matilda v2.0"
+MENU IDR_MENU1
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LISTBOX         ID_MATERIAL_LIST,7,15,104,175,LBS_NOINTEGRALHEIGHT | 
+                    LBS_EXTENDEDSEL | LBS_DISABLENOSCROLL | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "All Materials",IDC_STATIC,7,5,59,8
+    LTEXT           "Palette:",IDC_STATIC,7,197,26,8
+    LTEXT           "",ID_CURRENTPALETTE,34,196,213,11,SS_SUNKEN
+    GROUPBOX        "Selected Material Preview",IDC_STATIC,117,5,130,130
+    CONTROL         "",ID_PREVIEW_FRAME,"Static",SS_GRAYRECT | NOT 
+                    WS_VISIBLE,123,14,117,114
+    LTEXT           "Current Detail Level",IDC_STATIC,147,146,68,8
+    CONTROL         "Slider1",ID_DETAIL_SLIDER,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_BOTH | WS_TABSTOP,149,155,91,24
+    EDITTEXT        ID_CURRENTDETAIL_EDIT,125,159,17,14,ES_AUTOHSCROLL | 
+                    ES_READONLY
+    GROUPBOX        "",IDC_STATIC,117,138,130,43
+    PUSHBUTTON      "Append New",ID_APPEND_NEW,255,101,68,14
+    PUSHBUTTON      "Delete Selected",ID_DELETE_SELECTED,255,137,68,14
+    PUSHBUTTON      "RGB Value...",ID_EDITAS_RGB,261,20,61,14
+    PUSHBUTTON      "Palette...",ID_EDITAS_PALETTE,261,38,61,14
+    PUSHBUTTON      "TextureMap",ID_EDITAS_TEXTURE,261,56,61,14
+    PUSHBUTTON      "NULL Entry",ID_EDITAS_NULL,261,74,61,14
+    GROUPBOX        "Edit As...",IDC_STATIC,254,5,75,88
+    PUSHBUTTON      "Copy Detail Level...",ID_COPY_DETAILLEVEL,255,119,68,14
+    PUSHBUTTON      "Copy Selected...",ID_COPY_COPYSELECTED,255,155,68,14
+    PUSHBUTTON      "Paste@end",ID_COPY_PASTETOEND,255,191,68,14
+    PUSHBUTTON      "Paste@cursor",ID_COPY_PASTECURSOR,255,173,68,14
+END
+
+IDD_RGBEDIT_DIALOG DIALOGEX 0, 0, 184, 169
+STYLE DS_SYSMODAL | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "RGB Edit Window"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Select As Absolute Color Value...",IDC_STATIC,8,7,168,
+                    85
+    GROUPBOX        "RGB",IDC_STATIC,14,18,156,66
+    EDITTEXT        ID_RGB_GREENVALUE,131,46,23,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    EDITTEXT        ID_RGB_BLUEVALUE,131,64,23,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        ID_RGB_REDVALUE,131,29,23,14,ES_AUTOHSCROLL | ES_NUMBER
+    GROUPBOX        "Selected Color",IDC_STATIC,83,98,93,45
+    CONTROL         "",ID_RGB_CURRENTCOLOR,"Static",SS_GRAYRECT,88,108,81,29
+    PUSHBUTTON      "Ok",IDOK,83,149,43,14
+    PUSHBUTTON      "Cancel",IDCANCEL,133,149,43,14
+    LTEXT           "R",IDC_STATIC,159,32,8,8
+    LTEXT           "G",IDC_STATIC,159,49,8,8
+    LTEXT           "B",IDC_STATIC,159,67,8,8
+    GROUPBOX        "Color Flags",IDC_STATIC,8,101,70,62
+    CONTROL         "Smooth",ID_RGB_RADIOSMOOTH,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,15,111,40,10
+    CONTROL         "Flat",ID_RGB_RADIOFLAT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,15,123,40,10
+    CONTROL         "Unlit",ID_RGB_RADIOUNLIT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,15,135,40,10
+    CONTROL         "Slider1",ID_RGB_REDSLIDER,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | WS_TABSTOP,20,31,104,10
+    CONTROL         "Slider1",ID_RGB_GREENSLIDER,"msctls_trackbar32",
+                    TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,20,48,104,10
+    CONTROL         "Slider1",ID_RGB_BLUESLIDER,"msctls_trackbar32",TBS_BOTH | 
+                    TBS_NOTICKS | WS_TABSTOP,20,66,104,10
+    CONTROL         "Translucent",ID_RGB_TRANSLUCENT,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,15,148,53,10
+END
+
+IDD_TEXTURE_DIALOG DIALOGEX 0, 0, 291, 172
+STYLE DS_SYSMODAL | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "TextureMap Select"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Preview",IDC_STATIC,7,7,156,158
+    CONTROL         "",ID_TEX_PREVIEW,"Static",SS_GRAYRECT | NOT WS_VISIBLE,
+                    13,18,142,141
+    PUSHBUTTON      "Select Bitmap File",ID_TEX_SELECTFILE,181,117,90,14
+    DEFPUSHBUTTON   "Ok",IDOK,170,151,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,234,151,50,14
+    GROUPBOX        "Texture Flags",IDC_STATIC,171,42,113,72
+    GROUPBOX        "Lighting Attributes",IDC_STATIC,171,7,113,30
+    CONTROL         "Smooth",ID_TEX_RADIOSMOOTH,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,175,20,39,10
+    CONTROL         "Flat",ID_TEX_RADIOFLAT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,217,20,30,10
+    CONTROL         "Unlit",ID_TEX_RADIOUNLIT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,250,20,31,10
+    CONTROL         "Transparent",ID_TEX_TRANSPARENT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,177,54,54,10
+    CONTROL         "Translucent",ID_TEX_TRANSLUCENT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,177,69,53,10
+    CONTROL         "Hazed",ID_TEX_HAZED,"Button",BS_AUTOCHECKBOX | 
+                    WS_DISABLED | WS_TABSTOP,177,84,37,10
+    CONTROL         "Flip X",ID_TEX_FLIPX,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,237,54,33,10
+    CONTROL         "Flip Y",ID_TEX_FLIPY,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,237,69,33,10
+    CONTROL         "Rotate",ID_TEX_ROTATE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,237,84,37,10
+    CONTROL         "Perspective",ID_TEX_PERSPECTIVE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,200,98,53,10
+    EDITTEXT        ID_TEX_FILENAME,181,134,90,14,ES_AUTOHSCROLL | 
+                    ES_READONLY,WS_EX_STATICEDGE
+END
+
+IDD_PALEDIT_DIALOG DIALOGEX 0, 0, 278, 196
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,214,7,57,14
+    PUSHBUTTON      "Cancel",IDCANCEL,214,24,57,14
+    GROUPBOX        "Select from Current Palette",IDC_STATIC,7,7,189,182
+    CONTROL         "Smooth",ID_PAL_LIGHTINGSMOOTH,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,212,60,40,10
+    CONTROL         "Flat",ID_PAL_LIGHTINGFLAT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,212,73,27,10
+    CONTROL         "Unlit",ID_PAL_LIGHTINGUNLIT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,212,86,30,10
+    CONTROL         "Translucent",ID_PAL_TRANSLUCENT,"Button",
+                    BS_AUTOCHECKBOX | WS_DISABLED | WS_TABSTOP,212,99,53,10
+    GROUPBOX        "Lighting",IDC_STATIC,204,49,67,66
+    LISTBOX         ID_PAL_LIST,15,18,175,165,LBS_OWNERDRAWFIXED | 
+                    LBS_NOINTEGRALHEIGHT | LBS_MULTICOLUMN | WS_TABSTOP
+END
+
+ID_FILE_DIRERROR DIALOG DISCARDABLE  0, 0, 190, 34
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,133,7,50,14
+    LTEXT           "Error.  File must reside in the",IDC_STATIC,35,7,89,8
+    LTEXT           "current directory.",IDC_STATIC,35,16,54,8
+    ICON            ID_WARNICON,IDC_STATIC,7,7,18,20,SS_NOTIFY
+END
+
+IDD_DETAIL_LEVELS DIALOG DISCARDABLE  0, 0, 186, 46
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,129,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,129,24,50,14
+    LTEXT           "Number of Detail Levels...",IDC_STATIC,7,7,82,8
+    EDITTEXT        ID_DETAIL_NUMLEVELS,70,19,40,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+END
+
+IDD_COPYDETAILDLG DIALOG DISCARDABLE  0, 0, 146, 50
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Copy Detail Level..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,89,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,89,24,50,14
+    LTEXT           "From:",IDC_STATIC,7,7,18,8
+    LTEXT           "To:",IDC_STATIC,13,29,12,8
+    EDITTEXT        ID_COPY_FROM,29,7,40,14,ES_AUTOHSCROLL
+    EDITTEXT        ID_COPY_TO,29,29,40,14,ES_AUTOHSCROLL
+END
+
+IDD_LIGHTMODIFY DIALOG DISCARDABLE  0, 0, 139, 82
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Batch Lighting Change"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,82,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,82,24,50,14
+    GROUPBOX        "Static",IDC_STATIC,7,7,59,68
+    CONTROL         "Smooth",IDC_SMOOTH,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,17,21,40,10
+    CONTROL         "Flat",IDC_FLAT,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    17,37,27,10
+    CONTROL         "Unlit",IDC_UNLIT,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    17,54,33,10
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,0,0,0
+ PRODUCTVERSION 2,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Materials Editor - Darkstar\0"
+            VALUE "CompanyName", "Dynamix, Inc.\0"
+            VALUE "FileDescription", "MATILDA2 MFC Application\0"
+            VALUE "FileVersion", "2, 0, 0, 0\0"
+            VALUE "InternalName", "MATILDA2\0"
+            VALUE "LegalCopyright", "Copyright © 1996\0"
+            VALUE "OriginalFilename", "MATILDA2.EXE\0"
+            VALUE "ProductName", "MATILDA2 Application\0"
+            VALUE "ProductVersion", "2, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 210
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_MATILDA2_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 329
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 207
+    END
+
+    IDD_RGBEDIT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 8
+        RIGHTMARGIN, 176
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 162
+    END
+
+    IDD_TEXTURE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 284
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 165
+        HORZGUIDE, 7
+    END
+
+    IDD_PALEDIT_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 271
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 189
+    END
+
+    ID_FILE_DIRERROR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 183
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 27
+    END
+
+    IDD_DETAIL_LEVELS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 39
+    END
+
+    IDD_COPYDETAILDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 139
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 43
+    END
+
+    IDD_LIGHTMODIFY, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 132
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 75
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New",                        ID_FILE_NEW
+        MENUITEM "&Open",                       ID_FILE_OPEN
+        MENUITEM "Export to text",              ID_FILE_EXPORTTOTEXT
+        MENUITEM "Import From text",            ID_FILE_IMPORTFROMTEXT
+        MENUITEM "&Save",                       ID_FILE_SAVE
+        MENUITEM "Save &As",                    ID_FILE_SAVEAS
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit\tAlt+F4",               ID_FILE_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Copy",                       ID_EDIT_COPY
+        MENUITEM "&Paste",                      ID_EDIT_PASTE
+        MENUITEM "Paste to &end",               ID_EDIT_PASTETOEND
+        MENUITEM SEPARATOR
+        MENUITEM "Change Lighiting...",         IDM_CHANGELIGHTINGFLAGS
+    END
+    POPUP "&Palette"
+    BEGIN
+        MENUITEM "Set Current Palette...",      ID_PALETTE_SETCURRENTPAL
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+ID_ACCELERATOR ACCELERATORS DISCARDABLE 
+BEGIN
+    "B",            ID_EDIT_PASTETOEND,     VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    "^O",           ID_FILE_OPEN,           ASCII,  NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About matilda2..."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif
+#include "matilda2.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

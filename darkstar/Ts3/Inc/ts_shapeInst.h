@@ -1,0 +1,689 @@
+//---------------------------------------------------------------------------
+
+//   $Workfile:   ts_mesh.h  $
+//   $Revision:   2.8  $
+// $Version$
+//   $Date:   15 Sep 1995 10:27:12  $
+//   $Log:   R:\darkstar\develop\ts\vcs\ts_mesh.h_v  $
+//   
+
+//---------------------------------------------------------------------------
+
+#ifndef _TS_SHAPEINST_H_
+#define _TS_SHAPEINST_H_
+
+#include <ts_shape.h>
+#include <ts_RenderItem.h>
+#include <m_collision.h>
+
+namespace TS
+{
+//---------------------------------------------------------------------------
+
+#ifdef __BORLANDC__
+#pragma option -a4
+#endif
+#ifdef _MSC_VER
+#pragma pack(push,4)
+#endif
+
+//------------------------------------------------------------------
+
+class ObjectInfo;
+typedef Vector<ObjectInfo> objectList;
+class PartInstance;
+
+//------------------------------------------------------------------------------
+class DLLAPI ShapeInstance : public RenderItem
+{
+friend PartInstance;
+
+public:
+   class Thread;
+
+   //--------------------------------------
+   class DLLAPI PluginObjectInstance : public ObjectInstance
+   {
+   public:
+      RenderItem *         fpItem;
+      TMat3F               fObjectOffset;
+         
+      void render( ShapeInstance *pShapeInst, RenderContext & rc );
+
+      PluginObjectInstance( RenderItem * pItem, TMat3F const & offset )
+      {
+         fpItem = pItem;
+         fObjectOffset = offset;
+      }
+   };
+
+   //--------------------------------------
+   class ShapeObjectInstance : public ObjectInstance
+   {
+   private:
+      void selectThread( ShapeInstance *pShapeInst );
+
+      Shape::SubSequence const * findSubSequence( Shape::Sequence const & seq );
+      Shape::SubSequence const * findSubSequence( int seqIndex );
+
+      Shape const &              getShape() const;
+      ShapeInstance const &      getShapeInst() const;
+
+   public:
+
+      int                  fFrameIndex;
+      int                  fMatIndex;
+
+      Shape::Object const &fObject;
+      
+      Thread *             fpThread;
+      const Shape *        fpShape;
+
+      Bool                 fVisible;
+      Bool                 fActive; // turns on & off animation on this object (on by default)
+
+      void animate( ShapeInstance *pShapeInst );
+      void render( ShapeInstance *pShapeInst, RenderContext & rc );
+
+      bool collideLineObj( const TMat3F & trans, const Point3F & a, const Point3F & b,
+                                    ObjectInfo & oi );
+      bool collideLine( CollisionSurface &, ObjectInfo &);
+      bool collidePlaneObj( const TMat3F & trans, const Point3F & normal, float k,
+                                    ObjectInfo & oi );
+      bool collidePlane( CollisionSurface &, ObjectInfo &);
+      bool collideTubeObj( const TMat3F & trans, const Point3F & a, const Point3F & b, float radius,
+                                 ObjectInfo & oi );
+      bool collideTube( CollisionSurface &, ObjectInfo & );
+      bool collideSphereObj( const TMat3F & trans, const Point3F & center, float radius,
+                                    ObjectInfo & oi );
+      bool collideSphere( CollisionSurfaceList &, ObjectInfo & );
+      bool collideBoxObj( const TMat3F & trans, const Point3F & radii, const TMat3F & boxToShape,
+                                ObjectInfo & oi);
+      bool collideBoxObj(TMat3F & trans, const Point3F & radii,
+                                 Point3F & aOverlap, Point3F & bOverlap);
+      bool collideShapeObj( const TMat3F & nodeToShape, const TMat3F & shapeToOtherShape,
+                                  objectList & otherOL, objectList & thisOL);
+
+      void getObject( const TMat3F & nodeToShape, objectList & ol);
+
+      void getBox( ShapeInstance *pShapeInst, Box3F & box);
+
+      void getPolys( ShapeInstance *pShapeInst, const TMat3F * nodeToShape,
+                             unpackedFaceList & fl);
+
+      ShapeObjectInstance( Shape::Object const & object, const Shape *pshp );
+   };
+
+   //--------------------------------------
+   class PathPoint
+   {
+   public:
+      int               fSequence;
+      Shape::Transition const *  fpTransition;
+      RealF             fPosition;
+      int               fRepeatCount;
+
+      PathPoint( int seq, Shape::Transition const * trans, RealF pos, int count )
+      {
+         fSequence = seq;
+         fpTransition = trans;
+         fPosition = pos;
+         fRepeatCount = count;
+      }
+   };
+
+   //--------------------------------------
+   class NodeInstance
+   {
+   public:
+      TMat3F *             fpTransform;
+      TMat3F const *       fpParentTransform;
+      Bool                 fVisible;
+      Bool                 fActive;
+
+      Shape::Node const &  fNode;
+      
+      NodeInstance *       fpNext;
+      NodeInstance *       fpChild;
+      
+      NodeInstance *       fpNextDetail; // not used by shapeInst, but by partInst
+      TMat3F*              fpMatOverride[2];
+      
+      Thread *             fpThread;
+
+      VectorPtr<ObjectInstance*> fObjectList;
+
+      void getPathTransform( PathPoint const & pp, TMat3F * pathTransform );
+      void addToPathTransform( TMat3F * nextTransform,
+                     TMat3F * prevTransform, TMat3F * totalTransform);
+      void accumulatePathTransform( PathPoint const & pp, PathPoint const & prevPP,
+                     TMat3F * prevTransform, TMat3F * totalTransform );
+      void selectThread( ShapeInstance *pShapeInst );
+      void animateRoot( ShapeInstance *pShapeInst );
+      void animateRootUndo( ShapeInstance *pShapeInst );
+      void animateThis( ShapeInstance *pShapeInst );
+      void animate( ShapeInstance *pShapeInst, bool checkSiblings );
+      void render( ShapeInstance *pShapeInst, RenderContext & rc, Bool renderSiblings );
+
+      // puts a list of collisions w/ line & object bounding-boxes into oList
+      void collideLineParts(const Point3F & a, const Point3F & b,
+                                    objectList & oList, bool checkSiblings);
+
+      // puts a list of collisions w/ line & object bounding-boxes into oList
+      void collidePlaneParts(const Point3F & normal, float k,
+                                   objectList & oList, bool checkSiblings);
+
+      // puts a list of collisions w/ tube & object bounding-boxes into oList
+      void collideTubeParts(const Point3F & a, const Point3F & b, float radius,
+                                    objectList & oList, bool checkSiblings);
+
+      // puts a list of collisions w/ sphere & object bounding-boxes into oList 
+      void collideSphereParts(const Point3F & center, float radius,
+                                    objectList & oList, bool checkSiblings);
+
+      // puts a list of collisions w/ box & object bounding-boxes into oList
+      void collideBoxParts(const Point3F & radii, const TMat3F & boxToShape,
+                                    objectList & oList, bool checkSiblings);
+
+      // puts a list of collisions of objects in "otherOL" (from other shape)
+      // with this object into "thisOL"
+      void collideShapeParts(const TMat3F & toOtherShape, objectList & otherOL, 
+                                    objectList &thisOL, bool checkSiblings);
+
+      void getObjects( objectList & ol, bool getSiblings);
+
+      void AddChild( NodeInstance * pNodeInst );
+      void AddSibling( NodeInstance * pNodeInst );
+
+      void AddDependentObject( ObjectInstance * pObj );
+
+      void AddPluginObject( RenderItem * pItem, 
+         TMat3F const & offset );
+      void RemovePluginObject( RenderItem * pItem );
+
+      Shape::SubSequence const * findSubSequence( Shape::Sequence const & seq );
+      Shape::SubSequence const * findSubSequence( int seqIndex );
+
+      Shape const &              getShape() const;
+      ShapeInstance const &      getShapeInst() const;
+
+      NodeInstance( Shape::Node const & node, TMat3F *pTransform );
+      NodeInstance( Shape::Node const & node, TMat3F *pTransform,
+         TMat3F const *pParentTransform );
+      ~NodeInstance();
+   };
+
+//-------------------------------------- ShapeInstance
+public:
+   //--------------------------------------
+   class DLLAPI Thread
+   {
+   public:
+      enum States
+      {
+         Invalid,
+         NoTransition,
+         TransitionPending,
+         InTransition,
+      };
+      class saveState
+      {
+         public :
+            States               fState;
+            RealF                fPosition;
+            Shape::Sequence const * fpSequence;
+            bool                  fDifferentSubscriberList;
+      };
+
+   private:
+      int                   fPriority;  // Normally set to sequence pri.
+      States               fState;
+      saveState            fSaveState;
+      RealF                fTimeScale; // time scaling & direction control
+
+      RealF                fPosition;  // position in current sequence or transition
+
+      Shape::Sequence const *    fpSequence;
+      Shape::Transition const *  fpTransition;
+      Shape::Transition const *  fpForwardTransition;
+      Shape::Transition const *  fpBackwardTransition;
+      // The forward transition is the one that will be followed
+      // if we are moving forward -- startSequence is current sequence and endSequence
+      // is target sequence.  backward transition is the one that will be followed
+      // if we are moving backwards -- endSequence is current sequence and startSequence
+      // is target sequence.
+      // fpTransition variable is ignored unless state is InTransition.
+      // fpForward/backwardTransition are ignored unless state is TransitionPending.
+      // fpSequence variable is ignored unless state is NoTransition.
+
+      // list of nodes and objects controlled by this thread:
+      IndexList            fSubscriberList;
+      Bool                 fSubscriberListValid;
+      Bool                 fIsDirty;
+
+      Vector<PathPoint>    fPath;
+
+      ShapeInstance &      fShapeInst;
+      
+   protected:
+      void AdvancePositionNoTransition( RealF deltaPosition );
+      void AdvancePositionTransitionPending( RealF deltaPosition );
+      void AdvancePositionInTransition( RealF deltaPosition );
+
+   public:
+
+      Shape const &               getShape() const;
+      ShapeInstance const &       getShapeInst() const;
+      States                      getState() const;
+      RealF                       getTimeScale () const;
+      Shape::Sequence const &     getSequence() const;
+      RealF                       getPosition() const;
+      Shape::Transition const &   getTransition() const;
+      Shape::Transition const &   getForwardTransition() const;
+      Shape::Transition const &   getBackwardTransition() const;
+
+      Bool IsSubscriber( int subscriberIndex );
+      Bool isDirty(void)   { return fIsDirty; }
+      void setDirty(void)   { fIsDirty = true; }
+      void setClean(void)   { fIsDirty = false; }
+      void UpdateSubscriberList();
+      void invalidateSubscriberList() { fSubscriberListValid=false; }
+
+      IndexList const & getSequenceSubscriberList( Shape::Sequence const *pSeq ) const;
+
+      int SetTransition( Shape::Transition const *pTrans );
+      int TransitionToSequence( int newSeq );
+      int GetSequenceIndex( char *sequence );
+      void SetSequence( char *sequence, RealF startTime = 0.0f, bool updateSSL = true );
+      void SetSequence( int sequenceIndex, RealF startTime = 0.0f, bool updateSSL = true );
+
+      void setStatus(int state, RealF _fTimeScale, RealF _fPosition,
+         int sequence, int transition, int forwardTransition, int backwardTransition);
+      void getStatus(int &state, RealF &_fTimeScale, RealF &_fPosition,
+         int &sequence, int &transition, int &forwardTransition, int &backwardTransition);
+
+      void SetTime( RealF newTime );
+      void SetPosition( RealF newPosition );
+      void setPriority(int p);
+      int getPriority (void) {return fPriority;}
+
+      void setTimeScale( RealF scale );
+
+      void AdvanceTime( RealF deltaTime );
+      void AdvancePosition( RealF deltaPosition, Bool startPath = TRUE );
+      void AdvanceTimeUndo();
+      
+      int findTriggerFrames( const Shape &shp, int *vals, int max_vals, bool bidirectional = false );
+
+      Vector<PathPoint>::const_iterator PathBegin() const;
+      Vector<PathPoint>::const_iterator PathEnd() const;
+
+      int operator < (Thread const &);
+      Thread( ShapeInstance &shapeInst );
+   };
+
+//-------------------------------------- ShapeInstance Public
+public:
+   objectList                        potentialObjList;
+   SortableVectorPtr<ObjectInfo*>   sortedObjListPtrs;
+
+   // the following 6 funcs collide w/ shape objects only...used by the next 4 funcs
+   void collideLineParts(int dl, const Point3F & a, const Point3F & b, 
+                           const TMat3F * toShape,objectList & ol);
+
+   void collidePlaneParts(int dl, const Point3F & normal, float k,
+                          const TMat3F * toShape,objectList & ol);
+
+   void collideTubeParts(int dl, const Point3F & a, const Point3F & b, float radius,
+                           const TMat3F * toShape,objectList & ol);
+
+   void collideSphereParts(int dl, const Point3F & a, float radius,
+                           const TMat3F * toShape,objectList & ol);
+
+   void collideBoxParts(int dl, const Point3F & radii,
+                           const TMat3F * toShape,objectList & ol);
+
+   void collideShapeParts(int dl, int otherDL, ShapeInstance & otherShape, 
+                           const TMat3F * toThisShape, objectList & ol);
+
+   // the prefered collision interface
+   // Note:  these routines ignore fRootDeltaTransform.  So fRootDeltaTransform
+   // should be folded into the "toShape" transform when calling thse methods.
+   // See the SimCollisionTS3Image for an example of this. 
+   bool collideLine(int dl, const Point3F &a, const Point3F & b, 
+                           const TMat3F * toShape, CollisionSurfaceList * list,
+                           bool faceData=true);
+
+   bool collidePlane(int dl, const Point3F &normal, float k,
+                           const TMat3F * toShape, CollisionSurfaceList * list,
+                           bool faceData=true);
+
+   bool collideTube(int dl, const Point3F &a, const Point3F & b, float radius,
+                           const TMat3F * toShape, CollisionSurfaceList * list,
+                           bool faceData=true);
+
+   bool collideSphere(int dl, const Point3F &a,float radius,
+                           const TMat3F * toShape, CollisionSurfaceList * list,
+                           bool faceData=true);
+
+   bool collideBox(int dl, const Point3F &radii,
+                           const TMat3F * toShape, CollisionSurfaceList * list,
+                           bool faceData=true);
+
+   bool collideShape(int dl,int otherDL, ShapeInstance & otherShape,
+                           const TMat3F * toThisShape, CollisionSurfaceList * list,
+                           bool faceData=true);
+
+   void getObjects(int dl, objectList & ol);
+
+   void getPolys(int dl, unpackedFaceList & fl);
+
+protected:
+   class ThreadList : public SortableVectorPtr<Thread*>
+   {
+      bool     forceListDirty;
+   public:
+      // a list of threads, sorted by priority
+      void insertThread( Thread * );
+      void removeThread( Thread * );
+      bool checkDirtyAndSort( bool doCleaning = true );
+      void forceDirty()  { forceListDirty = true;  }
+      Thread * selectThread( int index );
+      ThreadList()  { forceDirty();  }
+   };
+
+   Vector<TMat3F>             fTransformList;
+   ThreadList                 fThreadList;
+   VectorPtr<NodeInstance*>   fNodeInstanceList;
+   // for each sequence, keep a list of nodes which use that sequence:
+   VectorPtr<IndexList*>      fSequenceSubscriberLists;  
+
+   int                        fDetailLevel;  // the detail level for the shape
+   int                        fLastAnimatedDetailLevel;
+
+   Shape const *              fpShape;
+   MaterialList const *       fpMaterialList;
+
+   Resource<MaterialList>     frMaterialList;
+   Resource<Shape>            frShape;
+   int *fMaterialRemap;
+   NodeInstance *             fAlwaysNode;
+   
+   // set by selectDetail(), to true if the detail level is zero and
+   // fDrawFlatPerspective is true
+   bool                       fDrawFlatPerspectiveDetail;
+   // fDrawFlatPerspective defaults to false.
+   // If it is true, and detail 0 is selected, then flat shaded textures
+   // will be drawn perspective corrected
+   bool                       fDrawFlatPerspective;
+   float                      perspectiveScale;
+   float                      detailScale;
+   bool                       fAlwaysAlpha;
+   float                      fAlwaysAlphaValue;
+   static MaterialList *      fAlwaysMat;
+
+   // in ts_shapeinst these are always true
+   // derived classes, however, can turn off animation and detail control
+   // see ts_partinstance for an example
+   // note:  If detail control turned off, node 1 is always top of shape tree
+   //        (other than bounds node).  selectDetail wil still select detail
+   //        levels just the same.  getDetail() iterates through details to find
+   //        the right one (chooses the last one if too few).
+   //        If animation control turned off, ignore animate() and animateRoot()
+   //        asserts on thread creation and animateDetail()
+   bool                       fUseAnimation;
+   bool                       fUseDetails;
+   Int8                       fUseOverride;
+public:
+   
+
+   TMat3F                     fRootDeltaTransform;
+   TMat3F                     fRootDeltaTransformUndo;
+
+   static int                 minDetail;
+   static int                 maxDetail;
+
+   Shape const &         getShape() const;
+   Resource<Shape> const &getShapeResource() const { return frShape; }
+   NodeInstance *        getDetail() { return getDetail(fDetailLevel); }
+   NodeInstance *        getDetail(int dl);
+   NodeInstance *        getNode(int);
+   int                   getNumNodes();
+   MaterialList const &  getMaterialList() const;
+   void                  setMaterialList(MaterialList *matList);
+
+   int *getMaterialRemap() { return fMaterialRemap; }
+   void setMaterialRemap( int index, int val );
+
+   IndexList const &     getSequenceSubscriberList( Shape::Sequence const *pSeq ) const;
+
+   Shape::Sequence const &  getSequence( int ) const;
+
+   void            animateRoot();
+   void            animateRootUndo();
+   void            animate();
+   void            animateDetail(int dl);
+   virtual void    render( RenderContext & rc );
+
+   void            pushRootDeltaXform(void) {fRootDeltaTransformUndo = fRootDeltaTransform;}
+   void            setDetailScale(float scale);
+   float            getDetailScale() { return detailScale; }
+   void            setPerspectiveScale(float scale);
+   void            setAlphaAlways(bool on, float val=0.5f)
+                            { fAlwaysAlpha = on; fAlwaysAlphaValue = val; }
+   bool            getAlwaysAlpha() const { return fAlwaysAlpha; }
+   float           getAlwaysAlphaValue() const { return fAlwaysAlphaValue; }
+   static void     setAlwaysMat(MaterialList * mat) { fAlwaysMat = mat; }
+   static MaterialList * getAlwaysMat() { return fAlwaysMat; }
+
+   int             getNodeAtCurrentDetail(const char * nodeName);
+   void            setDetailLevel(int detailLevel);
+   int             getDetailLevel() {return fDetailLevel;}
+   int             selectDetail( RenderContext & rc, int minDetail = -1, int maxDetail = -1 );
+   int             findTriggerFrames( int *vals, int max_vals, bool bidirectional = false );
+   bool            isPerspective() const { return (fDrawFlatPerspectiveDetail); }
+
+   Thread *        CreateThread();
+   void            DestroyThread( Thread * pThread );
+
+   Thread *        selectThread( int nodeIndex );
+   Thread *        getThread(int threadNum) { return fThreadList[threadNum]; }
+   int             threadCount() { return fThreadList.size(); }
+
+   const char *    getShapeName()
+     { if ((bool)frShape)
+          return frShape.getFileName();
+       else
+          return NULL;
+     }
+
+   void            UpdateSequenceSubscriberLists();
+
+   TMat3F const &  getTransform( int index ) const;
+
+   void            init();
+   
+   // a partial initialization -- do not call, used by exporter only
+   void            init(TSShape * pShape) { fpShape=pShape; fMaterialRemap=NULL; init(); }
+
+   void AddPluginObject( char *node, RenderItem * pItem, TMat3F const & offset );
+   void RemovePluginObject( char *node, RenderItem * pItem );
+
+   void insertOverride(const char* name,int index, TMat3F* );
+   void setOverride(Int8 xx) { fUseOverride = xx; }
+   Int8 getOverride() { return fUseOverride; }
+   void resetActiveFlag();
+   void clearThreadOptimizations()     { fThreadList.forceDirty();  }
+   void setDetailsAnimateSame()        { fLastAnimatedDetailLevel = -1000; }
+   void clrDetailsAnimateSame()        { fLastAnimatedDetailLevel = -999; }
+   bool detailsAnimateSame()           { return(fLastAnimatedDetailLevel == -1000); }
+   bool lastDetailDifferent(int fromThisOne);
+   void setLastAnimatedDetail(int dl)  { if ( !detailsAnimateSame() ) 
+                                                fLastAnimatedDetailLevel = dl; }
+
+   ShapeInstance( Resource<Shape> const & shape, 
+      Resource<MaterialList> const & mats, ResourceManager &rm );
+   ShapeInstance( Resource<Shape> const & shape, 
+      ResourceManager &rm);
+   ShapeInstance() { } // constructor that does not initialization -- not for casual use
+   ~ShapeInstance();
+};
+
+
+//------------------------------------------------------------------
+#ifdef __BORLANDC__
+#pragma option -a.
+#endif
+#ifdef _MSC_VER
+#pragma pack(pop)
+#endif
+
+//------------------------------------------------------------------
+
+inline Shape const & 
+ShapeInstance::ShapeObjectInstance::getShape() const
+{
+//   return fpThread->getShape();
+     return *fpShape;
+}
+
+inline ShapeInstance const & 
+ShapeInstance::ShapeObjectInstance::getShapeInst() const
+{
+   return fpThread->getShapeInst();
+}
+
+//------------------------------------------------------------------
+inline Shape const & 
+ShapeInstance::NodeInstance::getShape() const
+{
+   return fpThread->getShape();
+}
+
+inline ShapeInstance const & 
+ShapeInstance::NodeInstance::getShapeInst() const
+{
+   return fpThread->getShapeInst();
+}
+
+   //------------------------------------------------------------------
+
+inline void 
+ShapeInstance::Thread::setTimeScale( RealF scale )
+{
+   fTimeScale = scale;
+}
+
+inline Shape const & 
+ShapeInstance::Thread::getShape() const
+{
+   return fShapeInst.getShape();
+}
+
+inline ShapeInstance const & 
+ShapeInstance::Thread::getShapeInst() const
+{
+   return fShapeInst;
+}
+
+inline ShapeInstance::Thread::States 
+ShapeInstance::Thread::getState() const
+{
+   return fState;
+}
+
+inline Shape::Sequence const & 
+ShapeInstance::Thread::getSequence() const
+{
+   return *fpSequence;
+}
+   
+inline RealF 
+ShapeInstance::Thread::getTimeScale() const
+{
+   return fTimeScale;
+}
+
+inline RealF 
+ShapeInstance::Thread::getPosition() const
+{
+   return fPosition;
+}
+
+inline Shape::Transition const & 
+ShapeInstance::Thread::getTransition() const
+{
+   return *fpTransition;
+}
+
+inline Shape::Transition const & 
+ShapeInstance::Thread::getForwardTransition() const
+{
+   return *fpForwardTransition;
+}
+
+inline Shape::Transition const & 
+ShapeInstance::Thread::getBackwardTransition() const
+{
+   return *fpBackwardTransition;
+}
+
+   //------------------------------------------------------------------
+
+inline Shape const & 
+ShapeInstance::getShape() const
+{
+   return *fpShape;
+}
+
+inline ShapeInstance::NodeInstance * ShapeInstance::getNode(int i)
+{
+      return fNodeInstanceList[i];
+}
+
+inline int ShapeInstance::getNumNodes()
+{
+      return fNodeInstanceList.size();
+}
+
+inline MaterialList const & 
+ShapeInstance::getMaterialList() const
+{
+   return *fpMaterialList;
+}
+
+inline void ShapeInstance::setMaterialList(MaterialList *matList)
+{
+   fpMaterialList = matList;
+   frMaterialList = 0;
+}
+
+inline Shape::Sequence const & 
+ShapeInstance::getSequence( int index ) const
+{
+   return fpShape->getSequence( index );              
+}
+
+inline TMat3F const & 
+ShapeInstance::getTransform( int index ) const
+{
+   return fTransformList[index];
+}
+   
+inline void ShapeInstance::setMaterialRemap( int index, int val )
+{    
+   if ( fMaterialRemap )
+   {
+      AssertFatal( index >= 0 && index < fpShape->fnDefaultMaterials, 
+                   "material index out of range" );
+      fMaterialRemap[ index ] = val;
+   }
+}
+
+   //------------------------------------------------------------------
+}; // namespace TS
+
+//
+typedef TS::ShapeInstance TSShapeInstance;
+
+#endif

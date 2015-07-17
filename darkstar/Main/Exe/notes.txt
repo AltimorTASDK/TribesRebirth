@@ -1,0 +1,12 @@
+
+
+
+Revision notes for the core library example program.  
+
+
+2/10/98, LH:  autoexec.cs addition for local preference setting, put in 
+	.BMP files and a few .CS files that mission editor needs to run.  Now
+	you can pop it and the terrain editor up.  What more can be done at 
+	that point, don't know.  Also changed to FLYER.DTS shape.  
+
+

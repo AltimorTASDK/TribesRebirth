@@ -1,0 +1,202 @@
+
+	Information about the 3dMax plugin to export .dts shapes:
+
+	( author unknown )
+
+
+There are two projects: dtsexp and seqhlp.  Each makes a .dlo file that
+goes in the 3dsmax\plugins directory.  Dtsexp is the main piece of the
+exporter that converts the MAX shape into 3space format and saves it.
+Helpers has a couple of "helper" objects defined: sequence and
+transition.  These definitions allow the artist to create these objects
+and attach data to them.  The Dtsexp plugin later finds these objects
+and retrieves the data.
+
+Animation in a MAX file gets done as one long series, while 3space
+supports playing different sequences simultaneously.  The artist uses
+the sequence objects to mark start and end points on the MAX timeline.
+To avoid conflicts in sequences that might be meant to play at the same
+time, I made certain assumptions.  Generally, only the types of
+animation where change occurs during a sequence are added as keyframes.
+For example, in a walk sequence where the head node is visible
+throughout the sequence, no visibility keyframes are exported.  This
+allows another sequence to control the visibility of the head node, and
+be played at the same time with no conflict.  The downside to this is
+that sometimes an artist will turn the visibility off for a node and
+keep it off for an entire sequence, expecting that that sequence will
+turn off the node when played.  But since no visibility change is
+detected, no vis keyframes get exported.  There is a force_vis flag on
+the sequence which causes the vis keyframes to be exported regardless,
+but this affects all nodes.
+
+Transform animation has keyframes that can be viewed in the MAX track
+info view.  The exporter spits out a keyframe for each of these that
+occur during a sequence.  For morph animation, we use the cel frame rate
+that's entered by the artist into the sequence helper object to figure
+the keyframes. The exporter samples the mesh on a node at the specified
+frame rate, comparing each sampled frame against the last frame it has
+to see if it's worth exporting.  Also, visibility and material changes
+are scanned for in this manner and keyframes for those are exported if
+changes occur.  Multi-part shapes such as the robots in Es3 generally
+don't have mesh changes, so each mesh just has one frame, while they
+have several transform keyframes.  The original Fear character on the 
+other hand has no transform changes, just mesh changes.  There are
+shapes with both types at once, and shapes where one sequence has morph
+frames for a mesh on a node, while another sequence meant to be played
+simultaneously has transform keyframes for the same node.
+
+There are two types of material animation.  The first type is where the 
+artist animates the UVW mapping gizmo, which causes the texture
+coordinates to move during a sequence.  This is similar to a morph
+change, just on texture coords instead of vertices.  This type is
+scanned for just like a morph change (relies on cel frame rate).  For
+each frame of this animation that exists, every texture vertex in the
+mesh is spit out, even if only one coord changes (just like morph
+animation).  The second type is .ifl animation.  If the artist points
+the material to an .ifl file instead of a .bmp or .tga file, MAX will
+parse the .ifl file (as a text file), and decide which material to use
+at a given time based on what the .ifl file says.  These changes are
+global to all faces that reference this material.  For each material
+that points to an .ifl file, I add every material in the .ifl file that
+occurs during a sequence to the material list, and save a table along
+with each sequence so 3space knows how to remap to get the proper
+material at the proper time.  This is done as a post-process in
+ShapeBuilder::makeShape().
+
+
+DTSEXP.DLO:
+
+SceneEnum is the main file for following the flow.  The first thing that
+happens is that the callback function at the bottom of the file gets
+called for each node in the scene.  Then getNodes() gets called which
+grabs the bounding box and then attaches the other top nodes to it.  We
+assume that nodes at the top of the tree (nodes with parent "root") that
+have meshes attached to them are either the bounds box (which has to be
+named "bounds") or are detail nodes, probably with a heirarchy of nodes
+under them.  The name of the detail nodes should have a number at the
+end of them which is used to set the pixel size for detail selection.
+
+As each node is processed in getNode(), it looks for transform
+animation and/or visibility/morph/material animation, then processes its
+child nodes.  Notes: If a node's name begins with "dummy", the vis/morph
+animation is ignored.  This allows for placeholder nodes to be put in a
+shape without causing MAX to export the geometry of the placeholder
+piece.  If a node's name begins with "always", it is attached to a
+special node of the shape (the alwaysNode), which means it gets drawn
+regardless of the detail that was selected.  A good use of this is
+plugin objects, like the gun in Fear, because it does it's own
+detailing, and we don't want to duplicate a gun in each detail level.
+If you have to combine "dummy" and "always", use "dummyalways".
+"always" nodes do not have to be connected to a hierarchy that is
+exported...they can be floating somewhere that would normally be skipped
+over.
+
+Meshbuilder.cpp has the code that deals with morph frames of a mesh.  It
+converts from MAX's mesh format to 3space's, then multiplies the points
+by a passed matrix, then compares them to the last frame it grabbed
+(unless there isn't one yet).  Also computes normals for the verts,
+which gets a little complicated.  Flat shaded polys need the normal of
+their first vertex to be pointing normal to the surface, while gouraud
+polys expect their vertex normals to be the average of the normals of
+the gouraud faces that share that vertex.  Sometimes a vertex must be
+duplicated if two adjacent faces both need it pointing different
+directions.  Adjacent gouraud polys that are from different shading
+groups do not average their normals with each other, so that also causes
+vertex duplication.
+
+Shapebuilder.cpp has a class that basically collects the data until the
+nodes are all processed, then it uses the data to build the TSShape that
+gets written out.	 Also has code to accumulate the references to
+materials so it can write out a material list file (gets written out as
+part of the .dts file).  
+
+The materials have a few details to mention.  A bitmap file with a '@'
+character in the name means to set the transparent flag in the material.
+If the material filename is a ".tga", I convert the name to ".bmp", and
+set the translucent flag.  It is assumed that somebody will convert the
+.tga file to a .bmp and palette file before this is used in an app.
+Material filenames with ".ifl" are treated differently depending on what
+time the material is referenced.  ".ifl" files are ascii files that have
+a list of .bmp or .tga files which are meant to be used for material
+animation.  Each entry can also have a number following it that is the
+hold count in frames (how long to wait before switching to next
+material).  All materials in the shape that point to the .ifl get
+animated at once.  When I scan the shape for morph animation, I also get
+the current material (evaluate the .ifl into the .bmp that should be
+used at the current time).  If it has changed I output a keyframe for
+material animation, and that material will then be put in the material
+list.  Not necessarily all materials listed in an .ifl file will end up
+in the material list (only if they occur during a sequence).
+
+
+Misc Notes: 
+
+- We decided against having an object offset, so this is always
+pre-multiplied into the mesh, and set to identity.  We also decided that
+scaling in any transform was bad, since it complicates things at
+run-time, so when I encounter scale in a transform, I push it down to
+the children of that node, and clear it to 1.0's.  So it get's collapsed
+down into the meshes.  One thing that's assumed here is that there won't
+be any animated scaling taking place, because I compute the scale of the
+transform once, passing that down to the sub-hierarchy, but I clear the
+scale of all the transform keyframes.  
+
+- The type of shapes we used at one time in Fear required some special
+cases in the exporter.  The old Fear character was a mesh that was
+generated from a Character Studio skeleton (current character is
+separate parts, like an ES shape).  We export the mesh as morph
+animation, and ignore the skeleton completely. The mesh and the skeleton
+end up both being linked to a special "VICON" node, which has a
+transform that kind of represents the hips (base transform of the
+character).  The first hack is that the mesh node isn't at the top level
+of the scene, so it normally wouldn't be exported (it's parent nodes
+don't have meshes, so they get skipped). So I also export hierarchies
+that are named "VICON" (this node isn't necessarily on the root level
+either).  Second hack is that I want the transform info in the VICON node
+that I'm skipping over included in the mesh's motion. And I don't want it
+included as transform animation, because that would end up being
+interpolated smoothly, while the mesh is sampled and doesn't tween. The
+combination of these two types looks dumb. So I have to grab the
+transform and multiply all the mesh points by it before exporting them.
+This is what is going on inside the #if VICON_MUL clauses.  Third problem
+is that there can be only one VICON node, yet we may want multiple detail
+levels.  So I take each mesh node attached to the VICON, and make that a
+detail node, attaching the rest of the nodes in the VICON hierarchy with
+matching detail numbers to it.  So one pass through the hierarchy is
+made for each mesh node (detail) linked to the VICON.
+
+- I had some problems with the assumption that sequences that don't
+affect visibility don't export any vis keyframes.  Sometimes an artist
+will make a sequence where a node's visibility is off for the entire
+sequence, but want keyframes to be exported for that node.  The
+sequence's force_vis flag could be set, but that would export visibility
+keyframes for all nodes, which may not be what you want.  The solution
+is to make the node default to invisible when no threads are running
+sequences that affect the visibility.  To let 3space know of this
+intent, name the node something beginning with "hide".
+
+- Sequences have their start and end marked with keyframes in the track
+view, but there can also be intermediate keyframes which control the
+frame rate (used for morph animation sampling).  The start key could be
+60 fps, then perhaps you might want less resolution for the second half
+of the sequence, so you put a 30 fps key frame in the middle.
+
+
+
+HELPERS.DLO (project is called seqhlp):
+
+The main code here is in sequence.cpp.  This just has a bunch of data
+defining how the transition and sequence helper objects behave.  I don't
+know really how everything works, I just used the code as an example
+when I wanted to add fields of my own.  The main thing to remember here
+is that it doesn't work in the debugger (although it looks like it at
+first) which explains all the commented out printf's.
+
+
+
+BUILDING STUFF:
+
+I use the VC 5.0 IDE to make the .dlo files, but I use the command line
+compiler to make the darkstar libs that the 2 projects use.  You don't
+need all the DS libs, just core, ml, gfxio, and ts3.  
+

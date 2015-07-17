@@ -1,0 +1,543 @@
+
+Comming Soon (if there's any demand):
+    Console For Programmers
+        Plugins
+        Command & Variable hooks
+        Console consumers
+			Hungry Man and Slim Jim versions
+            
+
+
+Console Keys
+------------
+
+    Tab         Tab will complete commands on the first token. It will
+                also complete variable names if the current token is
+                prefixed by the variable substitution prefix '$'.
+                Shift tab will cycle the backwards.
+
+    ctrl-u      Delete the current line in the input buffer.
+
+    backspace   Delete the previous char.
+
+    Up          Previous command in history
+
+    Down        Next command in history (after going up)
+
+    Left        Same as backspace
+
+    `           Toggle console active
+
+    Keys bound using the "bind" command are only check while the 
+    console is inactive.
+
+
+Console Parsing
+---------------
+
+    In parsing, the console normally seperates tokens by white
+    space. All leading and trailing white space is removed.
+    There are some special characters used by the parser:
+
+        #       Comment to end of line.
+
+        '       The single quote toggles on/off command aliasing and
+                variable substitution. The characters within single 
+                quotes are not considered a single token.
+                This example delays evaluation of the FrameRate
+                variable untill XX is itself evaluated:
+
+                    % set XX echo '$ConsoleWorld::FrameRate'
+                    % eval $XX
+
+        ""      Anything in quotes in considered a single token.
+                Variable substitution does not take place if a
+                variable is embeded within other text in a string:
+
+                    % echo "This is the time: $Time"
+                    This is the time: $Time
+
+                But this will work:
+                    % echo "This is the time:" "$Time"
+                    This is the time: 5:00
+
+                If variable substitution does occure in a quoted
+                string, then the variable value is itself inserted 
+                into the parser in quotes.
+                Nested quotes are not supported.
+
+        ;       End of command.  Is used to combine several console
+                commands onto a single line:
+                
+                    % bind ctrl-c "cls; echo Hello World"
+                    % loadShow; showGfxSW
+                    % if test "$CC" == yes; echo Yes; else; echo No; endif
+
+        ()      Similar to double quotes, except that if any variable
+                substition takes place the substituted value is not
+                itself quoted. The quoting cause token seperation
+                between the inserted value and what's already on the
+                parser stack. An example of the difference:
+                    % set World Lush
+                    % echo "$World"Day
+                    World Day
+                    %echo ($World)Day
+                    WorldDay
+
+
+Variable & Alias Substitution
+-----------------------------
+
+    Alias substition only takes place on the first token of a command.
+    The first token is check against the alias dictionary.  If there
+    is a match, the value is pushed onto the parser stack.  Alias
+    can be aliases for other aliases, substition continues untill
+    the dictionary lookup fails.
+
+    Variable substitution takes place on all tokens but the first,
+    unless a token has been enclosed in single quotes. Any token
+    starting with '$' is looked up in the variable dictionary. If a
+    match is found, it's value is pushed onto the parser stack and
+    parsing continues.  Variables in the value of a variable being
+    expanded will themselves get expanded.
+
+        % set XX 'World: $World'
+        % set World Lush
+        % echo $XX
+        World: Lush
+
+    Since "World" hasn't been set yet, the first set command encloses
+    $World in single quotes to delay evaluation.
+
+
+Variable Types
+--------------
+
+    Though variables are always stored internally as strings. They
+    can be accessed through code using typed methods.  These methods
+    provide type conversion.
+
+    Bool    Can be either 0, 1, false or true
+    Int     Ints are converted using atoi
+    Float   Floats are converted using atof
+
+
+Variables Defined by the Console
+--------------------------------
+
+    Console::Prompt
+
+        The prompt used for input.  There is currently only a
+        single prompt and no way to know if one is in a conditional
+        block. (default prompt is "%")
+
+    Console::AutoExec
+
+        A bool value. If set to true, and the first first token in
+        a command does not match either an alias, or any builtin
+        or plugin command, the console attempts to exec "token".cs.
+        Any file with the .cs script in the current directory is also
+        included in the command completion list. (Default is true)
+
+    Console::ExecEcho
+
+        A bool value. If set to true, all the commands in console
+        scripts are echoed to the screen. (default is false)
+
+    Console::BindEcho
+
+        A bool value.  If set to true, whenever a bound key is
+        evaluated, the command is echoed to the screen.
+
+    Console::Return
+
+        An int value.  This is the value returned by the last
+        command executed.  Normally a return value of 0 is considered
+        normal. Non zero values indicate errors.
+
+    Console::StripVarPrefix
+
+        A bool value.  If this value is true, during variable assignment
+        the variable name is first stripped of the variable prefix ($).
+        (Default is true)
+        
+            Example:
+                % set '$XX yy'
+                
+        Will set the variable 'XX' to yy if the StripVarPrefix is true,
+        otherwise it will set the variable '$XX' to yy (includes $ in
+        the variable name). This feature is used mainly to get access
+        to variable tab completion while setting a var. You can type
+        "set '$Console", then tab, tab, tab... untill you find the one
+        you want, then type in the value.
+
+    Console::GFXFont
+
+        The name of the GFX font to use during rendering.
+        (Default is "")
+
+    Console::Disable
+
+        A bool value.  If set to true, it disables access to the
+        console.
+
+    Console::Debug
+
+        A bool value.  Set to true if the console was compiled with
+        the DEBUG preprocessor variable defined.
+
+    Console::LastLineTimeout
+
+        An int value.  How ling in ms. the last line printed to the
+        console is displayed at the top of the screen.  This is only
+        relevent when the console is inactive.  If set to 0, or any
+        value less then 0, the last line printed will never be
+        displayed. (default is 4000)
+
+
+Console Commands
+----------------
+
+    alias [name] [command...]
+
+        Alias with no arguments will list out all the current
+        aliases in the alias dictionary. Alias with just the alias
+        name will remove that alias from the dictionary.
+
+    activate
+
+        Toggles activation of the console.
+
+    bind [keydesc] [command...]
+
+        Bind keyboard input to console commands.  These bindings
+        only work while the console is inactive.
+        Bind by itself will list all the current bindings.
+        Bind follow by a key description without a command will
+        unbind that key.
+
+        The key descriptions are built as follows:
+
+            [make,break] [ctrl-][alt-][shift-]key
+
+        where key is any single letter key or one of the following
+        reserved keys:
+
+            f[1-15], escape, backspace, tab, enter, 
+            control, quote, shift, alt, space, capslock,
+            numlock, scroll, numpad[0-9,-,+], numpadequals,
+            numpadcenter, numpadcomma, sysreq, stop,
+            home, up, right, left, down, end, prior, next,
+            insert, delete, win, app
+
+        If make or break is not specified, the default is make.
+
+        Example:
+            % bind ctrl-o messageCanvasDevive MainWindow outline
+
+    cls
+
+        Clears out the current printf history.
+
+    debug
+
+        Issues an int3
+
+    define functionName
+
+        Defines a function. Every line untill "enddef" is read will
+        be in the function.  Currently, define will fail if the
+        function already exists.  No aliasing or variable
+        substitution takes place untill the function is evaluated.
+
+        Example:
+            % define newWindow
+            %    if test "$1" != ""
+            %        if isObject $1
+            %            echo newWindow: Object already  exists
+            %            return 1
+            %        else
+            %            newObject $1 SimGui::Canvas $1 320 240
+            %            GuiNewContentCtrl $1 SimGui::TSControl
+            %        endif
+            %    else
+            %        echo newWindow: Must pass window name
+            %        return 1
+            %    endif
+            % enddef
+            %
+            % newWindow xx
+
+    echo [args...]
+
+        Prints its arguments to the console.  Echo will insert
+        a single space between it's tokens (white space is stripped
+        off by the parser).
+
+        Example:
+            % echo Timeout    value:    $Console::LastLineTimeout
+            Timeout value: 100
+            % echo "Timeout    " value: $Console::LastLineTimeout
+            Timeout    value: 100
+
+    else
+
+        Toggles the current "if" conditional evaluation.  Only valid
+        with an "if" block.
+
+        Example:
+            % if focusServer
+            %    echo Loading server volumes...
+            %    newObject testVol SimVolume test.vol
+            % else
+            %    echo No server running
+            % endif
+            
+    enddef
+    
+        Ends the current "define" function block.  Must be paired
+        with a "define"
+
+    endif
+
+        Ends the current "if" conditional block.  Must be paired
+        with an "if".
+
+    eval [args...]
+
+        Evaluates it's arguments as a console command.  This can
+        be used to build console commands on the fly.
+
+        Evaluates the command "moonday" (which could be an alias
+        a script or any other valid command):
+            % set World moon
+            % set Time  day
+            % setcat Script $World $Time
+            % eval $Script
+
+    exec [filename]
+
+        Evaluates the contents of a text file a line at a time.
+        If the filename does not contain a .cs extension, the 
+        resource manager currently asserts.  This command is not
+        used much as console scripts can be invoked normally like
+        any other command (if Console::AutoExec is true).
+
+        Either of these will run the loadShow.cs script:
+            % exec loadShow.cs
+            % loadShow
+
+    export variableName filename.cs [append]
+
+        Exports the environment variable to the file in such a
+        way that execing the file will set the variable to it's
+        current value.  The variable name can include the wildcards 
+        [*,?]. The optional "append" argument specifies whether to
+        overwrite or append the file.
+
+        Example:
+            % export Console* consoleSettings.cs
+
+    false
+
+        Returns a non zero value (1) indicating false.
+
+    ?
+
+        Lists out all the commands, including those registered
+        by console plugins.  Reserved words are not commands and
+        will not be listed (if, endif, etc.)
+
+    history
+
+        Prints out the current command history. The history
+        buffer size is a compile time variable and is currently 
+        set at 25.
+
+    if command...
+
+        Command is evaluated. If it's return value is 0, then
+        the statements following "if" are evaluated (basically a
+        return value of 0 is considered true). Command may be any 
+        console command, alias, or console script. All internal
+        commands return the value 0 indicating no errors (true).
+        Any non zero return normally indicates some error condition.
+        "if" statements may be nested.
+
+        Example:
+            % if focusServer
+            %    echo Loading server volumes...
+            %    newObject testVol SimVolume test.vol
+            % else
+            %    echo No server running
+            % endif
+
+            % if test "$1" == "Lush"
+            %    if test "$2" != "Day"
+            %       echo Only support daytime for lush world
+            %       return 1
+            %    else
+            %       echo Lush Day it is
+            %    endif
+            % endif
+
+    inc variableName
+
+        Evaluates the variable as an integer and sets it to
+        that value plus one.
+
+    not variableName
+
+        Evaluates the variable as a boolean and sets it to the
+        complement.
+
+    return [intValue]
+
+        Return from a script. The return value defaults to 0.
+        Return values can be tested directly on the "if" conditional
+        branch statement, or can be tested using the environment
+        variable Console::Return.
+
+    set [variableName] [value...]
+
+        Set with no arguments will display all the variables in
+        the environment.  Set with only the variable name will
+        unset, or clear, that variable, except in the case where
+        the variable name includes a wildcard [*,?]. In that case
+        all the variables that match the pattern will be displayed.
+
+        Since the parser strips off white spaces, set will insert
+        a single space between all it's arguments to build the value
+        that will be assigned to the variable.
+
+        Example:
+            % set Console*   # Display everything starting with Console
+            % set            # Display all vars.
+            % set World moon # Sets "World" to the value "moon"
+            % set Script     # Deletes the variable "Script"
+
+    setcat variableName [value...]
+
+        Setcat will set the variable to the concatenation of all
+        the arguments.  Similar to set, except that setcat will
+        not insert white spaces between the arguments.
+
+        Example:
+            % set XX Hello World
+            % echo $XX
+            Hello World
+            % setcat XX Hello World
+            % echo $XX
+            HelloWorld
+
+    true
+
+        Returns a zero value (0), indicating true.
+
+    test value1 operation value2
+
+        Compares the two values and returns a boolean result.
+        Valid operations are: ==, !=, <=, >=, >, <
+        If both the values start with a digit, '-' or '.' they
+        are considered to be numbers and are compared as floating
+        point values.  Otherwise they are compared as strings.
+        The return value of test can be used in conjunction with
+        the "if" conditional branch statement or can be tested
+        using the environment variable Console::Return.
+
+        Example:
+            % if test "$1" == Day
+            %   echo Loading world day script
+            % endif
+
+            % if test "$Delta" < 0.5
+            %   echo Delta too small.
+            %   return 1
+            % endif
+            
+        The reason you see most of the environment variables
+        quoted when being tested is that if the variable does
+        not exist then the number of arguments to test will be
+        incorrect and test will report an error.  Quoting the
+        variable quarentees that there will be a token, even if
+        it's just an empty string.
+
+    quit
+
+        Quit the game
+
+
+Script Files
+------------
+
+    Script files are like commands.  They can be executed from
+    the console command line, take arguments and can return
+    integer values. Script files may invoke other script files as
+    well as themselves.
+
+    Argments are passed to console scripts through the the
+    environment variables 1 through n (used $1, $n).
+        
+    A value can be returned using the "return" command.  Scripts
+    can be used like internal commands on "if" conditional
+    statements, or anywhere else a command or alias is valid.
+    
+    Example:
+        File makeDay.cs <<
+            if "$1" == "Day"
+                #
+                # do some work
+                #
+                return 0 # True
+            else
+                return 1 # False
+            endif
+        <<
+
+        % if makeDay $Time
+        %    echo Day script done
+        % else
+        %    echo Error running day script
+        % endif
+
+    If an error occurs in a script that is not trapped on
+    an "if" statment, the script returns immediatly with a
+    return value of 1.  If there are no errors, 0 is returned
+    returned when the end of the file is reached.
+    
+    Functions defined using define/enddef behave the same as
+    script files.
+
+
+Console Reserved Words
+----------------------
+
+    The console has several reserved words:
+    
+    	if, else, endif, define, enddef
+        
+    Only the first token in a command is checked for reserved
+    words, so using them anywhere else is not a problem.
+	Key words do not command complete, nor do they show up the
+    the command list (?).
+    
+    Examples:
+        # Will not work:
+        % alias if echo
+        % if 100
+        Console: Unkown command: 100
+        Console: Error on if condition
+
+        # Ok
+        % echo if x
+        if x
+        %
+
+    Normal console or plugin commands are not reserved words:
+
+        % alias alias echo
+        % alias 100
+        100
+        % # Course, now you can't get rid of the alias.
+
+

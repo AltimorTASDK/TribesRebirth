@@ -1,0 +1,663 @@
+\font\TitleFont=cmr10 scaled 5000
+\font\SubTitleFont=cmr10 scaled 2000
+\font\SectionFont=cmr10 scaled 1750
+\def\PiCa{$\Phi \eta \kappa \alpha$}
+\def\newpar{\vskip .25in \noindent}
+
+{\centerline{\TitleFont Pica}}
+\vskip .25in
+{\centerline{\SubTitleFont A Color Quantizer}}
+\vskip .25in
+\noindent Pica is a tool that performs color quantization and a number of the
+standard tasks associated with this process. Its name comes from the algorithm
+it uses to pick the best $\it n$ colors out of a larger set: PCA $\rightarrow$
+Principal Component Analysis. The particular implementation of PCA used in Pica
+was provided by Dave Moore. The program itself and this documentation was written
+by Joel Franklin ({\it jfrankli@reed.edu}).
+
+\newpar
+\noindent Given a set of $24$-bit artwork in Microsoft ``.bmp'' format, Pica
+will choose up to $236$ colors that best represent the true colors found in the
+bitmaps. Then it will optionally remap the bitmaps (with or without dithering) to
+this newly created palette and save the resulting data as $8$-bit Microsoft 
+{\it .bmp}s.
+
+\newpar
+\noindent There are a number of control parameters Pica needs to know about, and these
+can be specified in command line format, or in an input file. Either way, the keywords
+are the same and below, you will find a detailed list of the $27$ keywords recognized
+by the program.
+
+\newpar
+{\SectionFont Input File Structure}
+\newpar The keywords are divided into three groups: one group controls
+the color picking, another sets parameters for the rendering of the bitmaps, 
+and a third controls the interpretation of the list of bitmaps to be acted upon.
+The keywords themselves can be divided into two classes, functions and flags. Function
+keywords take parameters, always given via parentheses and comma-delimited lists.
+Flag keywords turn on or off a specific feature. The parser reads in the input file,
+and creates a long list of instructions, each line of this list is either a function
+keyword, a flag keyword or a filename. The actions performed by Pica are in ``historical''
+order down the list. For example, if you are specifying a list of bitmaps to 
+be quantized and remapped, and you realize that some number of these should not be
+dithered, while the rest should, you can use the flag keyword ``NODITHER'' in
+the middle of the filename list, everything after this keyword will not be dithered.
+As another example, you may have bitmaps that you want to be considered for quantization,
+but do not want to be remapped. In your filename list, you could put these bitmap
+names after the flag keyword ``NORENDER''. 
+
+\newpar There will be a number of example input files, covering the range of things
+you might want to do with Pica at the end of this document. A keyword list follows.
+
+\newpar {\SectionFont Quantization Keywords}
+\newpar {\bf QUANTIZERGB} - tells Pica to quantize in $3$ dimensions (R, G, and B), 
+as opposed to $4$ dimensional R, G, B, $\alpha$ (also referred to as RGBA)..
+
+\newpar{\bf QUANTIZEALPHA} - The image data Pica reads will be interpreted as having
+an $\alpha$ channel. As of version $1.0$, these $32$-bit formats must be given as
+``.tga'' files.
+
+\newpar Only one of these keywords can be specified per call to Pica, because they
+indicate such different procedures. It is best (though not necessary) to put one of
+these two first in your parse file or command line.
+
+\newpar{\bf CHOOSE($x$,$y$)} - Instructs Pica to choose colors based on the bitmaps in the
+file list, and put the chosen colors into a palette between indices $x$ and $y$
+(inclusive). To pick the maximal number of colors allowed in Windows, set $x=10$ and
+$y=245$.
+
+\newpar{\bf NOCHOOSE} - this is a flag keyword, it turns choosing off for all filenames
+below it. So if you have a palette in hand and only want to remap bitmaps, this 
+flag should go before any filenames are specified. Alternatively, you can put it in 
+the file list, and all files after it will be ignored in choosing optimal colors. 
+
+\newpar{\bf ZEROCOLOR($r$, $g$, $b$)} - Sets the zerocolor (the transparent color) for
+a bitmap or set of bitmaps. The color specified is ignored in the bitmap color scan,
+and is guaranteed to be mapped to zero in a remap, regardless of dither options. Note that
+if you do not set the zero color, and you do not explicitly tell Pica that you do not
+want a zero color (see next keyword), the program will assume that the upper left hand
+corner of each bitmap is its zero color.
+
+\newpar{\bf ZEROCOLOR} - The flag version of the above, this tells Pica to get the
+zero-color from the upper left hand corner of each bitmap.
+
+\newpar{\bf NOZEROCOLOR} - In some cases, you do not want to specify a zero color, nor
+do you want the zero color to be pulled in from the upper left corner of the bitmap. This
+flag keyword allows you to turn off zeroing altogether. This is useful if you have
+tiles, like terrain tiles, in which you don't want peppery transparent speckles. 
+
+\newpar{\bf IGNORECOLORS($r_0$,$g_0$,$b_0$;$\ldots$;$r_n$,$g_n$,$b_n$)} - This function 
+keyword allows you to give $n$ colors for the quantizer to ignore. It may be, for
+example, that you know that the colors ($15$,$26$,$27$) and ($0$,$0$,$255$) are
+over-represented in your art. You would like to run Pica, as usual, but eliminate
+these colors' contribution to your palette. This is accomplished via
+``IGNORECOLORS($15$,$26$,$27$;$0$,$0$,$255$)''. These colors are remapped to their
+closest match in the resulting palette.
+
+\newpar{\bf SHADE($r$,$g$,$b$,$\%$)} - A set of bitmaps run through Pica will be remapped
+to the optimal $n$ colors, but you might need to shade and/or haze these bitmaps
+in the game itself. Choosing $n$ at the brightest shade and haze levels is unrealistic
+at best, and selfish at worst. These bitmaps will rarely appear in the game as
+they do in a bitmap viewer. Pica is not in charge of selecting haze and shade colors
+for the shade and haze tables that appear in a Phoenix ``.ppl'' file. It is, however,
+Pica's job to ensure that the shade and haze tables have decent colors from which to
+choose. By specifying a shade color with this keyword, you are telling Pica to take
+each pixel of each bitmap and include in the color scan the colors that it runs into
+in going from the base pixel color to $\%$ of the shade color, in SHADELEVELS steps (see
+next keyword). For example, if you wanted $32$ shade levels in the game, you would
+set the SHADELEVELS to $32$, and (since shading is generally done towards black) 
+write ``SHADE(0,0,0,80)''. That is, take each color you find, register it with the 
+quantizer, but also register the 32 colors you get in going from the original color
+to $80\%$ of black. Note that the shade and haze colors that are encountered are registered
+with the color scan with the weight of their bitmap. In other words if you specify that
+a bitmap should be counted with weight $5$, all of its shade and haze colors will also
+be counted with weight $5$.
+
+\newpar{\bf SHADELEVELS($x$)} - Specifies the number of steps to take towards the
+desired percentage of the shade color.
+
+\newpar{\bf HAZE($r$,$g$,$b$,$\%$)} - This does the same thing, when used by itself
+as the ``SHADE'' keyword. When the two are used together, each shade level color
+is taken to $\%$ of the haze color in HAZELEVELS steps. 
+
+\newpar{\bf HAZELEVELS($x$)} - The number of haze steps to take.
+
+\newpar{\bf NOSHADE} - A flag keyword, everything below this will not be shaded. 
+
+\newpar{\bf NOHAZE} - Same as above, but for haze.
+
+\newpar{\bf NOWEIGHT} - Everything below this flag has colors that are counted only once
+in the color scan. Normally, Pica increments the value of a color by the weight of the bitmap
+(default $1$) every time that color is encountered in the scan. With NOWEIGHT, the value
+of each color in the color scan is $1$ regardless of the number of times it appears. The
+same is true of the shade and haze colors, these are simply checked for existence in the color
+scan, if they exist, their contribution is $1$, if they do not exist, they are given weight
+$1$.
+
+\newpar{\bf BLENDRANGE($x$,$y$)} - This is a special keyword that will be covered in more detail
+later. Pica can be used to generate translucent colors. That is to say, once you've created
+a translucent palette (using QUANTIZEALPHA with targa files), you may want some of the colors
+that come up when you blend the translucent colors with a certain range of the game palette
+to be represented IN the game palette. Let's say you had an explosion that was orange, and
+had some $\alpha$ settings in it. You know that the explosion will always occur on the terrain,
+and in your game palette, the terrain colors are $10 \rightarrow 100$. Now in software,
+a lookup table is made for every translucent color in the translucent palette blended with
+every color in the game palette (using the ``mpal'' tool). But there may not be colors in the
+palette that are particularly close to these blended $r$,$g$,$b$ values. Using the
+``BLENDRANGE'' keyword you could have, for your game palette, say $10$ entries that are chosen
+from all of the $\alpha$-channeled colors in the translucent palette mixed with colors in 
+the BLENDRANGE $x \rightarrow y$. This means that when the software lookup table is made using
+``mpal'', there are some colors representing the translucent blend in the game palette.
+
+
+\newpar {\SectionFont Remap Keywords}
+
+\newpar{\bf RENDER($x$,$y$)} - Remaps bitmaps in the range $x \rightarrow y$ of a palette.
+The palette must come either from quantization, or from a Microsoft ``.pal'' file. The RENDER
+keyword can also be used in incremental palette building. For example, you have a game
+palette in which you want to choose $30$ colors for the sky and $100$ for the terrain. You want
+to remap the sky and terrain bitmaps in the entire $120$ color palette. This requires three
+seperate calls to Pica. In the first, you'll set ``CHOOSE(10,29)''. A palette with these $30$
+entries is filled and saved. Now you want to quantize the terrain bitmaps and put their colors
+in the appropriate range of the palette ($30\rightarrow 129$), keeping the range $10\rightarrow
+29$ fixed. At the same time, you want the quantizer to know about the fixed colors so you don't
+get redundancy in the two palette ranges. To do this you would write
+
+RENDER(10,129)
+
+
+NORENDER
+
+
+CHOOSE(30,129)
+
+\newpar
+Pica reads in the colors from the sky palette which was created first, and registers these
+in the color scan with heavy weight (so that they come through the quantizer unchanged, but
+considered). Then the program scans in the terrain bitmaps, quantizes everything, and writes
+out the palette restoring the original sky colors to their correct location. Finally, a call
+to Pica is made that will remap all the bitmaps, sky and terrain, with the render range
+set to RENDER(10,129).
+
+You can think of this second use of the RENDER keyword as a virtual render. In picking the
+correct $x\rightarrow y$ range for the virtual render, just ask yourself: ``If I was forced
+at gunpoint to render a bitmap after this call to Pica, in what range would I do it?''. 
+
+\newpar{\bf NORENDER} - when Pica encounters this keyword, it does not remap any bitmaps
+following it.
+
+\newpar{\bf DITHER} - Pica will dither the bitmaps as it remaps them. The dither is a standard
+Floyd-Steinberg. As with all flags, this affects the files listed below it. You can turn off
+dithering for a set of bitmaps by calling NODITHER (see next keyword). The DITHER range is
+the same as the RENDER range. A number of keywords related to dithering follow.
+
+\newpar{\bf NODITHER} - This flag keyword turns off dithering for all files listed below it.
+
+\newpar{\bf RGBDISTANCE} - In dithering or straight remapping, there is the option of 
+doing closest match calculations between the true color $24$-bit art and the colors in the
+palette in one of three ways. ``RGBDISTANCE'' tells the remapper that you wish to use a 
+straight Euclidean distance minimization in finding ``close'' colors. That is
+$$
+(\hbox{distance})^2 = (r - r_0)^2 + (g - g_0)^2 + (b - b_0)^2
+$$
+
+\newpar{\bf WEIGHTEDRGBDISTANCE} - This is the distance scheme used by ``Dynacolor'', it weights
+differences in green more heavily than red or blue, because the eye is most sensitive to
+differences in green. The formula is
+$$
+(\hbox{distance})^2 = 3 (r - r_0)^2 + 6 (g - g_0)^2 + (b - b_0)^2
+$$
+
+\newpar{\bf LUVDISTANCE} - In this version, Pica does all closest matches using the CIE-LUV
+color space. The distance calculation is Euclidean
+$$
+(\hbox{distance})^2 = (L - L_0)^2 + (U - U_0)^2 + (V - V_0)^2
+$$
+
+\newpar{\bf DITHERTOLERANCE($x$)} - When dithering, the original $24$-bit art is perturbed by 
+error that diffuses from other pixels. The point is that if there is quite a bit of error
+in some color lookups, neighbouring colors can be shifted towards values that they should not
+have. A white pixel may acquire a blueish hue. To avoid this, you can set $x$ using the
+DITHERTOLERANCE keyword. The value of $x$ is the maximum allowed displacement in each of the
+three directions of RGB. For example, if you said ``DITHERTOLERANCE(10)'', then a pixel in the
+bitmap with color ($100$,$100$,$100$) is allowed to be changed, through dithering, to 
+($110$,$110$,$110$) but if it somehow becomes ($111$,$111$,$111$) (which is greater than
+$10$ in each direction), Pica will replace the
+offensive color with the original. That is ($111$,$111$,$111$)$\rightarrow$($100$,$100$,$100$).
+Note that in order for the tolerance to be set correctly you must specify a lookup distance. 
+The default lookup distance is ``RGBDISTANCE'', and if you set the DITHERTOLERANCE before, say, changing
+to WEIGHTEDRGBDISTANCE, the tolerance will be setup assuming you are doing RGBDISTANCE. So,
+always call this function keyword AFTER setting your lookup type.
+
+\newpar{\SectionFont File Keywords}
+
+\newpar{\bf OUTPATH(pathname)} - Sets the output path. This is where the palette (if you
+tell Pica to save one, see next keyword) and all of the remapped $8$-bit art will end up.
+
+\newpar{\bf PALOUTPUTNAME(filename)} - Tells pica to output a palette to the specified
+filename, WITH the specified pathname from ``OUTPATH'' prepended. So if you have
+
+
+OUTPATH(.$\backslash$8bit)
+
+
+PALOUTPUTNAME(game.pal)
+
+\newpar you would find the palette, when Pica finished, at ``.$\backslash$8bit$\backslash$game.pal''.
+
+\newpar{\bf PALNAME(filename)} - This instructs Pica to read in the palette ``filename'' 
+(which must be in Microsoft ``.pal'' format) and use it when quantizing or remapping. The
+filename associated with the call to PALNAME is treated as the first of the file list. In
+other words, this function keyword must go directly before the bitmap list. This is important,
+the flags that affect the entire Pica session (like ``QUANTIZERGB'' or ``QUANTIZEALPHA'') are
+referenced through the first entry in the file list. If you call ``PALNAME(filename)'' before
+setting the quantization type, the default quantization type will be in place, and will 
+be used even if you tell Pica to ``QUANTIZEALPHA'' later on in the input file. The point is:
+make your call to PALNAME after you have set up Pica, right before specifying your bitmap
+files.
+
+\newpar
+The final keyword is more of a convention. When giving Pica bitmap file names, you have the
+option of putting parentheses and a number directly after the name, for example
+``terrain1.bmp(5)''. The number in the parentheses is the number of times Pica will count the
+bitmap. Note that this is different than typing the name ``terrain1.bmp'' into the file list 
+five times. Pica scans ``terrain1.bmp(5)'' only once, but adds five to all of the bitmaps colors.
+``terrain1.bmp'' typed five times would have the same affect, but it would be scanned five times,
+which is time-consuming and redundant. Also note that the weight of the bitmap is the weight
+of the shade and haze colors (if you've asked for these) that are registered with the scan. 
+Again, this can be accomplished by typing in the filename a number of times, but, for large
+numbers of shade and haze levels, you do not want to waste the time with multiple scans.
+
+\newpar
+{\SectionFont Examples}
+
+\newpar There are $4$ modes in which Pica is standardly run. I will describe each, and give
+sample input files, with descriptions of each line.
+
+\newpar{\bf TYPE 1 - Scan Mode}
+
+\newpar
+The first mode for Pica is an RGB scan. Let's say you want to create a game palette with
+$236$ colors, and you want to scan bitmaps from the terrain and sky to choose these colors.
+You would like to scan these two types of bitmap seperately, and then do a remap using
+all of the colors that you've chosen. Your directories are: ``c:$\backslash$game$\backslash$art
+$\backslash$sky'' for the $24$-bit
+sky bitmaps, ``c:$\backslash$game$\backslash$art$\backslash$terrain'' for the $24$-bit terrain 
+bitmaps, and ``c:$\backslash$game$\backslash$art$\backslash$8bit'',
+the target 8-bit directory. Your Pica scripts are in the ``c:$\backslash$game$\backslash$art'' directory, and you will
+be calling them from that directory. Your first script, the one to generate the sky section
+of the palette is called ``sky.pca''. It might look something like this:
+
+QUANTIZERGB
+
+
+CHOOSE(10,99)
+
+
+NORENDER 
+
+
+NOSHADE
+
+
+NOHAZE
+
+
+NOZEROCOLOR
+
+
+OUTPATH(.$\backslash$8bit)
+
+
+PALOUTPUTNAME(sky.pal)
+
+
+.$\backslash$sky$\backslash$*.bmp
+
+
+\newpar Now you have the sky palette set, you want to read it in, quantize the terrain into
+a different range, and save off the ``final'' palette. The terrain, you decide should be
+shaded and hazed, but you don't want to lose resolution on the terrain tiles, so you use
+the default value of $4$ levels of shade and haze. The Pica script, (found in the
+same directory) call it ``terrain.pca'', reads:
+\vfill\supereject
+QUANTIZERGB
+
+
+RENDER(10,245)
+
+
+NORENDER
+
+
+CHOOSE(100,245)
+
+
+SHADE(0,0,0,80)
+
+
+HAZE(255,255,255,75)
+
+
+SHADELEVELS(4)
+
+
+HAZELEVELS(4)
+
+
+OUTPATH(.$\backslash$8bit)
+
+
+PALOUTPUTNAME(game.pal)
+
+
+PALNAME(.$\backslash$8bit$\backslash$sky.pal)
+
+
+.$\backslash$terrain$\backslash$*.bmp
+
+\newpar {\bf Type 2 - Remap Mode} 
+\newpar You've got your game palette, it's time to remap the art. You want both the sky
+and the terrain to use all the colors in the palette, the following script, called 
+``c:$\backslash$art$\backslash$remap.pca'' is invoked:
+
+								
+NOCHOOSE
+
+
+RENDER(10,245)
+
+
+NOZEROCOLOR
+
+
+OUTPATH(.$\backslash$8bit)
+
+
+WEIGHTEDRGBDISTANCE
+
+
+DITHERTOLERANCE(7)
+
+
+PALNAME($\backslash$8bit$\backslash$game.pal)
+
+
+.$\backslash$sky$\backslash$*.bmp
+
+
+.$\backslash$terrain$\backslash$*.bmp
+
+
+\newpar Let's look closely at these three scripts, and see what we're saying. In the
+first one, ``sky.pca'', we tell Pica to ``QUANTIZERGB'', because all of the art in question
+is in $24$-bit Microsoft ``.bmp'' format. We want to choose $100$ colors, starting at the
+first allowed palette index	$10$. Since this is a call to Pica for choosing colors, we don't 
+want to render (because the full palette has not yet been chosen), so the ``NORENDER'' flag
+is set. This is the sky, so there's no need to haze or shade (in our hypothetical example). 
+We don't want to set a zero color, nor do we want Pica to use the color at the upper left
+corner of each bitmap as the zero color, so the flag ``NOZEROCOLOR'' is set. The ``OUTPATH''
+is the ``8bit'' directory, we want the output palette to be called ``sky.pal'' and we want
+to consider, in our choice of colors, all the $24$-bit art in the ``sky'' directory.
+
+\newpar The second script in this set, ``terrain.pca'' is an example of incremental
+palette building. The first line specifies RGB quantization, the second line gives the
+range we WOULD render into if we were going to render these bitmaps. It serves to fix
+the colors outside the choose range (i.e. the sky colors chosen previously). Then, of course,
+we don't want to render (although we could, but only the terrain bitmaps would be rendered,
+we'd need a seperate call to Pica to render the sky bitmaps - this is not, strictly speaking
+true, we could specify the sky bitmaps under the terrain bitmaps, sandwiching the keyword
+``NOCHOOSE'' before them, but this only clutters up the script) so ``NORENDER'' is set. For the
+terrain, we've decided to shade to $80\%$ black, and haze towards white (to $75\%$). In 
+the two lines after that, we set the shade and haze levels to $4$. Then the familiar 
+path setting, with ``OUTPATH'', and the output palette name will be in the ``8bit'' directory,
+called ``game.pal''. The key difference between the first script and the second is that in
+the second, we use the ``PALNAME'' keyword to pull in the sky palette that has just been
+created. Finally, we give the bitmaps from which to choose the colors.
+
+\newpar For the second type of Pica call, we tell Pica ``NOCHOOSE'', this will be a 
+remap session. The ``RENDER'' range is given as the entire palette. We don't want a
+zero color to be chosen and we don't want to specify one. The ``OUTPATH'' tells Pica
+to put all remapped art in the ``8bit'' directory. We will be using a ``WEIGHTEDRGBDISTANCE'',
+with ``DITHERTOLERANCE'' set to $7$. Finally, read in the palette ``game.pal'' and give the
+bitmap list.
+
+\newpar This is a simple example, we're not weighting bitmaps, there is no set of 
+representative bitmaps that we could use to prune down the number of scanned bitmaps, 
+etc. These examples should, however, give you a general idea of how to set up your own
+Pica scripts.
+
+\newpar{\bf Type 3 - Alpha Quantization}
+
+\newpar Alpha quantization has less options than ``normal'' quantization. You cannot
+dither the input data, there is no haze/shade option, and the remap function uses only a 
+weighted alpha distance (like 
+WEIGHTEDRGBDISTANCE, but with a $(\Delta \alpha)^2$ term thrown in). In general, you
+will not be concerned with incrementally building a palette for the translucent bitmaps.
+The biggest difference between normal RGB Pica operation and ALPHA quantization is that the
+translucent palette can access all $256$ entries, it is not a palette that will
+be registered with Windows. The Phoenix libraries use the translucent palette internally, 
+so there are no index constraints. 
+
+
+Continuing with our game example, let's say now that we had a directory for translucent
+$24$-bit data, ``c:$\backslash$game$\backslash$translucent'' and we want to remap this data 
+to $8$-bit and a palette with an $\alpha$ channel. To do this, we have a script in the 
+``c:$\backslash$game$\backslash$art'' directory called ``translucent.pca'' which reads:
+
+
+QUANTIZEALPHA
+
+
+CHOOSE(0,255)
+
+
+NODITHER
+
+
+NOHAZE
+
+
+NOSHADE
+
+
+RENDER(0,255)
+
+
+OUTPATH(.$\backslash$8bit)
+
+
+PALOUTPUTNAME(translucent.pal)
+
+
+.$\backslash$translucent$\backslash$*.tga
+
+
+\newpar Notice that we are doing everything, palette creation and remapping in one sweep.
+That's because only the targas in this directory contribute to the palette, we don't need
+to ``wait'' for more colors to be added before we can do a full remap, as we did in the
+previous example. The output $8$-bit art has the ``.tga'' extension stripped and replaced
+corner color - explosions have transparent edges, we don't want a nice, translucent
+explosion with a square black outline. The remapped art is now in the $8$-bit directory
+with the rest of the game art. The bitmaps themselves do not have $\alpha$ channels, the
+palette that is saved with the bitmap has no $\alpha$ information, that's to make it 
+easier to view these with a bitmap viewer. The palette that is output, however, does have
+the $\alpha$ channel for each entry.
+
+\newpar{\bf Type 4 - Blended Entries}
+
+\newpar The final task that Pica can perform is to create blended entries in the game
+palette. Let's say that in generating the original game palette, we had reserved ten
+entries that we want to fill with $\alpha$-blended colors. These are RGB's that result
+from taking the $\alpha$ palette (generated above) and blending each color in it with
+each color of the game palette. Let's say that we changed the ``terrain.pca'' file so that
+it only chose between $100 \rightarrow 235$, and that we went ahead and ran Pica with 
+with the ``translucent.pca'' script, but we have yet to run the ``remap.pca'' script. In other
+words, we have $10$ colors to fill in, and we want to put in colors that represent
+the translucent RGBA colors blended with the terrain portion of the game palette (in our
+hypothetical game, explosions only occur on the ground, so there is no dire need for
+the explosion RGBA's to be blended with the sky). The following script would do the job,
+filling in the range $236\rightarrow 245$ while leaving the rest of the palette unchanged.
+This script is called ``c:$\backslash$game$\backslash$art$\backslash$blend.pca'' :
+
+
+QUANTIZERGB
+
+
+CHOOSE(236,245)
+
+
+NODITHER
+
+
+OUTPATH(.$\backslash$8bit)
+
+
+RENDER(10,245)
+
+
+NORENDER
+
+
+PALOUTPUTNAME(blendedgame.pal)
+
+
+BLENDRANGE(100,235)
+
+
+PALNAME(.$\backslash$8bit$\backslash$game.pal)
+
+
+.$\backslash$8bit$\backslash$translucent.pal
+
+
+\newpar This is identical to any other scanning script of {\bf Type 1}, except that where the
+bitmap list would normally go, there is a translucent palette. The reason for this is that
+Pica actually creates a ``bitmap'' out of the colors from the translucent palette and the
+indices given by the ``BLENDRANGE'' keyword in the game palette. That is, it scans in colors
+with popularity, and fills in the palette in an appropriate manner. Except for the blend
+range keyword, this is a straightforward ``bitmap'' scan.
+
+\newpar
+{\SectionFont Running Pica}
+
+\newpar Pica can be run using either the command line or a file as input, although in 
+general, a file is preferred because it allows you to save your commands, and tweak the
+various parameters used. To run Pica with a file, simply type
+
+
+Pica @filename
+
+
+\newpar otherwise, you can type ``Pica'' followed by a space-delimeted list of keywords. 
+
+
+\newpar
+{\SectionFont Default Values}
+
+\newpar
+It is important to know what the default settings are for the program. It is always best to 
+give, explicitly, the options you want for a Pica session, even if they are the default values.
+That way, if in a later version of Pica the defaults change, your scripts will still work. It also
+makes the goal of your Pica script more obvious to the $\ldots$ casual observer. The following
+are set for each file in the file list.
+
+
+
+DistanceType      	= RGB
+
+
+Weight            	= 1
+
+
+DitherFlag        	= True
+
+
+QuantizeFlag      	= RGB
+
+
+RenderFlag        	= False
+
+
+RenderRangeFirst  	= 10
+
+
+RenderRangeLast   	= 245
+
+
+ChooseRangeFirst 	= 0
+
+
+ChooseRangeLast  	= 0
+
+
+ShadeTowards      	= NULL
+
+
+ShadeIntensity    	= 0
+
+
+HazeTowards       	= NULL
+
+
+HazeIntensity     	= 0
+
+
+Filename          	= NULL
+
+
+OutputPath        	= new char[256] - but not explicitly set!
+
+
+IgnoreList        	= NULL
+
+
+ZeroColor         	= NULL
+
+
+PalOutput         	= NULL
+
+
+WeightFlag          = True
+
+
+PalOutput         	= new char[256] - allocated but not filled in!
+
+
+ChooseFlag       	= True
+
+
+DitherTolerance    	= 8 - with RGB distance set!
+
+
+ZeroFlag  		   	= False
+
+
+BlendFirst		   	= BLENDOFF
+
+
+BlendLast		   	= BLENDOFF
+
+
+HazeLevels		   	= 4
+
+
+ShadeLevels       	= 4
+
+
+\newpar One final note, that doesn't quite fit anywhere else. The dither function has a built-in
+cap on solid--color areas. If a pixel matches {\it exactly} the pixels bordering it, the 
+base color is used. Error is calculated, and diffused to neighbouring pixels, but at each
+new pixel location, the original (non-perturbed) color is used in checking with its neighbouring
+pixels, and again, if these are identical, the original color is brought back. This is to keep
+large solid--colored areas looking solid, so there is not a speckly dither pattern across the
+bitmap.
+
+
+\newpar I hope this document has been useful. I can be contacted via e-mail if there are
+any questions.
+
+
+Joel Franklin - July 13th 1997
+
+\end

@@ -1,0 +1,270 @@
+--------------------Configuration: DTSExporter - Win32 Vicon Compressing Exporter--------------------
+Begining build with project "C:\Tribes\darkstar\3DMax\DTSExporter\DTSExporter.dsp", at root.
+Active configuration is Win32 (x86) Dynamic-Link Library (based on Win32 (x86) Dynamic-Link Library)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /Zp4 /MTd /W3 /Gm /GX /Zi /Od /I "inc" /I "$(MaxDir)\MaxSDK\Include" /I "$(PHOENIXINC)" /D "MSVC" /D "WIN32" /D "WINDOWS" /D EXPORT= /D _USERENTRY=__cdecl /D "MAX_2" /D "_DEBUG" /D "SDUMP" /D VICON_EXPORT_BEHAVIOR=2 /D _VICON_EXP_MODE=2 /Fp"DTSExpo0/DTSExporter.pch" /YX /Fo"DTSExpo0/" /Fd"DTSExpo0/" /FD /c "
+			"OLE Type Library Maker" with flags "/nologo /D "_DEBUG" /mktyplib203 /o NUL /win32 "
+			"Win32 Resource Compiler" with flags "/l 0x409 /fo"DTSExpo0/DTSExporter.res" /i "inc" /i "../inc" /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"DTSExpo0/DTSExporter.bsc" "
+			"COFF Linker for 80x86" with flags "comctl32.lib core.lib dmCore.lib dmConsole.lib dmML.lib util.lib dmTS3.lib dmGFXIO.lib mesh.lib geom.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"DTSExpo0/ViconCombiningExporter.pdb" /debug /machine:I386 /nodefaultlib:"LIBCMTD" /def:".\Code\ViconCombiningExporter.def" /out:"D:\3DSMax2.5\Plugins\ViconCombiningExporter.DLO" /implib:"DTSExpo0/ViconCombiningExporter.lib" /pdbtype:sept /libpath:"$(PHOENIXLIB)" /libpath:"$(MaxDir)\MaxSDK\Lib" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\TEMP\RSPC.tmp" with contents </nologo /Zp4 /MTd /W3 /Gm /GX /Zi /Od /I "inc" /I "d:\3dsMax2.5\MaxSDK\Include" /I "c:\phenx\inc" /D "MSVC" /D "WIN32" /D "WINDOWS" /D EXPORT= /D _USERENTRY=__cdecl /D "MAX_2" /D "_DEBUG" /D "SDUMP" /D VICON_EXPORT_BEHAVIOR=2 /D _VICON_EXP_MODE=2 /Fp"DTSExpo0/DTSExporter.pch" /YX /Fo"DTSExpo0/" /Fd"DTSExpo0/" /FD /c 
+"C:\Tribes\darkstar\3DMax\DTSExporter\Code\3DSMTL.cpp"
+"C:\Tribes\darkstar\3DMax\DTSExporter\Code\DTSExporter.cpp"
+"C:\Tribes\darkstar\3DMax\DTSExporter\Code\MeshBuilder.cpp"
+"C:\Tribes\darkstar\3DMax\DTSExporter\Code\ObList.cpp"
+"C:\Tribes\darkstar\3DMax\DTSExporter\Code\SceneEnum.cpp"
+"C:\Tribes\darkstar\3DMax\DTSExporter\Code\ShapeBuilder.cpp"
+>
+Creating command line "cl.exe @C:\TEMP\RSPC.tmp" 
+Creating temp file "C:\TEMP\RSPD.tmp" with contents <comctl32.lib core.lib dmCore.lib dmConsole.lib dmML.lib util.lib dmTS3.lib dmGFXIO.lib mesh.lib geom.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"DTSExpo0/ViconCombiningExporter.pdb" /debug /machine:I386 /nodefaultlib:"LIBCMTD" /def:".\Code\ViconCombiningExporter.def" /out:"D:\3DSMax2.5\Plugins\ViconCombiningExporter.DLO" /implib:"DTSExpo0/ViconCombiningExporter.lib" /pdbtype:sept /libpath:"c:\phenx\lib" /libpath:"d:\3dsMax2.5\MaxSDK\Lib" 
+.\DTSExpo0\3DSMTL.obj
+.\DTSExpo0\DTSExporter.obj
+.\DTSExpo0\MeshBuilder.obj
+.\DTSExpo0\ObList.obj
+.\DTSExpo0\SceneEnum.obj
+.\DTSExpo0\ShapeBuilder.obj
+.\DTSExpo0\DTSExporter.res>
+Creating command line "link.exe @C:\TEMP\RSPD.tmp" 
+Compiling...
+3DSMTL.cpp
+inc\3dsshape.h(45) : warning C4005: 'POLYBOOL' : macro redefinition
+inc\3dsshape.h(46) : warning C4005: 'POLYINSIDE' : macro redefinition
+inc\3dsshape.h(47) : warning C4005: 'POLYOUTSIDE' : macro redefinition
+DTSExporter.cpp
+c:\phenx\inc\types.h(32) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\types.h(32) : error C2239: unexpected token 'identifier' following declaration of 'UInt32'
+c:\phenx\inc\types.h(32) : error C2061: syntax error : identifier 'getNextPow2'
+c:\phenx\inc\types.h(33) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\types.h(33) : error C2086: 'UInt32' : redefinition
+c:\phenx\inc\types.h(33) : error C2239: unexpected token 'identifier' following declaration of 'UInt32'
+c:\phenx\inc\types.h(33) : error C2061: syntax error : identifier 'getBinLog2'
+c:\phenx\inc\types.h(35) : error C2146: syntax error : missing ')' before identifier 'in_num'
+c:\phenx\inc\types.h(35) : error C2061: syntax error : identifier 'in_num'
+c:\phenx\inc\types.h(35) : error C2059: syntax error : ')'
+c:\phenx\inc\types.h(38) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(43) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(48) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(54) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(62) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\base.h(26) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(26) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(26) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(27) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(27) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(27) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(28) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(28) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(28) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(29) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(29) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(29) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(37) : error C2734: 'UInt32' : const object must be initialized if not extern
+c:\phenx\inc\base.h(37) : error C2086: 'UInt32' : redefinition
+c:\phenx\inc\base.h(37) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(44) : error C2079: 'Phoenix_Assert' uses undefined class 'DLLAPI'
+c:\phenx\inc\base.h(44) : error C2601: 'Phoenix_Assert' : local function definitions are illegal
+c:\phenx\inc\base.h(44) : error C2063: 'Phoenix_Assert' : not a function
+c:\phenx\inc\base.h(78) : error C2371: 'Phoenix_Assert' : redefinition; different basic types
+c:\phenx\inc\base.h(79) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(115) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\base.h(115) : error C2146: syntax error : missing ';' before identifier 'fLine'
+c:\phenx\inc\base.h(115) : error C2501: 'fLine' : missing decl-specifiers
+c:\phenx\inc\base.h(117) : error C2629: unexpected 'class isPow2::AssertException ('
+c:\phenx\inc\base.h(121) : error C2238: unexpected token(s) preceding ';'
+c:\phenx\inc\base.h(122) : error C2501: 'fFile' : missing decl-specifiers
+c:\phenx\inc\base.h(123) : fatal error C1903: unable to recover from previous error(s); stopping compilation
+MeshBuilder.cpp
+c:\phenx\inc\types.h(32) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\types.h(32) : error C2239: unexpected token 'identifier' following declaration of 'UInt32'
+c:\phenx\inc\types.h(32) : error C2061: syntax error : identifier 'getNextPow2'
+c:\phenx\inc\types.h(33) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\types.h(33) : error C2086: 'UInt32' : redefinition
+c:\phenx\inc\types.h(33) : error C2239: unexpected token 'identifier' following declaration of 'UInt32'
+c:\phenx\inc\types.h(33) : error C2061: syntax error : identifier 'getBinLog2'
+c:\phenx\inc\types.h(35) : error C2146: syntax error : missing ')' before identifier 'in_num'
+c:\phenx\inc\types.h(35) : error C2061: syntax error : identifier 'in_num'
+c:\phenx\inc\types.h(35) : error C2059: syntax error : ')'
+c:\phenx\inc\types.h(38) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(43) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(48) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(54) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(62) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\base.h(26) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(26) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(26) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(27) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(27) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(27) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(28) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(28) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(28) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(29) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(29) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(29) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(37) : error C2734: 'UInt32' : const object must be initialized if not extern
+c:\phenx\inc\base.h(37) : error C2086: 'UInt32' : redefinition
+c:\phenx\inc\base.h(37) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(44) : error C2079: 'Phoenix_Assert' uses undefined class 'DLLAPI'
+c:\phenx\inc\base.h(44) : error C2601: 'Phoenix_Assert' : local function definitions are illegal
+c:\phenx\inc\base.h(44) : error C2063: 'Phoenix_Assert' : not a function
+c:\phenx\inc\base.h(78) : error C2371: 'Phoenix_Assert' : redefinition; different basic types
+c:\phenx\inc\base.h(79) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(115) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\base.h(115) : error C2146: syntax error : missing ';' before identifier 'fLine'
+c:\phenx\inc\base.h(115) : error C2501: 'fLine' : missing decl-specifiers
+c:\phenx\inc\base.h(117) : error C2629: unexpected 'class isPow2::AssertException ('
+c:\phenx\inc\base.h(121) : error C2238: unexpected token(s) preceding ';'
+c:\phenx\inc\base.h(122) : error C2501: 'fFile' : missing decl-specifiers
+c:\phenx\inc\base.h(123) : fatal error C1903: unable to recover from previous error(s); stopping compilation
+ObList.cpp
+c:\phenx\inc\types.h(32) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\types.h(32) : error C2239: unexpected token 'identifier' following declaration of 'UInt32'
+c:\phenx\inc\types.h(32) : error C2061: syntax error : identifier 'getNextPow2'
+c:\phenx\inc\types.h(33) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\types.h(33) : error C2086: 'UInt32' : redefinition
+c:\phenx\inc\types.h(33) : error C2239: unexpected token 'identifier' following declaration of 'UInt32'
+c:\phenx\inc\types.h(33) : error C2061: syntax error : identifier 'getBinLog2'
+c:\phenx\inc\types.h(35) : error C2146: syntax error : missing ')' before identifier 'in_num'
+c:\phenx\inc\types.h(35) : error C2061: syntax error : identifier 'in_num'
+c:\phenx\inc\types.h(35) : error C2059: syntax error : ')'
+c:\phenx\inc\types.h(38) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(43) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(48) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(54) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(62) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\base.h(26) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(26) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(26) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(27) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(27) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(27) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(28) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(28) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(28) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(29) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(29) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(29) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(37) : error C2734: 'UInt32' : const object must be initialized if not extern
+c:\phenx\inc\base.h(37) : error C2086: 'UInt32' : redefinition
+c:\phenx\inc\base.h(37) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(44) : error C2079: 'Phoenix_Assert' uses undefined class 'DLLAPI'
+c:\phenx\inc\base.h(44) : error C2601: 'Phoenix_Assert' : local function definitions are illegal
+c:\phenx\inc\base.h(44) : error C2063: 'Phoenix_Assert' : not a function
+c:\phenx\inc\base.h(78) : error C2371: 'Phoenix_Assert' : redefinition; different basic types
+c:\phenx\inc\base.h(79) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(115) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\base.h(115) : error C2146: syntax error : missing ';' before identifier 'fLine'
+c:\phenx\inc\base.h(115) : error C2501: 'fLine' : missing decl-specifiers
+c:\phenx\inc\base.h(117) : error C2629: unexpected 'class isPow2::AssertException ('
+c:\phenx\inc\base.h(121) : error C2238: unexpected token(s) preceding ';'
+c:\phenx\inc\base.h(122) : error C2501: 'fFile' : missing decl-specifiers
+c:\phenx\inc\base.h(123) : fatal error C1903: unable to recover from previous error(s); stopping compilation
+SceneEnum.cpp
+c:\phenx\inc\types.h(32) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\types.h(32) : error C2239: unexpected token 'identifier' following declaration of 'UInt32'
+c:\phenx\inc\types.h(32) : error C2061: syntax error : identifier 'getNextPow2'
+c:\phenx\inc\types.h(33) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\types.h(33) : error C2086: 'UInt32' : redefinition
+c:\phenx\inc\types.h(33) : error C2239: unexpected token 'identifier' following declaration of 'UInt32'
+c:\phenx\inc\types.h(33) : error C2061: syntax error : identifier 'getBinLog2'
+c:\phenx\inc\types.h(35) : error C2146: syntax error : missing ')' before identifier 'in_num'
+c:\phenx\inc\types.h(35) : error C2061: syntax error : identifier 'in_num'
+c:\phenx\inc\types.h(35) : error C2059: syntax error : ')'
+c:\phenx\inc\types.h(38) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(43) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(48) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(54) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(62) : error C2143: syntax error : missing ';' before '}'
+C:\Program Files\DevStudio\VC\INCLUDE\stdarg.h(156) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\base.h(26) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(26) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(26) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(27) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(27) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(27) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(28) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(28) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(28) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(29) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(29) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(29) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(31) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(32) : error C2734: 'Phoenix_AssertType' : const object must be initialized if not extern
+c:\phenx\inc\base.h(32) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(32) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(33) : error C2734: 'Phoenix_AssertType' : const object must be initialized if not extern
+c:\phenx\inc\base.h(33) : error C2086: 'Phoenix_AssertType' : redefinition
+c:\phenx\inc\base.h(33) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(34) : error C2734: 'Phoenix_AssertType' : const object must be initialized if not extern
+c:\phenx\inc\base.h(34) : error C2086: 'Phoenix_AssertType' : redefinition
+c:\phenx\inc\base.h(34) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(35) : error C2734: 'Phoenix_AssertType' : const object must be initialized if not extern
+c:\phenx\inc\base.h(35) : error C2086: 'Phoenix_AssertType' : redefinition
+c:\phenx\inc\base.h(35) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(37) : error C2734: 'UInt32' : const object must be initialized if not extern
+c:\phenx\inc\base.h(37) : error C2086: 'UInt32' : redefinition
+c:\phenx\inc\base.h(37) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(44) : error C2079: 'Phoenix_Assert' uses undefined class 'DLLAPI'
+c:\phenx\inc\base.h(44) : error C2601: 'Phoenix_Assert' : local function definitions are illegal
+c:\phenx\inc\base.h(44) : error C2063: 'Phoenix_Assert' : not a function
+c:\phenx\inc\base.h(78) : error C2371: 'Phoenix_Assert' : redefinition; different basic types
+c:\phenx\inc\base.h(79) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(115) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\base.h(115) : error C2146: syntax error : missing ';' before identifier 'fLine'
+c:\phenx\inc\base.h(115) : error C2501: 'fLine' : missing decl-specifiers
+c:\phenx\inc\base.h(117) : error C2629: unexpected 'class isPow2::AssertException ('
+c:\phenx\inc\base.h(121) : error C2238: unexpected token(s) preceding ';'
+c:\phenx\inc\base.h(122) : error C2501: 'fFile' : missing decl-specifiers
+c:\phenx\inc\base.h(123) : fatal error C1903: unable to recover from previous error(s); stopping compilation
+ShapeBuilder.cpp
+c:\phenx\inc\types.h(32) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\types.h(32) : error C2239: unexpected token 'identifier' following declaration of 'UInt32'
+c:\phenx\inc\types.h(32) : error C2061: syntax error : identifier 'getNextPow2'
+c:\phenx\inc\types.h(33) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\types.h(33) : error C2086: 'UInt32' : redefinition
+c:\phenx\inc\types.h(33) : error C2239: unexpected token 'identifier' following declaration of 'UInt32'
+c:\phenx\inc\types.h(33) : error C2061: syntax error : identifier 'getBinLog2'
+c:\phenx\inc\types.h(35) : error C2146: syntax error : missing ')' before identifier 'in_num'
+c:\phenx\inc\types.h(35) : error C2061: syntax error : identifier 'in_num'
+c:\phenx\inc\types.h(35) : error C2059: syntax error : ')'
+c:\phenx\inc\types.h(38) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(43) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(48) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(54) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\types.h(62) : error C2143: syntax error : missing ';' before '}'
+c:\phenx\inc\base.h(26) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(26) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(26) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(27) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(27) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(27) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(28) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(28) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(28) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(29) : error C2734: 'Phoenix_AssertFlag' : const object must be initialized if not extern
+c:\phenx\inc\base.h(29) : error C2086: 'Phoenix_AssertFlag' : redefinition
+c:\phenx\inc\base.h(29) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(37) : error C2734: 'UInt32' : const object must be initialized if not extern
+c:\phenx\inc\base.h(37) : error C2086: 'UInt32' : redefinition
+c:\phenx\inc\base.h(37) : error C2513: 'int' : decl-specifier is missing a declarator before '='
+c:\phenx\inc\base.h(44) : error C2079: 'Phoenix_Assert' uses undefined class 'DLLAPI'
+c:\phenx\inc\base.h(44) : error C2601: 'Phoenix_Assert' : local function definitions are illegal
+c:\phenx\inc\base.h(44) : error C2063: 'Phoenix_Assert' : not a function
+c:\phenx\inc\base.h(78) : error C2371: 'Phoenix_Assert' : redefinition; different basic types
+c:\phenx\inc\base.h(79) : error C2059: syntax error : 'identifier'
+c:\phenx\inc\base.h(115) : error C2501: 'UInt32' : missing decl-specifiers
+c:\phenx\inc\base.h(115) : error C2146: syntax error : missing ';' before identifier 'fLine'
+c:\phenx\inc\base.h(115) : error C2501: 'fLine' : missing decl-specifiers
+c:\phenx\inc\base.h(117) : error C2629: unexpected 'class isPow2::AssertException ('
+c:\phenx\inc\base.h(121) : error C2238: unexpected token(s) preceding ';'
+c:\phenx\inc\base.h(122) : error C2501: 'fFile' : missing decl-specifiers
+c:\phenx\inc\base.h(123) : fatal error C1903: unable to recover from previous error(s); stopping compilation
+Error executing cl.exe.
+
+
+
+ViconCombiningExporter.DLO - 224 error(s), 3 warning(s)

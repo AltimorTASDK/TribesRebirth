@@ -1,0 +1,115 @@
+[TAG]
+//============================================================================================
+// Tags for main program.
+//
+// Some of the tags used by Main is predefined in darkstar.strings.ttag
+//============================================================================================
+
+//--------------------------------------------------------------------------------------------
+// SimGui Region reserves tags 100,000 - 199,999
+//
+// Commented out SimTags are predefined in darkstar.strings.ttag
+//--------------------------------------------------------------------------------------------
+//00100001 IDRES_BEG_GUI              '-- Gui RESOURCE group reserves tags 100,001-109,999 --'
+  00100002 IDGUI_START                'start.gui'
+  00100003 IDGUI_GFXTEST              'gfxtest.gui'
+  00100004 IDGUI_RRTEST               'rrTest.gui'
+//00109999 IDRES_END_GUI              '-- Gui RESOURCE group reserves tags 100,001-109,999 --' 
+
+//00120000 IDRES_BEG_CMD              '-- CMD RESOURCE group reserves tags 120,000-129,999 --'
+  00120001 IDCMD_TEST                 'echo "hello world"'
+  00120002 IDCMD_QUIT                 'quit'
+  00120003 IDCMD_WEBSITE              'shellOpen http://www.dynamix.com/futurewars'
+  00120004 IDCMD_SINGLEPLAYER         'runSinglePlayerGame'
+  00120005 IDCMD_MULTISTART           'startMultiPlayerGame'
+  00120006 IDCMD_MULTIJOIN            'joinMultiPlayerGame'
+  00120007 IDCMD_REFRESH              'refreshServers'
+//00129999 IDRES_END_CMD              '-- CMD RESOURCE group reserves tags 120,000-129,999 --' 
+
+//00130000 IDDAT_BEG_GUI_STR          '-- GUI STR DATA group reserves tags 130,000-139,999 --'
+  00130001 IDSTR_SINGLEPLAYER         'Single Player'
+  00130002 IDSTR_MULTISTART           'Start MultiPlayer'
+  00130003 IDSTR_MULTIJOIN            'Join MultiPlayer'
+  00130004 IDSTR_REFRESH              'Refresh Servers'
+  00130006 IDSTR_WEBSITE              'ES3 Web Site'
+  00130007 IDSTR_QUIT                 'Quit'
+//00139999 IDDAT_END_GUI_STR          '-- GUI STR DATA group reserves tags 130,000-139,999 --'
+
+  00140015 IDCTG_NAME                  ''
+  00140016 IDCTG_SERVER_SELECT_LIST  	''
+  00140017 IDCTG_SERVER_REFRESH_LIST 	''
+
+//00150000 IDRES_BEG_GUI_FNT          '-- GUI FONT RESOURCE group reserves tags 150,000-159,999 --' 
+  00150001 IDFNT_CONSOLE              'console.pft'
+  00150002 IDFNT_CONTROL              'control.pft'
+//00159999 IDRES_END_GUI_FNT          '-- GUI FONT RESOURCE group reserves tags 150,000-159,999 --' 
+
+//00160000 IDRES_BEG_GUI_BMP          '-- GUI BMP RESOURCE group reserves tags 160,000-169,999 --'
+  00160001 IDBMP_DARKSTAR             'darkstar.bmp'
+  00160002 IDBMP_RENDTEST             'rendTest.bmp'
+  00160003 IDBMP_ALPHATEST            'alphaTest.bmp'
+//00169999 IDRES_END_GUI_BMP          '-- GUI BMP RESOURCE group reserves tags 160,000-169,999 --'
+
+  00170001 IDPBA_BOX                  'box.pba'
+
+//00180000 IDRES_BEG_GUI_PAL          '-- GUI PAL RESOURCE group reserves tags 180,000-189,999 --'
+  00180001 IDPAL_MAIN                 'main.pal'
+  00180002 IDPAL_MAIN2                'main2.ppl'
+  00180003 IDPAL_TEST                 'test.ppl'
+  00180004 IDPAL_BRUCE                'world.pal'
+//00189999 IDRES_END_GUI_PAL          '-- GUI PAL RESOURCE group reserves tags 180,000-189,999 --'
+
+//--------------------------------------------------------------------------------------------
+// Polygon control tags
+//
+//--------------------------------------------------------------------------------------------
+00200000 IDDAT_PC_FONTTAG        'Font Tag:'
+00200001 IDDAT_PC_TEXTURETAG     'Texture Tag:'
+00200002 IDDAT_PC_SHOWCYCLES     'Show EmitPoly Cycles:'
+00200003 IDDAT_PC_TRANSPARENT    'Render Transparent:'
+00200004 IDDAT_PC_TEXTURE        'Render Texture'
+00200005 IDDAT_PC_PERSPECTIVE    'Render Perspective'
+00200006 IDDAT_PC_SHADE          'Render Shaded'",       shade);
+00200007 IDDAT_PC_HAZE           'Render Hazed'
+00200008 IDDAT_PC_INTERP         'Interpolate (Shade|Haze)'
+00200009 IDDAT_PC_TRIANGLE       'Triangle'
+
+// Actions
+00220001	IDACTION_FIRE1				''
+00220002	IDACTION_ROLL				''
+00220003	IDACTION_PITCH				''
+00220004	IDACTION_YAW				''
+00220005	IDACTION_PAUSE				''
+00220006	IDACTION_SETSPEED			''
+00220007	IDACTION_MOVELEFT			''
+00220008	IDACTION_MOVERIGHT		''
+00220009	IDACTION_MOVEBACK			''
+00220010	IDACTION_MOVEFORWARD		''
+00220011	IDACTION_MOVEUP		  	''
+00220012	IDACTION_MOVEDOWN			''
+00220013	IDACTION_SHOTGUN			''
+00220014	IDACTION_PLASMA			''
+00220015	IDACTION_ROCKET			''
+00220016	IDACTION_VIEW				''
+00220017	IDACTION_FIRE2				''
+00220018	IDACTION_MPITCH	  		''
+00220019	IDACTION_MYAW				''
+
+//--------------------------------------------------------------------------------------------
+// Funct control tags
+//
+//--------------------------------------------------------------------------------------------
+00300000 IDITG_CHANGE_STRING     'Change string to Hello World:'
+00300001 IDITG_BACKGROUND_COLOR  'Background color:'
+00300002 IDITG_PRESET_TXT        'Change text to:'
+00300003 IDDAT_BEG_PRESET_TXT    'start of preset text group'
+00300004 IDSTR_FOO               'foo'
+00300005 IDSTR_BAT               'bat'
+00300006 IDSTR_BAR               'bar'
+00300010 IDDAT_END_PRESET_TXT    'end of preset text group'
+00300011 IDSTR_RED               'red'
+00300012 IDSTR_BLUE              'blue'
+00300013 IDSTR_GREEN             'green'
+00300014 IDITG_DESCRIPTION       'Description only'
+
+[END]

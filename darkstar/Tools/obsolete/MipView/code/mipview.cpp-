@@ -1,0 +1,241 @@
+//----------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------
+
+#include <gw.h>
+
+#define GFX   true
+#define PALETTE "palette.ppl"    
+#define BITMAP  "testpat.bmp"
+
+#define MESSAGE_AREA_HEIGHT 100
+#define WINDOW_HORIZ_PAD    50
+
+//NOTE: if you do no load a palette DirectDraw will appear BLACK!
+
+//----------------------------------------------------------------------------
+
+class MainWindow: public GWCanvas
+{
+	typedef GWCanvas Parent;
+
+  private:
+	int        windowWidth, windowHeight;
+	int        currentMipmap;
+    HDC        deviceContext;
+	GFXBitmap *bitmap;	
+		
+  public:
+    MainWindow();
+    ~MainWindow();
+
+	void AtSay(int x, int y, char *s);
+	void AtSay(int x, int y, int   v);
+	void updateMessageArea();
+
+	void render();
+	void onDestroy();
+	void unlock();
+    void onSysKey(UINT vk, BOOL fDown, int cRepeat, UINT flags);
+    void onKey(UINT vk, BOOL fDown, int cRepeat, UINT flags);
+	void onMouseMove(int x, int y, UINT keyFlags);
+};
+
+MainWindow::MainWindow()
+{
+	deviceContext = NULL;
+	currentMipmap = 0;
+#ifdef BITMAP
+	bitmap = new GFXBitmap();
+	if (!bitmap->read(BITMAP))
+	{
+		AssertFatal(0, "Error loading bitmap");
+		return;
+	}
+#endif
+
+	windowWidth  = max(300, int(bitmap->width + WINDOW_HORIZ_PAD));
+	windowHeight = bitmap->height + MESSAGE_AREA_HEIGHT + 60;
+
+    if (create("Mipmap Browser",
+		WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
+		Point2I(CW_USEDEFAULT,0),
+		Point2I(windowWidth, windowHeight),
+		NULL,0)) 
+	{
+	    show( GWMain::cmdShow );
+	    update();
+	}
+	else {
+		AssertFatal(0,"MainWindow:: Could not create main window");
+		exit(1);
+	}
+	deviceContext = GetDC(hWnd);
+
+#ifdef PALETTE
+	// Load palette
+	GFXPalette* palette = new GFXPalette();
+	if (!palette->read(PALETTE)) {
+		AssertFatal(0,"Error loading palette");
+	   return;
+	}
+	pSurface->setPalette(palette);
+#endif
+}
+
+
+MainWindow::~MainWindow()
+{
+}
+
+void MainWindow::onDestroy()
+{
+	PostQuitMessage(0);
+}
+
+void MainWindow::AtSay(int x, int y, char *s)
+{
+	TextOut(getSurface()->getDC(), x, y, s, strlen(s));
+}
+
+void MainWindow::AtSay(int x, int y, int v)
+{
+	char buffer[64];
+	sprintf(buffer, "%d", v);
+	AtSay(x, y, buffer);
+}
+
+void MainWindow::updateMessageArea()
+{
+	AtSay(20, windowHeight - 110, "Index");
+	AtSay(20, windowHeight -  90, "Scale");
+	AtSay(20, windowHeight -  70, "Width");
+	AtSay(20, windowHeight -  50, "Height");
+
+	char  buffer[32];
+	float scale = 100.0/pow(2, currentMipmap);
+	sprintf(buffer, "%5.1f\%", scale);
+ 
+	AtSay(100, windowHeight - 110, currentMipmap);
+	AtSay(100, windowHeight -  90, buffer);
+	AtSay(100, windowHeight -  70, bitmap->width);
+	AtSay(100, windowHeight -  50, bitmap->height);
+}
+
+
+void MainWindow::unlock()
+{
+  	GWCanvas::unlock();
+	getSurface()->lockDC();
+	updateMessageArea();
+	getSurface()->unlockDC();
+}
+
+void MainWindow::render()
+{
+	pSurface->clear(0xff);
+	//pSurface->drawBitmap2d(bitmap, &Point2I(10,10), &Point2I(200, 200));
+
+	int posx = windowWidth/2 - bitmap->width/2;
+	int posy = (windowHeight - MESSAGE_AREA_HEIGHT)/2 - bitmap->height/2;
+
+	pSurface->drawBitmap2d(bitmap, &Point2I(posx, posy));
+}
+
+void MainWindow::onMouseMove(int, int, UINT)
+{
+#if 0
+	lock();
+    pSurface->drawLine2d(&Point2I(0,0),&Point2I(x,y),6);
+	unlock();
+	flip();
+#endif
+}
+
+void MainWindow::onSysKey(UINT vk, BOOL fDown, int cRepeat, UINT flags)
+{
+   if (!fDown)
+   {
+      if (flags & (1<<13))    //check for alt with syskey
+      {
+         switch (vk)
+         {
+            case VK_ESCAPE:
+            case VK_TAB:
+               setMode(GFX_SM_MODE_WINDOW);
+               break;
+
+            case VK_RETURN:
+               if (manager.getMode() == GFX_SM_MODE_WINDOW) setMode(GFX_SM_MODE_DIRECT);
+               else setMode(GFX_SM_MODE_WINDOW);
+               break;
+         }
+      }
+      else
+         if (vk == VK_ESCAPE)
+            setMode(GFX_SM_MODE_WINDOW);
+   }
+   Parent::onSysKey( vk, fDown, cRepeat, flags );
+}
+
+void MainWindow::onKey(UINT vk, BOOL fDown, int cRepeat, UINT flags)
+{
+	if (!fDown)
+	{
+		switch (vk)                //adjust Direct Draw screen resolution
+		{                          //ignored if in DIB section
+		case VK_LEFT:
+			currentMipmap = max(0, currentMipmap - 1);
+			paint();
+			return;
+
+		case VK_RIGHT:
+			currentMipmap++;
+			paint();
+			return;
+
+#if 0
+         case VK_ADD:
+            adjSurfaceSize(+1);
+            return;
+         case VK_SUBTRACT:
+            adjSurfaceSize(-1);
+            return;
+#endif
+      }
+   }
+   Parent::onKey(vk, fDown, cRepeat, flags);
+}   
+
+
+
+//----------------------------------------------------------------------------
+
+class CMain: public GWMain
+{
+	MainWindow* window;
+
+public:
+	CMain();
+	~CMain();
+	virtual bool initInstance();
+} Main;
+
+CMain::CMain()
+{
+	window = 0;
+}
+
+CMain::~CMain()
+{
+	delete window;
+}
+
+bool CMain::initInstance()
+{
+	//
+	window = new MainWindow();
+	return true;
+}
+
+

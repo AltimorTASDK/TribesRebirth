@@ -1,0 +1,5 @@
+// Microsoft Developer Studio generated Help ID include file.
+// Used by THRED.rc
+//
+#define HIDC_LD_LIGHTLIST               0x80b404b5    // IDD_LIGHT_DIALOG
+#define HIDC_STATIC                     0x808bffff    // IDD_CREATE_CYL

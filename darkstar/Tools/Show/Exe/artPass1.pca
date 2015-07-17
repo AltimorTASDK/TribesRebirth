@@ -1,0 +1,8 @@
+quantizeRGB()
+outputPath(DTS)
+palOutputName(DTS\showTool.ipl)
+renderRange(10, 246)
+chooseRange(10, 246)
+paletteKey(1)
+bitmapListStart()
+24bit\*.bmp

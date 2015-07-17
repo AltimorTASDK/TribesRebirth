@@ -1,0 +1,2 @@
+LSEditor $Ted::mainWindow
+flushTextureCache

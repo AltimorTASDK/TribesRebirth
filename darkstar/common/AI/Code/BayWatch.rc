@@ -1,0 +1,130 @@
+//############################################################################
+//#   
+//#   (c) Copyright 1996, Dynamix Inc.   All rights reserved.
+//#
+//############################################################################
+
+#include <windows.h>
+#include <BWDefs.h>
+
+//############################################################################
+
+BWABOUTBOX DIALOG 35, 26, 151, 104
+EXSTYLE WS_EX_DLGMODALFRAME
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_OVERLAPPED | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "About BayWatch"
+FONT 8, "MS Sans Serif"
+{
+ CONTROL "BAYWATCH", -1, "STATIC", SS_ICON | WS_CHILD | WS_VISIBLE, 65, 20, 16, 16
+ CONTROL "", -1, "BUTTON", BS_GROUPBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 10, 5, 126, 75
+ CONTROL "BayWatch:  Bayesian Network Editor", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 16, 39, 115, 8
+ CONTROL "By Louie McCrady", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 26, 51, 94, 8
+ CONTROL "Version 1.0", -1, "STATIC", SS_CENTER | WS_CHILD | WS_VISIBLE | WS_GROUP, 26, 63, 94, 8
+ CONTROL "OK", 1, "BUTTON", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 48, 84, 50, 14
+ CONTROL "", -1, "BUTTON", BS_GROUPBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 27, 54, 124, 0
+}
+
+BWNOFUNCTIONBOX DIALOG DISCARDABLE  6, 15, 141, 76
+STYLE DS_MODALFRAME | DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "No Function"
+FONT 8, "MS Sans Serif"
+{
+ ICON            "BAYWATCH",-1,19,21,18,20
+ CTEXT           "This function has not",-1,48,10,77,8
+ CTEXT           "been implemented yet.",-1,48,20,77,8
+ GROUPBOX        "",-1,7,2,127,53
+ PUSHBUTTON      "OK",IDOK,45,58,50,14
+}  
+
+//############################################################################
+
+BWMainMenu MENU
+{
+ POPUP "&File"
+ {
+  MENUITEM "&New",                     IDM_BW_NEW
+  MENUITEM "&Load...",                 IDM_BW_LOAD
+  MENUITEM "&Save...",                 IDM_BW_SAVE
+  MENUITEM SEPARATOR
+  MENUITEM "&Exit",                    IDM_BW_EXIT
+ }
+ POPUP "&Edit"
+ {
+  MENUITEM "C&opy",                    IDM_BW_NOFUNCTION
+  MENUITEM "&Cut",                     IDM_BW_NOFUNCTION
+  MENUITEM "&Paste",                   IDM_BW_NOFUNCTION
+  MENUITEM "&Delete",                  IDM_BW_NOFUNCTION
+  MENUITEM SEPARATOR
+  MENUITEM "&Select All",              IDM_BW_NOFUNCTION
+ }
+ POPUP "&View"
+ {
+  MENUITEM "&ZoomIn",                  IDM_BW_NOFUNCTION
+  MENUITEM "Zoom&Out",                 IDM_BW_NOFUNCTION
+ }
+ POPUP "&Options"
+ {
+  MENUITEM "&Chance Node",             IDM_BW_CHANCE
+  MENUITEM SEPARATOR
+  MENUITEM "&Link",                    IDM_BW_LINK
+  MENUITEM SEPARATOR
+  MENUITEM "Com&pile",                 IDM_BW_NOFUNCTION
+  MENUITEM "C&alculate",               IDM_BW_NOFUNCTION
+  MENUITEM SEPARATOR
+  MENUITEM "&Multiple Node Editors",   IDM_BW_SPAWNEDITOR
+ }
+ POPUP "&Help"
+ {
+  MENUITEM "&About...",                IDM_BW_ABOUT
+  MENUITEM SEPARATOR
+  MENUITEM "&Help...",                 IDM_BW_HELP, GRAYED
+ }
+}
+
+//############################################################################
+
+NODEMENU MENU 
+{
+ POPUP "&Edit"
+ {
+  MENUITEM "&AddState",       IDM_BW_ADDSTATE
+  MENUITEM "&Delete",         IDM_BW_DELSTATE
+  MENUITEM SEPARATOR
+  MENUITEM "&Close",          IDM_BW_CLOSE
+
+ }
+ POPUP "&Options"
+ {
+  MENUITEM "&Reset",          IDM_BW_RESET
+  MENUITEM "&Recalculate",    IDM_BW_RECALCULATE
+ }
+}
+
+//############################################################################
+
+3 ICON  "BayWatch.ico"
+
+//############################################################################
+
+STRINGTABLE
+{
+ IDM_BW_NOFUNCTION       "No Function"
+ IDM_BW_NEW              "New"
+ IDM_BW_LOAD             "Load"
+ IDM_BW_SAVE             "Save"
+ IDM_BW_PRINT            "Print"
+ IDM_BW_CUT              "Cut"
+ IDM_BW_COPY             "Copy"
+ IDM_BW_PASTE            "Paste"
+ IDM_BW_DELETE           "Delete"
+ IDM_BW_CHANCE           "Chance Node"
+ IDM_BW_LINK             "Link"
+ IDM_BW_PROPERTIES       "Properties"
+ IDM_BW_EVALUATE         "Evaluate Network"
+ IDM_BW_ADDSTATE         "Add State"
+ IDM_BW_DELSTATE         "Del State"
+ IDM_BW_RESET            "Reset Table"
+ IDM_BW_RECALCULATE      "Recalculate States"
+ IDM_BW_DEBUG            "Debug Break"
+}

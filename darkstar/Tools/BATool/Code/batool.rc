@@ -1,0 +1,74 @@
+//
+// batool.rc
+//
+
+#include "defines.h"
+#include "winresrc.h"
+
+MainMenu MENU 
+{
+ POPUP "&File"
+ {
+  MENUITEM "&New",               IDM_FILE_NEW
+  MENUITEM "&Open...",           IDM_FILE_OPEN
+  MENUITEM "&Save",              IDM_FILE_SAVE
+  MENUITEM "Save &As...",        IDM_FILE_SAVEAS
+  MENUITEM SEPARATOR
+  MENUITEM "Insert Bitmaps...",  IDM_FILE_INSERT_BMP
+  MENUITEM SEPARATOR
+  MENUITEM "Open Palette...",    IDM_FILE_OPEN_PAL
+  MENUITEM SEPARATOR
+  MENUITEM "E&xit",              IDM_FILE_EXIT
+ }
+
+ POPUP "&Edit"
+ {
+  MENUITEM "Cu&t \tCtrl-X",      IDM_EDIT_CUT
+  MENUITEM "&Copy \tCtrl-C",     IDM_EDIT_COPY
+  MENUITEM "&Paste Before\tCtrl-V",    IDM_EDIT_PASTE
+  MENUITEM "P&aste After \tCtrl-A",   IDM_EDIT_APPEND
+  MENUITEM SEPARATOR
+  MENUITEM "&Delete \tDEL",      IDM_EDIT_DELETE
+  MENUITEM SEPARATOR
+  MENUITEM "Promote \t-",        IDM_EDIT_PROMOTE
+  MENUITEM "Demote \t+",         IDM_EDIT_DEMOTE
+ }
+
+ POPUP "&View"
+ {
+  MENUITEM "&One At A Time",     IDM_VIEW_FIXED
+  MENUITEM SEPARATOR
+  MENUITEM "25%",                IDM_VIEW_25
+  MENUITEM "50%",                IDM_VIEW_50
+  MENUITEM "100%",               IDM_VIEW_100
+  MENUITEM "200%",               IDM_VIEW_200
+  MENUITEM "400%",               IDM_VIEW_400
+  MENUITEM "800%",               IDM_VIEW_800
+ }
+
+ POPUP "&Options"
+ {
+  MENUITEM "Strip Palette", IDM_OPTIONS_STRIP
+  MENUITEM "Transparent",   IDM_OPTIONS_TRANSPARENT
+ }
+
+ POPUP "&Help"
+ {
+  MENUITEM "&About",             IDM_ABOUT
+ }
+}
+
+AboutBox DIALOG 26, 24, 137, 104
+STYLE DS_MODALFRAME | 0x4L | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "About Batool"
+FONT 8, "MS Sans Serif"
+{
+ CTEXT "Bitmap Array Tool", -1, 20, 20, 94, 8
+ CTEXT "Version 1.01 10/15/96", -1, 21, 63, 94, 8
+// ICON  "BORLAND", -1, 59, 13, 18, 20
+ PUSHBUTTON "OK", IDOK, 43, 84, 50, 14
+ GROUPBOX "", -1, 27, 54, 124, 0, BS_GROUPBOX
+ GROUPBOX "", -1, 10, 5, 117, 75, BS_GROUPBOX
+}
+
+

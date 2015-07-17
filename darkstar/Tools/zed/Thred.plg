@@ -1,0 +1,260 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: THRED - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo".\Debug/THRED.res" /d "_DEBUG" /d "_AFXDLL" "D:\darkstar\Tools\zed\THRED.rc"" 
+Creating temporary file "C:\TEMP\RSPE.tmp" with contents
+[
+/nologo /G5 /Gr /Zp4 /MDd /W3 /Gm /Gi /GR /GX /ZI /Od /I "." /I "d:\darkstar\inc" /D "_ZED_BUILD" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "GRIDTOOL" /D "DEBUG" /D "WIN" /D "MSVC" /D "_MBCS" /D "_AFXDLL" /D "ZED" /Fp".\Debug/Thred.pch" /Yu"stdafx.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"D:\darkstar\Tools\zed\3DMWorld.cpp"
+"D:\darkstar\Tools\zed\AsgnText.cpp"
+"D:\darkstar\Tools\zed\AsPalMat.cpp"
+"D:\darkstar\Tools\zed\BOrdrDlg.cpp"
+"D:\darkstar\Tools\zed\BrushAttributesDialog.cpp"
+"D:\darkstar\Tools\zed\BrushGroup.cpp"
+"D:\darkstar\Tools\zed\BrushGroupDialog.cpp"
+"D:\darkstar\Tools\zed\BspManagerDialog.cpp"
+"D:\darkstar\Tools\zed\bspnode.cpp"
+"D:\darkstar\Tools\zed\ChildFrm.cpp"
+"D:\darkstar\Tools\zed\ConstructiveBsp.cpp"
+"D:\darkstar\Tools\zed\CreateBoxDialog.cpp"
+"D:\darkstar\Tools\zed\CreateCylDialog.cpp"
+"D:\darkstar\Tools\zed\CreateSpheroidDialog.cpp"
+"D:\darkstar\Tools\zed\CreateStaircaseDialog.cpp"
+"D:\darkstar\Tools\zed\CreateTriDialog.cpp"
+"D:\darkstar\Tools\zed\DetailSettings.cpp"
+"D:\darkstar\Tools\zed\EditSun.cpp"
+"D:\darkstar\Tools\zed\EntitiesDialog.cpp"
+"D:\darkstar\Tools\zed\Entity.cpp"
+"D:\darkstar\Tools\zed\GlobalEnvironment.cpp"
+"D:\darkstar\Tools\zed\GlobalSettingsDialog.cpp"
+"D:\darkstar\Tools\zed\GridSizeDialog.cpp"
+"D:\darkstar\Tools\zed\GroupView.cpp"
+"D:\darkstar\Tools\zed\ITRBuildOpt.cpp"
+"D:\darkstar\Tools\zed\ITRLightOpt.cpp"
+"D:\darkstar\Tools\zed\itrmatrix.cpp"
+"D:\darkstar\Tools\zed\ITRShapeOpt.cpp"
+"D:\darkstar\Tools\zed\Light.cpp"
+"D:\darkstar\Tools\zed\LightBlankProp.cpp"
+"D:\darkstar\Tools\zed\LightDlg.cpp"
+"D:\darkstar\Tools\zed\LightEmitterProp.cpp"
+"D:\darkstar\Tools\zed\LightProp.cpp"
+"D:\darkstar\Tools\zed\LightPropertySheet.cpp"
+"D:\darkstar\Tools\zed\LightStateProp.cpp"
+"D:\darkstar\Tools\zed\LightView.cpp"
+"D:\darkstar\Tools\zed\MainFrm.cpp"
+"D:\darkstar\Tools\zed\Matcanvs.cpp"
+"D:\darkstar\Tools\zed\MaterialProperties.cpp"
+"D:\darkstar\Tools\zed\MatVuDlg.cpp"
+"D:\darkstar\Tools\zed\NewFDlg.cpp"
+"D:\darkstar\Tools\zed\ObjectView.cpp"
+"D:\darkstar\Tools\zed\ProgressBar.cpp"
+"D:\darkstar\Tools\zed\RenderCamera.cpp"
+"D:\darkstar\Tools\zed\SClrDlg.cpp"
+"D:\darkstar\Tools\zed\SelectClassname.cpp"
+"D:\darkstar\Tools\zed\Splitter.cpp"
+"D:\darkstar\Tools\zed\TextureView.cpp"
+"D:\darkstar\Tools\zed\THRED.cpp"
+"D:\darkstar\Tools\zed\ThredBrush.cpp"
+"D:\darkstar\Tools\zed\THREDDoc.cpp"
+"D:\darkstar\Tools\zed\ThredParser.cpp"
+"D:\darkstar\Tools\zed\THREDView.cpp"
+"D:\darkstar\Tools\zed\TransformMatrix.cpp"
+"D:\darkstar\Tools\zed\TSDialog.cpp"
+"D:\darkstar\Tools\zed\VDescDlg.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSPE.tmp" 
+Creating temporary file "C:\TEMP\RSPF.tmp" with contents
+[
+/nologo /G5 /Gr /Zp4 /MDd /W3 /Gm /Gi /GR /GX /ZI /Od /I "." /I "d:\darkstar\inc" /D "_ZED_BUILD" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "GRIDTOOL" /D "DEBUG" /D "WIN" /D "MSVC" /D "_MBCS" /D "_AFXDLL" /D "ZED" /Fp".\Debug/Thred.pch" /Yc"stdafx.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"D:\darkstar\Tools\zed\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSPF.tmp" 
+Creating temporary file "C:\TEMP\RSP10.tmp" with contents
+[
+d:\darkstar\lib\dmconsole.lib d:\darkstar\lib\dmcore.lib d:\darkstar\lib\dmgfx.lib d:\darkstar\lib\dmgfxio.lib d:\darkstar\lib\dmml.lib d:\darkstar\lib\dmts3.lib d:\darkstar\lib\dmitr.lib d:\darkstar\lib\dmzeditr.lib /nologo /subsystem:windows /incremental:yes /pdb:".\Debug/Zed.pdb" /debug /machine:I386 /out:".\Debug\Zed.exe" 
+.\Debug\3DMWorld.obj
+.\Debug\AsgnText.obj
+.\Debug\AsPalMat.obj
+.\Debug\BOrdrDlg.obj
+.\Debug\BrushAttributesDialog.obj
+.\Debug\BrushGroup.obj
+.\Debug\BrushGroupDialog.obj
+.\Debug\BspManagerDialog.obj
+.\Debug\bspnode.obj
+.\Debug\ChildFrm.obj
+.\Debug\ConstructiveBsp.obj
+.\Debug\CreateBoxDialog.obj
+.\Debug\CreateCylDialog.obj
+.\Debug\CreateSpheroidDialog.obj
+.\Debug\CreateStaircaseDialog.obj
+.\Debug\CreateTriDialog.obj
+.\Debug\DetailSettings.obj
+.\Debug\EditSun.obj
+.\Debug\EntitiesDialog.obj
+.\Debug\Entity.obj
+.\Debug\GlobalEnvironment.obj
+.\Debug\GlobalSettingsDialog.obj
+.\Debug\GridSizeDialog.obj
+.\Debug\GroupView.obj
+.\Debug\ITRBuildOpt.obj
+.\Debug\ITRLightOpt.obj
+.\Debug\itrmatrix.obj
+.\Debug\ITRShapeOpt.obj
+.\Debug\Light.obj
+.\Debug\LightBlankProp.obj
+.\Debug\LightDlg.obj
+.\Debug\LightEmitterProp.obj
+.\Debug\LightProp.obj
+.\Debug\LightPropertySheet.obj
+.\Debug\LightStateProp.obj
+.\Debug\LightView.obj
+.\Debug\MainFrm.obj
+.\Debug\Matcanvs.obj
+.\Debug\MaterialProperties.obj
+.\Debug\MatVuDlg.obj
+.\Debug\NewFDlg.obj
+.\Debug\ObjectView.obj
+.\Debug\ProgressBar.obj
+.\Debug\RenderCamera.obj
+.\Debug\SClrDlg.obj
+.\Debug\SelectClassname.obj
+.\Debug\Splitter.obj
+.\Debug\StdAfx.obj
+.\Debug\TextureView.obj
+.\Debug\THRED.obj
+.\Debug\ThredBrush.obj
+.\Debug\THREDDoc.obj
+.\Debug\ThredParser.obj
+.\Debug\THREDView.obj
+.\Debug\TransformMatrix.obj
+.\Debug\TSDialog.obj
+.\Debug\VDescDlg.obj
+.\Debug\THRED.res
+]
+Creating command line "link.exe @C:\TEMP\RSP10.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+3DMWorld.cpp
+d:\darkstar\inc\zedperslight.h(45) : warning C4099: 'PersState' : type name first seen using 'struct' now seen using 'class'
+        d:\darkstar\inc\zedperslight.h(35) : see declaration of 'PersState'
+AsgnText.cpp
+D:\darkstar\Tools\zed\AsgnText.cpp(229) : warning C4101: 'wndpl' : unreferenced local variable
+D:\darkstar\Tools\zed\AsgnText.cpp(230) : warning C4101: 'swidth' : unreferenced local variable
+AsPalMat.cpp
+BOrdrDlg.cpp
+BrushAttributesDialog.cpp
+BrushGroup.cpp
+BrushGroupDialog.cpp
+BspManagerDialog.cpp
+bspnode.cpp
+ChildFrm.cpp
+d:\darkstar\inc\zedperslight.h(45) : warning C4099: 'PersState' : type name first seen using 'struct' now seen using 'class'
+        d:\darkstar\inc\zedperslight.h(35) : see declaration of 'PersState'
+ConstructiveBsp.cpp
+d:\darkstar\inc\zedperslight.h(45) : warning C4099: 'PersState' : type name first seen using 'struct' now seen using 'class'
+        d:\darkstar\inc\zedperslight.h(35) : see declaration of 'PersState'
+D:\darkstar\Tools\zed\ConstructiveBsp.cpp(5542) : warning C4552: '-' : operator has no effect; expected operator with side-effect
+CreateBoxDialog.cpp
+CreateCylDialog.cpp
+CreateSpheroidDialog.cpp
+D:\darkstar\Tools\zed\CreateSpheroidDialog.cpp(132) : warning C4101: 'CurrentDepth' : unreferenced local variable
+D:\darkstar\Tools\zed\CreateSpheroidDialog.cpp(132) : warning C4101: 'CurrentWidth' : unreferenced local variable
+D:\darkstar\Tools\zed\CreateSpheroidDialog.cpp(133) : warning C4101: 'EllipseZ' : unreferenced local variable
+D:\darkstar\Tools\zed\CreateSpheroidDialog.cpp(134) : warning C4101: 'internalval' : unreferenced local variable
+CreateStaircaseDialog.cpp
+CreateTriDialog.cpp
+DetailSettings.cpp
+EditSun.cpp
+EntitiesDialog.cpp
+Entity.cpp
+Generating Code...
+D:\darkstar\Tools\zed\ConstructiveBsp.cpp(983) : warning C4700: local variable 'aaa' used without having been initialized
+Compiling...
+GlobalEnvironment.cpp
+GlobalSettingsDialog.cpp
+GridSizeDialog.cpp
+GroupView.cpp
+ITRBuildOpt.cpp
+ITRLightOpt.cpp
+itrmatrix.cpp
+ITRShapeOpt.cpp
+Light.cpp
+LightBlankProp.cpp
+LightDlg.cpp
+LightEmitterProp.cpp
+LightProp.cpp
+LightPropertySheet.cpp
+LightStateProp.cpp
+LightView.cpp
+d:\darkstar\inc\zedperslight.h(45) : warning C4099: 'PersState' : type name first seen using 'struct' now seen using 'class'
+        d:\darkstar\inc\zedperslight.h(35) : see declaration of 'PersState'
+MainFrm.cpp
+d:\darkstar\inc\zedperslight.h(45) : warning C4099: 'PersState' : type name first seen using 'struct' now seen using 'class'
+        d:\darkstar\inc\zedperslight.h(35) : see declaration of 'PersState'
+Matcanvs.cpp
+MaterialProperties.cpp
+d:\darkstar\inc\zedperslight.h(45) : warning C4099: 'PersState' : type name first seen using 'struct' now seen using 'class'
+        d:\darkstar\inc\zedperslight.h(35) : see declaration of 'PersState'
+MatVuDlg.cpp
+Generating Code...
+Compiling...
+NewFDlg.cpp
+ObjectView.cpp
+d:\darkstar\inc\zedperslight.h(45) : warning C4099: 'PersState' : type name first seen using 'struct' now seen using 'class'
+        d:\darkstar\inc\zedperslight.h(35) : see declaration of 'PersState'
+ProgressBar.cpp
+RenderCamera.cpp
+SClrDlg.cpp
+SelectClassname.cpp
+Splitter.cpp
+TextureView.cpp
+d:\darkstar\inc\zedperslight.h(45) : warning C4099: 'PersState' : type name first seen using 'struct' now seen using 'class'
+        d:\darkstar\inc\zedperslight.h(35) : see declaration of 'PersState'
+D:\darkstar\Tools\zed\TextureView.cpp(169) : warning C4355: 'this' : used in base member initializer list
+THRED.cpp
+d:\darkstar\inc\zedperslight.h(45) : warning C4099: 'PersState' : type name first seen using 'struct' now seen using 'class'
+        d:\darkstar\inc\zedperslight.h(35) : see declaration of 'PersState'
+ThredBrush.cpp
+THREDDoc.cpp
+d:\darkstar\inc\zedperslight.h(45) : warning C4099: 'PersState' : type name first seen using 'struct' now seen using 'class'
+        d:\darkstar\inc\zedperslight.h(35) : see declaration of 'PersState'
+D:\darkstar\Tools\zed\THREDDoc.cpp(517) : warning C4101: 'tmpbuf' : unreferenced local variable
+D:\darkstar\Tools\zed\THREDDoc.cpp(902) : warning C4101: 'fullPath' : unreferenced local variable
+D:\darkstar\Tools\zed\THREDDoc.cpp(2387) : warning C4005: 'CCURRENTGROUP' : macro redefinition
+        D:\darkstar\Tools\zed\THREDDoc.cpp(685) : see previous definition of 'CCURRENTGROUP'
+D:\darkstar\Tools\zed\THREDDoc.cpp(2858) : warning C4101: 'palpath' : unreferenced local variable
+D:\darkstar\Tools\zed\THREDDoc.cpp(2853) : warning C4101: 'tmpbuf1' : unreferenced local variable
+D:\darkstar\Tools\zed\THREDDoc.cpp(2854) : warning C4101: 'Filename' : unreferenced local variable
+D:\darkstar\Tools\zed\THREDDoc.cpp(2859) : warning C4101: 'i' : unreferenced local variable
+D:\darkstar\Tools\zed\THREDDoc.cpp(2856) : warning C4101: 'matname' : unreferenced local variable
+D:\darkstar\Tools\zed\THREDDoc.cpp(2852) : warning C4101: 'tmpbuf' : unreferenced local variable
+D:\darkstar\Tools\zed\THREDDoc.cpp(2857) : warning C4101: 'palname' : unreferenced local variable
+D:\darkstar\Tools\zed\THREDDoc.cpp(2855) : warning C4101: 'matpath' : unreferenced local variable
+D:\darkstar\Tools\zed\THREDDoc.cpp(4712) : warning C4305: 'argument' : truncation from 'const double' to 'float'
+D:\darkstar\Tools\zed\THREDDoc.cpp(5701) : warning C4005: 'CGRIDSIZE' : macro redefinition
+        D:\darkstar\Tools\zed\THREDDoc.cpp(682) : see previous definition of 'CGRIDSIZE'
+ThredParser.cpp
+THREDView.cpp
+d:\darkstar\inc\zedperslight.h(45) : warning C4099: 'PersState' : type name first seen using 'struct' now seen using 'class'
+        d:\darkstar\inc\zedperslight.h(35) : see declaration of 'PersState'
+TransformMatrix.cpp
+TSDialog.cpp
+VDescDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Zed.exe - 0 error(s), 33 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,28 @@
+/****************************************************************************
+
+
+cdPlayer.RC
+
+produced by Borland Resource Workshop
+
+
+*****************************************************************************/
+
+#include <cdPlayerDlg_defs.h>
+
+IDD_CDPLAYER_DLG DIALOG 0, 0, 163, 53
+EXSTYLE WS_EX_DLGMODALFRAME | WS_EX_CONTEXTHELP
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CONTEXTHELP | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "CD Player"
+FONT 8, "MS Sans Serif"
+{                   
+ CONTROL "Play", BTN_PLAY, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE, 4, 20, 44, 14, 0
+ CONTROL "Stop", BTN_STOP, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE, 4, 36, 44, 14, 0
+ CONTROL "Next", BTN_NEXT, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE, 100, 36, 44, 14, 0
+ CONTROL "Eject", BTN_EJECT, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE, 100, 20, 44, 14, 0
+ CONTROL "Prev", BTN_PREV, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE, 52, 36, 44, 14, 0
+ CONTROL "Pause", BTN_PAUSE, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE, 52, 20, 44, 14, 0
+ CTEXT "Track 00, Time 0000000000", TXT_DISPLAY, 4, 4, 140, 13, SS_SUNKEN, 0
+ CONTROL "TrackBar1", VOLUME_BAR, "msctls_trackbar32", TBS_VERT | WS_CHILD | WS_VISIBLE, 148, 0, 12, 52
+}
+

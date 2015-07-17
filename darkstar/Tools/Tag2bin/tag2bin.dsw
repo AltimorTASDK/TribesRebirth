@@ -1,0 +1,86 @@
+Microsoft Developer Studio Workspace File, Format Version 5.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "Core"=..\..\Core\Core.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/", aaaaaaaa
+    ..\..
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "DGFXs"=..\..\Dgfx\DGFXs.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "GFXIO"=..\..\Dgfx\gfxio.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/", aaaaaaaa
+    ..\..
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "tag2bin"=.\tag2bin.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Tools/Tag2bin", UOHAAAAA
+    .
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name GFXIO
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name DGFXs
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Core
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

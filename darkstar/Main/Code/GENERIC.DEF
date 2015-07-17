@@ -1,0 +1,22 @@
+NAME            DYNAMIX
+
+DESCRIPTION     'Generic'
+
+EXETYPE         WINDOWS
+
+CODE            PRELOAD MOVEABLE DISCARDABLE
+
+DATA            PRELOAD MOVEABLE MULTIPLE
+
+IMPORTS WINMM.joyGetDevCaps
+        WINMM.joyGetNumDevs
+        WINMM.joyGetPosEx
+
+;HEAPSIZE        1024
+;STACKSIZE       20000
+
+;EXPORTS
+	;Since you are compiling with "Explicit Functions Exported" (-WE),
+	;you must not list exported functions here.  However, all exported
+	;functions must contain the keyword directive _export for them to be
+	;exported.

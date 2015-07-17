@@ -1,0 +1,98 @@
+//北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北
+//北   
+//北 (c) Copyright 1995, Dynamix Inc.   All rights reserved.
+//北
+//北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北
+
+#define __FLAT__
+#include <windows.h>
+
+#include "defines.h"
+
+//北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北
+//                            Dialog Boxes
+//北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北
+
+AboutBox DIALOG 26, 24, 137, 104
+STYLE DS_MODALFRAME | 0x4L | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "About Mipview"
+FONT 8, "MS Sans Serif"
+{
+ CTEXT "Mipview Mipmap Viewer", -1, 20, 20, 94, 8
+ CTEXT "Version 1.00", -1, 21, 63, 94, 8
+// ICON  "BORLAND", -1, 59, 13, 18, 20
+ PUSHBUTTON "OK", IDOK, 43, 84, 50, 14
+ GROUPBOX "", -1, 27, 54, 124, 0, BS_GROUPBOX
+ GROUPBOX "", -1, 10, 5, 117, 75, BS_GROUPBOX
+}
+
+NoFunctionBox DIALOG 6, 15, 141, 76
+STYLE DS_MODALFRAME | 0x4L | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "No Function"
+FONT 8, "MS Sans Serif"
+{
+ ICON  "BORLAND", -1, 19, 21, 18, 20
+ CTEXT "This function has not", -1, 48, 10, 77, 8
+ CTEXT "been implemented yet.", -1, 48, 20, 77, 8
+ CTEXT "Please select another", -1, 48, 30, 77, 8
+ CTEXT "test to run.", -1, 48, 40, 77, 8
+ GROUPBOX "", -1, 7, 2, 127, 53, BS_GROUPBOX
+ PUSHBUTTON "OK", IDOK, 45, 58, 50, 14
+}
+
+//北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北
+//                                Menus
+//北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北
+
+MainMenu MENU 
+{
+ POPUP "&File"
+ {
+  MENUITEM "&Open Bitmap...",           IDM_OPEN_BMP
+  MENUITEM SEPARATOR					
+  MENUITEM "&Open Palette...",          IDM_OPEN_PPL
+  MENUITEM SEPARATOR
+  MENUITEM "&Exit",                     IDM_EXIT
+ }
+
+ POPUP "&Options"
+ {
+  MENUITEM "&Next Detail Level\tRight_Arrow",     IDM_NEXT_LEVEL       
+  MENUITEM "&Previous Detail Level\tLeft_Arrow", IDM_PREV_LEVEL       
+  MENUITEM SEPARATOR				 
+  MENUITEM "&Stretch to max size\tUp_Arrow",   IDM_STRETCH       
+
+ }
+
+ POPUP "&Help"
+ {
+  MENUITEM "&About...",                 IDM_ABOUT
+  MENUITEM SEPARATOR
+  MENUITEM "Help...",                   IDM_HELP,      GRAYED
+ }
+}
+
+//北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北
+//                                ICONS
+//北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北
+
+//BORLAND ICON "borland.ico"
+//WARRIOR ICON "warrior.ico"
+//PHOENIX ICON "phoenix.ico"
+//DEBUG32 ICON "debug32.ico"
+
+//北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北
+//                             String Table
+//北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北北
+
+STRINGTABLE 
+{
+ IDS_OPEN_DIB,       "Windows Bitmap (*.DIB,*.BMP)|*.DIB;*.BMP|"
+ IDS_OPEN_PAL,       "Phoenix Palette (*.PAL,*.DPL)|*.PAL;*.DPL|"
+ IDS_OPEN_GUI,       "Phoenix GUI (*.GUI)|*.GUI|"
+ IDS_OPEN_FLC,       "AutoDesk FLIC (*.FLC,*.FLC)|*.FLI;*.FLC|"
+ IDS_OPEN_PBA,       "Phoenix Bitmap Array (*.PBA)|*.PBA|"
+ IDS_OPEN_PBM,       "Phoenix Bitmap (*.PBM)|*.PBM|"
+ IDS_OPEN_PFT,       "Phoenix Font (*.PFT)|*.PFT|"
+}
+

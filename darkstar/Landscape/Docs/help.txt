@@ -1,0 +1,400 @@
+(c) Copyright 1996, Dynamix Inc.   All rights reserved.
+
+
+
+                   LandScape Scripting Language
+                   
+                   
++ Table of Contents
+  -----------------------------------------------------------------
+   Description
+   The Stack
+   Using the Commands
+   Command Reference
+   Sample Scripts
+
++ Description:
+  -----------------------------------------------------------------
+   The LandScape scripting language allows you to create 
+   terrains with specific characteristics.
+
+   Since the terrain is simply a grid of elevations, various
+   operators and filters can be applied to the elevations  
+   to produce different characteristics on the terrain. 
+   In addtion, multiple terrains can be created and later combined 
+   to form new terrains.
+
++ The Stack:
+  -----------------------------------------------------------------  
+   The LandScape scripting language uses a single stack to hold 
+   all the terrains that it creates.  
+   
+   Each time a new terrain is created, it is "stacked" on top
+   of the last terrain which was created.  This rule produces
+   a stack of terrains with the youngest terrain at the top
+   of the stack and the oldest terrain at the bottom. 
+
+   The terrains in the stack are also numbered.  The youngest
+   terrain (the one on the top of the stack) is always numbered
+   0.  Then the second youngest is numbered 1, the next youngest
+   is numbered 2, etc.
+
++ Using the Commands:
+  -----------------------------------------------------------------
+   Nearly all the commands operate solely on the terrain
+   at the top of the stack.  Unless otherwise specified in the
+   command description, you should assume that the command
+   only affects the top most terrain on the stack.
+
+   Some commands require parameters.  A parameter description is
+   listed in <> after the command name.  A parameter has both a
+   _name and a _type and appears syntactically as <_type _name>.  
+   The "_name" is just a variable which represents a value 
+   that must be passed to the command.  The "_type" describes 
+   the kind of values "_name" is allowed to be.
+   
+   For example, consider the following command description: 
+    
+      SEED <int N>
+
+   This description states that the command SEED requires
+   one value N which must be an int(integer).  So, you
+   would call this command in the following way.
+   
+      SEED 12293
+      
+   Note, 12293 is an integer that is being passed as parameter N.
+
+   There are only 3 types of parameters.  They are listed in the
+   following table:
+     
+      _type             description
+      =============     ===============
+      int               integer number
+      float             decimal number
+      str               string
+   
++ Command Reference:
+  -----------------------------------------------------------------
+   Below are all the scripting commands for the landscape.  
+   They are grouped into 6 categories by their function type.
+
+   1) General
+   
+     - SEED <int N>    
+        Sets the seed of the random number generator to N.   
+        N must be an integer >= 0.                             
+                                                                
+   2) Stack                                                    
+   
+     - CLEAR 
+        Removes all terrains from the stack.
+     
+     - PUSH <int N>
+        Places a new NxN terrain on top of the stack.    
+        Currently, N should be set to 256.
+     
+     - POP  
+        Removes the terrain on the top of the stack.         
+     
+     - SWAP   
+        Swaps the top two terrains on the stack.
+     
+     - DUP  
+        Duplicates the top terrain on the stack and
+        pushes it on the stack.      
+   
+   3) IO
+     
+     - LOAD <str filename>   
+        Loads a bitmap representation of the terrain.
+        Terrain heights range from 0 to 1.
+     
+     - LOADM <str filename, float maxHeight>   
+        Loads a bitmap representation of the terrain.
+        Terrain heights range from 0 to maxHeight.
+
+     - SAVE <str filename>   
+        Saves the terrain as a bitmap.
+   
+   4) Complex
+     
+     - TERRAIN <int N, float JAG>     
+        Creates a new NxN random terrain and places it on top
+        of the stack. Currently, N should be set to 256.
+        JAG represents the jaggedness of the terrain.  It should
+        range between 0.0 and 1.0.  The closer J is to 1.0, the 
+        smoother the terrain is.  A good value for J is 0.9   
+     
+     - ROT
+        Rotates the terrain 90 degrees clockwise.  
+     
+     - OVERLAY <int K, float THRESHOLD>
+        For every position in the terrain that has elevation
+        less then the THRESHOLD, we replace that piece of
+        terrain with the same piece from the Kth terrain 
+        in the stack.  
+        
+        After the operation is completed, the Kth terrain
+        is removed from the stack and deleted.
+
+        K must be greater then 0 and less then the
+        number of terrains in the stack.
+     
+     - BLEND <int K, int DIST>
+        The Kth terrain in the stack acts as a mask.  For
+        any elevation in the Kth terrain which is not 0, if
+        the distance between it and the elevation in the
+        current terrain is within DIST, the elevation in 
+        the current terain will migrate toward the elevation
+        of the KTh terrain.
+
+        After the operation is completed, the Kth terrain
+        is removed from the stack and deleted.
+
+        K must be greater then 0 and less then the
+        number of terrains in the stack.
+     
+   5) Arithmetic
+     
+     - ADD <float E>  
+        Adds E to each elevation in the terrain. 
+     
+     - SUB <float E>   
+        Subtracts E from each elevation in the terrain.
+     
+     - MUL <float E>   
+        Multiplies E to each elevation in the terrain.
+     
+     - DIV <float E>  
+        Divides E from each elevation in the terrain.  
+     
+     - EXP <float E>  
+        Raises each elevation in the terrain to the power E.
+        E must be >= 0.
+     
+     - NEG           
+        Negates each elevation in the terrain.
+     
+     - CLR <float E>
+        Sets the entire terrain to a single elevation E.  
+
+     - NORMALIZE <float MIN, float MAX>
+        Normalizes all the elevations in the terrain so that 
+        they all range between MIN and MAX elevations
+     
+     - ADD_STACK <int K>   
+        Adds the Kth terrain in the stack to the current 
+        terrain.
+
+        After the operation is completed, the Kth terrain
+        is removed from the stack and deleted.
+
+        K must be greater then 0 and less then the
+        number of terrains in the stack.
+     
+     - SUB_STACK <int K>
+        Subtracts the Kth terrain in the stack from the current 
+        terrain.
+        
+        After the operation is completed, the Kth terrain
+        is removed from the stack and deleted.
+
+        K must be greater then 0 and less then the
+        number of terrains in the stack.
+        
+   6) Filters                                           
+     
+     - FLOOR <float FLR_START, float DEPTH, float FLAT_DEPTH>  
+        All elevations in the current terrain that are below 
+        FLR_START are rescaled so that they will lie between
+        the elevations (FLR_START) and (FLR_START - DEPTH).
+     
+        Any elevation in the current terrain that is below
+        (START - FLAT_DEPTH) will become flat when the
+        operation completes. 
+
+        DEPTH must be >= 0.
+        FLAT_DEPTH must be >= 0.
+
+     - CEIL <float CEIL_START, float HEIGHT, float FLAT_HEIGHT>  
+        All elevations in the current terrain that are above 
+        CEIL_START are rescaled so that they will lie between
+        the elevations (CEIL_START) and (CEIL_START + HEIGHT).
+     
+        Any elevation in the current terrain that is above
+        (START + FLAT_HEIGHT) will become flat when the
+        operation completes.
+        
+        HEIGHT must be >= 0.
+        FLAT_HEIGHT must be >= 0. 
+     
+     - ALPHABLEND <int X, int Y> 
+        Performs alphablending.  The top item on the
+        stack will act as the alpha filter, the 2nd item from
+        the top of the stack will act as the overlay, and the 
+        3rd item from the top of the stack should be the 
+        original terrain.
+     
+        X and Y are the coordinates on the original terrain
+        where the overlay will be placed. 
+
+        After the operation is completed, the top two
+        items on the stack will be removed and deleted.
+
+     - TILE                 
+        Increases the size of the terrain by tiling it
+        2x2.  An NxN terrain will become 2Nx2N terrain.
+
+     - WRAP                 
+        Process the edges of the terrain so they wrap nicely 
+        when tiled.
+
+     - DIFF            
+        Embosses the terrain.
+
+     - FILL_N <float F>     
+        Fills the terrain with 1/F Gaussian noise.
+
+     - CURVE <float THRESHOLD, int ITER> 
+        Smooths out the terrain by considering how deviant
+        a given elevation is to its 4 nearest neighbors.
+        
+        If the current elevation deviates more then
+        the THRESHOLD, it is smoothed out.
+
+        This filter is applied ITER number of times.
+   
+        THRESHOLD must be >= 0.
+        ITER must be > 0.
+
+     - SLOPE <float THRESHOLD, int ITER>
+        Smooths out the terrain by considering how deviant
+        a given elevation is to its 2 nearest neighbors.
+        
+        If the current elevation deviates more then
+        the THRESHOLD, it is smoothed out.
+
+        This filter is applied ITER number of times.
+   
+        THRESHOLD must be >= 0.
+        ITER must be > 0.
+
+     -  SHAVE (float EPSILON, float EXPONENT, float AVERAGE_WEIGHT)
+        Flattens areas of one terrain which correspond to non-zero
+		  locations of a second terrain.  The top terrain defines
+		  the areas to be flattened (the "cookie-cutter"), while the
+		  next item on the stack is the target terrain.
+		  
+		  Every location in the target terrain is regressed towards
+		  a weighted average of the neighboring locations and the overall
+		  average height (over the entire "cookie-cutter" region).  The
+		  AVERAGE_WEIGHT parameter specifies the weight to give the
+		  average in this procedure.  A value of 0 ignores the average,
+		  whereas a value of 1 ignores the neighboring region (this can
+		  be used to flatten the "cookie-cutter" region completely).
+
+        The other two parameters correspond to the same named parameters
+		  from the smooth command.
+
+        Shave can be used to prepare the target terrain before adding the
+		  "cookie-cutter" terrain to form a hill or a valley.
+
+     - CLAMP <int DETAIL, float DEVIATION>  
+        Portions of the terrain are drawn at different detail 
+        levels depending on how far they are to the viewer.  
+        As the viewer moves over the landscape, the detail level 
+        at which a portion of the terrain is drawn can change.  
+        These changes in detail level produces the "growing"
+        effect where distant terrain seems to grow in
+        detail as you get closer to them.  This filter 
+        limits the growing.
+
+        The DETAIL parameter determines which detail
+        levels get affected.  The detail levels are numbered 
+        with level 0 being the closest terrain to the viewer.  
+        Level 1 is the next closest region of the terrain 
+        and etc.
+
+        The DETAIL paramter indicates the maximum detail
+        level that will be affected.  For example, if 3 was 
+        set as the DETAIL parameter, detail levels 0, 1, 2, 3 
+        will be affected.
+
+        The DEVIATION paramter specifies the variation allowed 
+        between the respective detail levels.
+
+        DETAIL must range between 1 and 7.
+        DEVIATION must be greater then 0.
+        The terrain gets blockier as DEVIATION gets closer
+        to 0.
+
+     - SMOOTH <float EPSILON, float EXPONENT>
+        Smooths out the terrain.
+        
+        For every elevation in the terrain, this filter uses a 
+        heuristic to determine an ideal target elevation
+        that would smooth out the terrain.
+
+        If an elevation is greater then EPSILON of its
+        ideal target elevation, then the elevation is forced 
+        to the target elevation.
+   
+        If an elevation is within EPSILON of the target elevation,
+        only a minor adjustment is made to migrate the
+        elevation to its target elevation.  The
+        EXPONENT parameter is used to determine the amount
+        of migration.  An EXPONENT value of 0 indicates no
+        migration. 
+
+        EPSILON must be greater then 0.
+        EXPONENT must be greater then 0.
+      
++ Sample Scripts:
+  -----------------------------------------------------------------
+   Notes:   Commands in a script file are executed sequentially 
+            from the top.  Anything in the script file
+            that is followed by the // characters are ignored.
+
+
+   Script 1 - Here's the simplest script.  
+              It creates a random terrain.
+   ================================================================
+     terrain    256   0.9    
+     normalize  0     1500   
+
+
+   Script 2 - Here's one with with some flat floors and plateus.
+   ================================================================           
+     seed       1002
+     terrain    256   0.9
+     normalize	 0.0   1200
+     floor	    360   0     0
+     ceil	    960   0     0
+     clamp	    5     32.0     // allow greater growing for far terrain
+     clamp      2     5.0      // allow less growing for near terrain
+     smooth     0.01  6
+
+
+   Script 3 - Here's one with a floor that's got some minor rolls.
+   =================================================================
+     terrain    256   0.95
+     normalize  0     1500
+     floor      700   50    500
+     
+
+   Script 4 - Here's one which uses a bitmap of a donut to
+              create a crater.
+              The donut.bmp is a 256x256 grayscale bitmap
+              where black represents elevation 0, white
+              is elevation 1 and all the shades in between
+              represent elevations between 0 and 1.
+   =================================================================
+     seed	    1006
+     terrain    256   0.7
+     normalize	 0.0   0.7
+     load	    donut.bmp
+     sub_stack  1
+     normalize  0     2000
+     floor	    300   0     0
+     smooth     0.01  6

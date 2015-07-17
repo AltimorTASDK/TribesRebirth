@@ -1,0 +1,21 @@
+12:49:53 Log file is on.
+12:49:53 Log echo is on.
+12:49:53 SND_BUFF size set to 32768.
+12:49:53 RCV_BUFF size set to 32768.
+12:49:53 Timeout set to 300 seconds.
+12:49:53 MaxServers from single IP set to 15.
+12:49:53 Master Server running on port 28000.
+12:49:53 Master Server id 102.
+12:49:53 Server 127.0.0.1:0 banned
+12:49:56 Query from 198.74.38.130:2007, id = 58112
+12:51:46 Server 24.2.86.207:28001 is being verified.
+12:51:46 Server 24.2.86.207:28001 online
+12:51:46 Server 24.2.86.207:28003 is being verified.
+12:51:46 Server 24.2.86.207:28003 online
+15:34:59 Received unsolicited GAMESVR_REPLY
+13:14:15 Server 24.2.86.207:28001 offline: minutes online 5
+14:56:59 Error: Wrong verification key sent by server: 207.15.209.234:28001
+12:51:46 Server 24.2.86.207:28002 is being verified.
+12:51:46 Server 24.2.86.207:28002 online
+13:14:15 Server 24.2.86.207:28002 offline: minutes online 5
+13:14:15 Server 24.2.86.207:28003 offline: minutes online 5
