@@ -105,7 +105,7 @@ GWListBoxProxy::setCurSel(const int in_index)
 }
 
 Int32 
-GWListBoxProxy::setSel(const in_index, const bool in_select)
+GWListBoxProxy::setSel(const int in_index, const bool in_select)
 {
    HWND lbHWnd = getControlHWnd();
 

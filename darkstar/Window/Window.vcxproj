@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6250EFB7-BD7F-49FE-B7E0-5D3F99D47107}</ProjectGuid>
-    <RootNamespace>console</RootNamespace>
+    <ProjectGuid>{27DBA1C1-C96D-42D5-8F26-8F220E120F38}</ProjectGuid>
+    <RootNamespace>Window</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -41,6 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetExt>.lib</TargetExt>
     <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
+    <IncludePath>$(SolutionDir)Ts3/inc;$(SolutionDir)Ml/inc;$(SolutionDir)Dgfx/inc;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -48,8 +49,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\inc;$(SolutionDir)Core\inc;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -70,20 +71,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="code\console.cpp" />
-    <ClCompile Include="code\consoleInternal.cpp" />
-    <ClCompile Include="code\eval.cpp" />
-    <ClCompile Include="code\GRAM.CPP" />
-    <ClCompile Include="code\scan.cpp" />
-    <ClCompile Include="code\tagDictionary.cpp" />
-    <ClCompile Include="code\test.cpp" />
+    <ClCompile Include="Code\gwBase.cpp" />
+    <ClCompile Include="Code\gwButtonProxy.cpp" />
+    <ClCompile Include="Code\gwCanvas.cpp" />
+    <ClCompile Include="Code\GWComboBox.cpp" />
+    <ClCompile Include="Code\gwControlProxy.cpp" />
+    <ClCompile Include="Code\gwDeviceManager.cpp" />
+    <ClCompile Include="Code\gwDialog.cpp" />
+    <ClCompile Include="Code\gwEditBox.cpp" />
+    <ClCompile Include="Code\gwEditProxy.cpp" />
+    <ClCompile Include="Code\gwListBoxProxy.cpp" />
+    <ClCompile Include="Code\gwLog.cpp" />
+    <ClCompile Include="Code\gwMain.cpp" />
+    <ClCompile Include="Code\gwMenu.cpp" />
+    <ClCompile Include="Code\gwMsg.cpp" />
+    <ClCompile Include="Code\gwtool.cpp" />
+    <ClCompile Include="Code\GWTreeView.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\ast.h" />
-    <ClInclude Include="inc\console.h" />
-    <ClInclude Include="inc\consoleInternal.h" />
-    <ClInclude Include="inc\gram.h" />
-    <ClInclude Include="inc\tagDictionary.h" />
+    <ClInclude Include="Inc\gw.h" />
+    <ClInclude Include="Inc\gwBase.h" />
+    <ClInclude Include="Inc\gwButtonProxy.h" />
+    <ClInclude Include="Inc\gwCanvas.h" />
+    <ClInclude Include="Inc\GWComboBox.h" />
+    <ClInclude Include="Inc\gwControlProxy.h" />
+    <ClInclude Include="Inc\gwDeviceManager.h" />
+    <ClInclude Include="Inc\gwDialog.h" />
+    <ClInclude Include="Inc\gwEditBox.h" />
+    <ClInclude Include="Inc\gwEditProxy.h" />
+    <ClInclude Include="Inc\gwListBoxProxy.h" />
+    <ClInclude Include="Inc\gwLog.h" />
+    <ClInclude Include="Inc\gwMain.h" />
+    <ClInclude Include="Inc\gwMenu.h" />
+    <ClInclude Include="Inc\gwMsgMap.h" />
+    <ClInclude Include="Inc\gwMsgs.h" />
+    <ClInclude Include="Inc\gwTool.h" />
+    <ClInclude Include="Inc\GWTreeView.h" />
+    <ClInclude Include="Inc\gwWinSX.h" />
+    <ClInclude Include="Inc\RESOURCE.H" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

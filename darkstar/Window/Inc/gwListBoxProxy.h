@@ -45,7 +45,7 @@ class GWListBoxProxy : public GWControlProxy {
    
    // Multi-selection listboxes
    //
-   Int32 setSel(const in_index, const bool in_select);
+   Int32 setSel(const int in_index, const bool in_select);
    Int32 getSelCount() const;
    Int32 getSelItems(const UInt32 in_maxItems,
                              const int*   in_pItemBuffer) const;

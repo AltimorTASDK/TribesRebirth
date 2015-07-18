@@ -12,7 +12,7 @@
 #include "gwwinsx.h"
 #include <stdio.h>
 #include "registry.h"
-#include <pbt.h>
+//#include <pbt.h>
 // Since GWWindow is the ultimate end of all message map searches, we need to
 //  set the class message mapping variables by hand here, so we can set the
 //  base message pointer to NULL
