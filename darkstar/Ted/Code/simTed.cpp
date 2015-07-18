@@ -1717,9 +1717,9 @@ void SimTed::adjustControlPoint( const Point2I brush, float height, Selection & 
          double endD;
          
          // get the distances
-         targetD = sqrt( ( control.x - x ) * ( control.x - x ) +
+         targetD = sqrtf( ( control.x - x ) * ( control.x - x ) +
             ( control.y - y ) * ( control.y - y ) );
-         endD = sqrt( ( endPnt.x - control.x ) * ( endPnt.x - control.x ) +
+         endD = sqrtf( ( endPnt.x - control.x ) * ( endPnt.x - control.x ) +
             ( endPnt.y - control.y ) * ( endPnt.y - control.y ) );
             
          // adjust the coords

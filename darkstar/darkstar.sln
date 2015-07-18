@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimObjects", "SimObjects\Si
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Landscape", "Landscape\Landscape.vcxproj", "{DE5875BB-15A2-473B-8FB9-44FFB8779EAC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ted", "Ted\Ted.vcxproj", "{C166A828-3F80-49A5-BDA4-A8EB80623346}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -75,6 +77,10 @@ Global
 		{DE5875BB-15A2-473B-8FB9-44FFB8779EAC}.Debug|Win32.Build.0 = Debug|Win32
 		{DE5875BB-15A2-473B-8FB9-44FFB8779EAC}.Release|Win32.ActiveCfg = Release|Win32
 		{DE5875BB-15A2-473B-8FB9-44FFB8779EAC}.Release|Win32.Build.0 = Release|Win32
+		{C166A828-3F80-49A5-BDA4-A8EB80623346}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C166A828-3F80-49A5-BDA4-A8EB80623346}.Debug|Win32.Build.0 = Debug|Win32
+		{C166A828-3F80-49A5-BDA4-A8EB80623346}.Release|Win32.ActiveCfg = Release|Win32
+		{C166A828-3F80-49A5-BDA4-A8EB80623346}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
