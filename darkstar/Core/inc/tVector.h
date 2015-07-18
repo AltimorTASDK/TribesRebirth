@@ -272,26 +272,26 @@ template<class T> void inline Vector<T>::operator=(const Vector& p)
 		memcpy(array,p.array,element_count * sizeof(value_type));
 }	
 
-template<class T> inline Vector<T>::iterator Vector<T>::begin()
+template<class T> inline typename Vector<T>::iterator Vector<T>::begin()
 {
    AssertFatal( !(flags & Flags_ReadOnly), 
       "Vector::begin: vector is read only" );
 	return &array[0];
 }
 
-template<class T> inline Vector<T>::const_iterator Vector<T>::begin() const
+template<class T> inline typename Vector<T>::const_iterator Vector<T>::begin() const
 {
 	return &array[0];
 }
 
-template<class T> inline Vector<T>::iterator Vector<T>::end()
+template<class T> inline typename Vector<T>::iterator Vector<T>::end()
 {
    AssertFatal( !(flags & Flags_ReadOnly), 
       "Vector::end: vector is read only" );
 	return &array[element_count];
 }
 
-template<class T> inline Vector<T>::const_iterator Vector<T>::end() const
+template<class T> inline typename Vector<T>::const_iterator Vector<T>::end() const
 {
 	return &array[element_count];
 }
@@ -544,43 +544,43 @@ template<class T> inline const T& VectorPtr<T>::last() const
 //-----------------------------------------------------------------------------
 
 #if 1
-template<class T> inline VectorPtr<T>::iterator VectorPtr<T>::begin()
+template<class T> inline typename VectorPtr<T>::iterator VectorPtr<T>::begin()
 {
 	return (iterator)Parent::begin();
 }
 
-template<class T> inline VectorPtr<T>::const_iterator VectorPtr<T>::begin()
+template<class T> inline typename VectorPtr<T>::const_iterator VectorPtr<T>::begin()
 const
 {
 	return (const_iterator)Parent::begin();
 }
 
-template<class T> inline VectorPtr<T>::iterator VectorPtr<T>::end()
+template<class T> inline typename VectorPtr<T>::iterator VectorPtr<T>::end()
 {
 	return (iterator)Parent::end();
 }
 
-template<class T> inline VectorPtr<T>::const_iterator VectorPtr<T>::end() const
+template<class T> inline typename VectorPtr<T>::const_iterator VectorPtr<T>::end() const
 {
 	return (const_iterator)Parent::end();
 }
 #else
-template<class T> inline Vector<T>::iterator VectorPtr<T>::begin()
+template<class T> inline typename Vector<T>::iterator VectorPtr<T>::begin()
 {
 	return (iterator)Parent::begin();
 }
 
-template<class T> inline Vector<T>::const_iterator VectorPtr<T>::begin() const
+template<class T> inline typename Vector<T>::const_iterator VectorPtr<T>::begin() const
 {
 	return (const_iterator)Parent::begin();
 }
 
-template<class T> inline Vector<T>::iterator VectorPtr<T>::end()
+template<class T> inline typename Vector<T>::iterator VectorPtr<T>::end()
 {
 	return (iterator)Parent::end();
 }
 
-template<class T> inline Vector<T>::const_iterator VectorPtr<T>::end() const
+template<class T> inline typename Vector<T>::const_iterator VectorPtr<T>::end() const
 {
 	return (const_iterator)Parent::end();
 }

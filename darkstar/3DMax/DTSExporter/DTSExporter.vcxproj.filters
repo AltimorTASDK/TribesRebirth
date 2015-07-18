@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{0864e640-37cb-4fa4-b568-14c3fd084940}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{9fe3ba5a-7f23-44f1-becd-78f6ef1cb8b4}</UniqueIdentifier>
+      <Extensions>rc</Extensions>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{21645ea4-15a8-4927-a56b-d32686e806bf}</UniqueIdentifier>
+      <Extensions>.h</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Code\3DSMTL.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\DTSExporter.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\MeshBuilder.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\ObList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\SceneEnum.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\ShapeBuilder.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Res\DTSExporter.RC">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Inc\3DSIMP.H">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\3DSIRES.H">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\3DSShape.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\CFILE.H">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\DTSExporter.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\KFIO.H">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\MeshBuilder.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\MTLDef.H">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\MTLList.H">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\ObList.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\OFILE.H">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\resource.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\SceneEnum.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\ShapeBuilder.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Code\DTSExporter.def">
+      <Filter>Source</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

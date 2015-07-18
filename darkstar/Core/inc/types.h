@@ -235,8 +235,8 @@ const UInt32 UINT32_MAX= 0xFFFFFFFF;
 
 
 // Windows Values used by us.
-
-#define INVALID_HANDLE_VALUE (HANDLE)-1
+// Altimor: already defined in Windows.h
+//#define INVALID_HANDLE_VALUE (HANDLE)-1
 
 struct ColorX
 {

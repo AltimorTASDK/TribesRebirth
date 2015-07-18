@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30915.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DTSExporter", "DTSExporter.vcxproj", "{D18E413D-170E-4108-B5C7-025C9F79D35E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Biped Exporter|Win32 = Biped Exporter|Win32
+		Debug Pre Compress|Win32 = Debug Pre Compress|Win32
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+		Vicon Compressing Exporter|Win32 = Vicon Compressing Exporter|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D18E413D-170E-4108-B5C7-025C9F79D35E}.Biped Exporter|Win32.ActiveCfg = Biped Exporter|Win32
+		{D18E413D-170E-4108-B5C7-025C9F79D35E}.Biped Exporter|Win32.Build.0 = Biped Exporter|Win32
+		{D18E413D-170E-4108-B5C7-025C9F79D35E}.Debug Pre Compress|Win32.ActiveCfg = Debug Pre Compress|Win32
+		{D18E413D-170E-4108-B5C7-025C9F79D35E}.Debug Pre Compress|Win32.Build.0 = Debug Pre Compress|Win32
+		{D18E413D-170E-4108-B5C7-025C9F79D35E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D18E413D-170E-4108-B5C7-025C9F79D35E}.Debug|Win32.Build.0 = Debug|Win32
+		{D18E413D-170E-4108-B5C7-025C9F79D35E}.Release|Win32.ActiveCfg = Release|Win32
+		{D18E413D-170E-4108-B5C7-025C9F79D35E}.Release|Win32.Build.0 = Release|Win32
+		{D18E413D-170E-4108-B5C7-025C9F79D35E}.Vicon Compressing Exporter|Win32.ActiveCfg = Vicon Compressing Exporter|Win32
+		{D18E413D-170E-4108-B5C7-025C9F79D35E}.Vicon Compressing Exporter|Win32.Build.0 = Vicon Compressing Exporter|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
