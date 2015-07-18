@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{DE5875BB-15A2-473B-8FB9-44FFB8779EAC}</ProjectGuid>
-    <RootNamespace>Landscape</RootNamespace>
+    <ProjectGuid>{7410E9B0-CE04-4BF4-A1EB-580D05C5F3B6}</ProjectGuid>
+    <RootNamespace>Core</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -40,7 +40,6 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetExt>.lib</TargetExt>
-    <IncludePath>$(SolutionDir)Terrain\inc;$(SolutionDir)Sim\inc;$(SolutionDir)Window\inc;$(SolutionDir)Interior\inc;$(SolutionDir)Ts3\inc;$(SolutionDir)Dgfx\inc;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -48,7 +47,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\inc;$(SolutionDir)console\inc;$(SolutionDir)Ml\inc;$(SolutionDir)Core\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\inc;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -70,31 +69,84 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ResourceCompile Include="code\LSDlg.rc" />
+    <ClCompile Include="code\base.cpp" />
+    <ClCompile Include="code\bitset.cpp" />
+    <ClCompile Include="code\bitstream.cpp" />
+    <ClCompile Include="code\blkstrm.cpp" />
+    <ClCompile Include="code\CORE.CPP" />
+    <ClCompile Include="code\crc16.cpp" />
+    <ClCompile Include="code\fileName.cpp" />
+    <ClCompile Include="code\filrstrm.cpp" />
+    <ClCompile Include="code\filstrm.cpp" />
+    <ClCompile Include="code\filwstrm.cpp" />
+    <ClCompile Include="code\lzhrstrm.cpp" />
+    <ClCompile Include="code\lzhuff.cpp" />
+    <ClCompile Include="code\lzhwstrm.cpp" />
+    <ClCompile Include="code\memstrm.cpp" />
+    <ClCompile Include="code\m_qsort.cpp" />
+    <ClCompile Include="code\PERSIST.CPP" />
+    <ClCompile Include="code\registry.cpp" />
+    <ClCompile Include="code\resDictionary.cpp" />
+    <ClCompile Include="code\resManager.cpp" />
+    <ClCompile Include="code\rlerstrm.cpp" />
+    <ClCompile Include="code\rlewstrm.cpp" />
+    <ClCompile Include="code\RVecAlloc.cpp" />
+    <ClCompile Include="code\streamio.cpp" />
+    <ClCompile Include="code\stringTable.cpp" />
+    <ClCompile Include="code\threadBase.cpp" />
+    <ClCompile Include="code\timer.cpp" />
+    <ClCompile Include="code\volstrm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="code\LSEditor.cpp" />
-    <ClCompile Include="code\LSMapper.cpp" />
-    <ClCompile Include="code\LSPlugin.cpp" />
-    <ClCompile Include="code\ls_block.cpp" />
-    <ClCompile Include="code\LS_Cmplx.cpp" />
-    <ClCompile Include="code\LS_Exec.cpp" />
-    <ClCompile Include="code\LS_Fill.cpp" />
-    <ClCompile Include="code\LS_Fltr.cpp" />
-    <ClCompile Include="code\LS_IO.cpp" />
-    <ClCompile Include="code\LS_Math.cpp" />
-    <ClCompile Include="code\LS_Stack.cpp" />
-    <ClCompile Include="code\LS_terrain.cpp" />
+    <None Include="code\types.asm" />
+    <None Include="inc\types.inc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Inc\LS.h" />
-    <ClInclude Include="Inc\LSEditor.h" />
-    <ClInclude Include="Inc\LSMapper.h" />
-    <ClInclude Include="Inc\LSPlugin.h" />
-    <ClInclude Include="Inc\LSStampInst.h" />
-    <ClInclude Include="Inc\LSTerrainStamp.h" />
-    <ClInclude Include="Inc\LSTrig.h" />
-    <ClInclude Include="Inc\LS_Defs.h" />
+    <ClInclude Include="inc\base.h" />
+    <ClInclude Include="inc\BitGrid.h" />
+    <ClInclude Include="inc\bitset.h" />
+    <ClInclude Include="inc\bitstream.h" />
+    <ClInclude Include="inc\blkstrm.h" />
+    <ClInclude Include="inc\CORE.H" />
+    <ClInclude Include="inc\coreRes.h" />
+    <ClInclude Include="inc\crc16.h" />
+    <ClInclude Include="inc\diction.h" />
+    <ClInclude Include="inc\filedefs.h" />
+    <ClInclude Include="inc\fileName.h" />
+    <ClInclude Include="inc\filstrm.h" />
+    <ClInclude Include="inc\link.h" />
+    <ClInclude Include="inc\lock.h" />
+    <ClInclude Include="inc\lzhstrm.h" />
+    <ClInclude Include="inc\memstrm.h" />
+    <ClInclude Include="inc\m_qsort.h" />
+    <ClInclude Include="inc\m_trig.h" />
+    <ClInclude Include="inc\PERSIST.H" />
+    <ClInclude Include="inc\PriorityQueue.h" />
+    <ClInclude Include="inc\registry.h" />
+    <ClInclude Include="inc\resManager.h" />
+    <ClInclude Include="inc\rlestrm.h" />
+    <ClInclude Include="inc\RVecAlloc.h" />
+    <ClInclude Include="inc\Steppers.h" />
+    <ClInclude Include="inc\streamio.h" />
+    <ClInclude Include="inc\streams.h" />
+    <ClInclude Include="inc\stringTable.h" />
+    <ClInclude Include="inc\talgorithm.h" />
+    <ClInclude Include="inc\tBinaryHeap.h" />
+    <ClInclude Include="inc\tBitVector.h" />
+    <ClInclude Include="inc\tFifo.h" />
+    <ClInclude Include="inc\threadBase.h" />
+    <ClInclude Include="inc\timer.h" />
+    <ClInclude Include="inc\tio.h" />
+    <ClInclude Include="inc\tMap.h" />
+    <ClInclude Include="inc\tMHashMap.h" />
+    <ClInclude Include="inc\tNTuple.h" />
+    <ClInclude Include="inc\tRVector.h" />
+    <ClInclude Include="inc\tsorted.h" />
+    <ClInclude Include="inc\tString.h" />
+    <ClInclude Include="inc\tVarArray.h" />
+    <ClInclude Include="inc\tVector.h" />
+    <ClInclude Include="inc\types.h" />
+    <ClInclude Include="inc\volstrm.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

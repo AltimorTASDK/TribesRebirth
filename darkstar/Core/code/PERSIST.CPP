@@ -85,7 +85,8 @@ void * AbstractTaggedClass::create( const char *className )
    // search for registered class with this name and, if found
    // use it to create the object:
 
-   char mangledName[AbstractClass::MaxNameSize];
+	// Altimor: unused
+   //char mangledName[AbstractClass::MaxNameSize];
    for( const AbstractTaggedClass *cur = head; cur; cur = cur->next )
       if( !stricmp( className, cur->name ) )
          return cur->create();
@@ -426,7 +427,7 @@ const char * Base::getClassName() const
    const char * name = typeid(*this).name();
    
    #ifdef _MSC_VER
-   char * pos = strstr(name, "class ");
+   const char * pos = strstr(name, "class ");
    if(pos)
       name += 6;
    #endif

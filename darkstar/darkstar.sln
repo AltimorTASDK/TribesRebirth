@@ -27,6 +27,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Landscape", "Landscape\Land
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ted", "Ted\Ted.vcxproj", "{C166A828-3F80-49A5-BDA4-A8EB80623346}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Core\Core.vcxproj", "{7410E9B0-CE04-4BF4-A1EB-580D05C5F3B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -81,6 +83,10 @@ Global
 		{C166A828-3F80-49A5-BDA4-A8EB80623346}.Debug|Win32.Build.0 = Debug|Win32
 		{C166A828-3F80-49A5-BDA4-A8EB80623346}.Release|Win32.ActiveCfg = Release|Win32
 		{C166A828-3F80-49A5-BDA4-A8EB80623346}.Release|Win32.Build.0 = Release|Win32
+		{7410E9B0-CE04-4BF4-A1EB-580D05C5F3B6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7410E9B0-CE04-4BF4-A1EB-580D05C5F3B6}.Debug|Win32.Build.0 = Debug|Win32
+		{7410E9B0-CE04-4BF4-A1EB-580D05C5F3B6}.Release|Win32.ActiveCfg = Release|Win32
+		{7410E9B0-CE04-4BF4-A1EB-580D05C5F3B6}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
