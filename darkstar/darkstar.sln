@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Window", "Window\Window.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DNet", "DNet\DNet.vcxproj", "{C2A150CC-7705-4B1D-8EAD-2359AC5AD791}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Terrain", "Terrain\Terrain.vcxproj", "{01536585-62C3-4EEA-BDD8-B6143FFF20FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -33,6 +35,10 @@ Global
 		{C2A150CC-7705-4B1D-8EAD-2359AC5AD791}.Debug|Win32.Build.0 = Debug|Win32
 		{C2A150CC-7705-4B1D-8EAD-2359AC5AD791}.Release|Win32.ActiveCfg = Release|Win32
 		{C2A150CC-7705-4B1D-8EAD-2359AC5AD791}.Release|Win32.Build.0 = Release|Win32
+		{01536585-62C3-4EEA-BDD8-B6143FFF20FA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{01536585-62C3-4EEA-BDD8-B6143FFF20FA}.Debug|Win32.Build.0 = Debug|Win32
+		{01536585-62C3-4EEA-BDD8-B6143FFF20FA}.Release|Win32.ActiveCfg = Release|Win32
+		{01536585-62C3-4EEA-BDD8-B6143FFF20FA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

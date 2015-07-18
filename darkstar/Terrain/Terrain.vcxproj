@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{DB3C702F-2A70-4AD7-8591-C6387FBFC86D}</ProjectGuid>
-    <RootNamespace>Ts3</RootNamespace>
+    <ProjectGuid>{01536585-62C3-4EEA-BDD8-B6143FFF20FA}</ProjectGuid>
+    <RootNamespace>Terrain</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -39,17 +39,17 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetExt>.lib</TargetExt>
-    <IncludePath>$(SolutionDir)Dgfx\inc;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
+    <TargetExt>.lib</TargetExt>
+    <IncludePath>$(SolutionDir)Ts3\inc;$(SolutionDir)Ml\inc;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>false</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\inc;$(SolutionDir)Core\inc;$(SolutionDir)Dgfx\inc;$(SolutionDir)console\inc;</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\inc;$(SolutionDir)Core\inc;$(SolutionDir)Ml\inc;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -71,50 +71,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Inc\ts.h" />
-    <ClInclude Include="Inc\ts_BoundingBox.h" />
-    <ClInclude Include="Inc\ts_camera.h" />
-    <ClInclude Include="Inc\ts_CelAnimMesh.h" />
-    <ClInclude Include="Inc\ts_color.h" />
-    <ClInclude Include="Inc\ts_light.h" />
-    <ClInclude Include="Inc\ts_material.h" />
-    <ClInclude Include="Inc\ts_materialTypes.h" />
-    <ClInclude Include="Inc\ts_partInstance.h" />
-    <ClInclude Include="Inc\ts_plane.h" />
-    <ClInclude Include="Inc\ts_pointArray.h" />
-    <ClInclude Include="Inc\ts_poly.h" />
-    <ClInclude Include="Inc\ts_RenderContext.h" />
-    <ClInclude Include="Inc\ts_RenderItem.h" />
-    <ClInclude Include="Inc\ts_Res.h" />
-    <ClInclude Include="Inc\ts_shadow.h" />
-    <ClInclude Include="Inc\ts_shape.h" />
-    <ClInclude Include="Inc\ts_shapeInst.h" />
-    <ClInclude Include="Inc\ts_transAnimMesh.h" />
-    <ClInclude Include="Inc\ts_transform.h" />
-    <ClInclude Include="Inc\ts_types.h" />
-    <ClInclude Include="Inc\ts_vertex.h" />
+    <ClCompile Include="Code\grdBlock.cpp" />
+    <ClCompile Include="Code\grdcollision.cpp" />
+    <ClCompile Include="Code\grdEdgeTable.cpp" />
+    <ClCompile Include="Code\grdFile.cpp" />
+    <ClCompile Include="Code\grdHeight.cpp" />
+    <ClCompile Include="Code\grdHRLM.cpp" />
+    <ClCompile Include="Code\grdMipMake.cpp" />
+    <ClCompile Include="Code\grdRender.cpp" />
+    <ClCompile Include="Code\grdTemplate.cpp" />
+    <ClCompile Include="Code\viewcone.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="code\ts_BoundingBox.cpp" />
-    <ClCompile Include="code\ts_camera.cpp" />
-    <ClCompile Include="code\ts_CelAnimMesh.cpp" />
-    <ClCompile Include="code\ts_color.cpp" />
-    <ClCompile Include="code\ts_light.cpp" />
-    <ClCompile Include="code\ts_material.cpp" />
-    <ClCompile Include="code\ts_matRender.cpp" />
-    <ClCompile Include="code\ts_partInstance.cpp" />
-    <ClCompile Include="code\ts_plane.cpp" />
-    <ClCompile Include="code\ts_PointArray.cpp" />
-    <ClCompile Include="code\ts_RenderContext.cpp" />
-    <ClCompile Include="code\ts_shadow.cpp" />
-    <ClCompile Include="code\ts_shape.cpp" />
-    <ClCompile Include="code\ts_shapeInst.cpp" />
-    <ClCompile Include="code\ts_template.cpp" />
-    <ClCompile Include="code\ts_transform.cpp" />
-    <ClCompile Include="code\ts_vertex.cpp" />
+    <None Include="Code\mipBlit.asm" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="code\ts_fast.asm" />
+    <ClInclude Include="Inc\grd.h" />
+    <ClInclude Include="Inc\grdBlock.h" />
+    <ClInclude Include="Inc\grdcollision.h" />
+    <ClInclude Include="Inc\grdEdgeTable.h" />
+    <ClInclude Include="Inc\grdFile.h" />
+    <ClInclude Include="Inc\grdHeight.h" />
+    <ClInclude Include="Inc\grdHRLM.h" />
+    <ClInclude Include="Inc\grdMetrics.h" />
+    <ClInclude Include="Inc\grdRange.h" />
+    <ClInclude Include="Inc\grdRender.h" />
+    <ClInclude Include="Inc\viewcone.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -648,11 +648,12 @@ GridBlock::buildSubLightmaps()
             UInt32 startX = coordSpots[x];
             UInt32 startY = coordSpots[y];
 
-            pLightMap->size.x   = 256;
-            pLightMap->size.y   = 256;
+	    // Altimor: The size was getting set to 256, I assume it ended up 0 but I'm not sure
+            pLightMap->size.x   = 0;
+            pLightMap->size.y   = 0;
             pLightMap->offset.x = 0;
             pLightMap->offset.y = 0;
-            pLightMap->index    = 0xff;
+            pLightMap->index    = 0xffu;
 
             for (UInt32 cy = startY; cy < startY + 256; cy++) {
                for (UInt32 cx = startX; cx < startX + 256; cx++) {

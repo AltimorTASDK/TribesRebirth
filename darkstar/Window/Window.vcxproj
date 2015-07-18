@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetExt>.lib</TargetExt>
     <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)Ts3/inc;$(SolutionDir)Ml/inc;$(SolutionDir)Dgfx/inc;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>$(SolutionDir)Ts3\inc;$(SolutionDir)Ml\inc;$(SolutionDir)Dgfx\inc;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

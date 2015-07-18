@@ -71,7 +71,7 @@ public:
       Square65x65,
       AbsMaxWidthShift = Square65x65,  // never will go past here. 
       TotalResolutions = MaxWidthShift + 1,
-      MaxSquareWidth = ((1<< MaxWidthShift-1) + 1),
+      MaxSquareWidth = ((1<< (MaxWidthShift-1)) + 1),
       MaxSquareSize = (MaxSquareWidth * MaxSquareWidth),
       // Rough approximation of sum.  Summing a series with r about.25 so sum is 1+.33, 
       // so 1+.5 is safe upper bound.  Used for autoclass arrays in the compression:
