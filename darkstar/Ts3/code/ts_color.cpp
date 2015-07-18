@@ -87,7 +87,7 @@ Inten16Xlat::TableTables::TableTables()
       float maxd = sqrt(TableSize + .001f);
       float maxc = (float)i + 0.5;
       for ( int j = 0; j < TableSize; j++ ) 
-         tab[j] = UInt8(maxc - (sqrt(j) / maxd) * (float)i);
+         tab[j] = UInt8(maxc - (sqrtf(j) / maxd) * (float)i);
    }
 }
 

@@ -54,7 +54,7 @@ template<class T> inline void SortableVector<T>::sort()
    m_qsort( address(), size(), sizeof(T), compare );
    }
 
-template<class T> inline SortableVector<T>::iterator SortableVector<T>::find( T const & x)
+template<class T> inline typename SortableVector<T>::iterator SortableVector<T>::find( T const & x)
    {
    return binary_search( begin(), end(), x );
    }
@@ -95,7 +95,7 @@ template<class T> inline bool SortableVectorPtr<T>::lessThan( T const & elem1, T
    return (*elem1 < *elem2);
    }
 
-template<class T> inline SortableVectorPtr<T>::iterator SortableVectorPtr<T>::find( T const & x)
+template<class T> inline typename SortableVectorPtr<T>::iterator SortableVectorPtr<T>::find( T const & x)
    {
    return binary_search( begin(), end(), x, lessThan );
    }

@@ -80,7 +80,7 @@ public:
    T& operator[](int);
    const T& operator[](int) const;
 
-   void reserve(int);
+   void reserve(int);inline
    int capacity() const;
 
 	// Extended interface
@@ -226,22 +226,22 @@ template<class T> inline const T& RVector<T>::last() const
 	return array[element_count - 1];
 }
 
-template<class T> inline RVector<T>::iterator RVector<T>::begin()
+template<class T> inline typename RVector<T>::iterator RVector<T>::begin()
 {
 	return &array[0];
 }
 
-template<class T> inline RVector<T>::const_iterator RVector<T>::begin() const
+template<class T> inline typename RVector<T>::const_iterator RVector<T>::begin() const
 {
 	return &array[0];
 }
 
-template<class T> inline RVector<T>::iterator RVector<T>::end()
+template<class T> inline typename RVector<T>::iterator RVector<T>::end()
 {
 	return &array[element_count];
 }
 
-template<class T> inline RVector<T>::const_iterator RVector<T>::end() const
+template<class T> inline typename RVector<T>::const_iterator RVector<T>::end() const
 {
 	return &array[element_count];
 }
@@ -439,22 +439,22 @@ template<class T> inline const T& RVectorPtr<T>::last() const
 
 //-----------------------------------------------------------------------------
 
-template<class T> inline RVector<T>::iterator RVectorPtr<T>::begin()
+template<class T> inline typename RVectorPtr<T>::iterator RVectorPtr<T>::begin()
 {
 	return (iterator)Parent::begin();
 }
 
-template<class T> inline RVector<T>::const_iterator RVectorPtr<T>::begin() const
+template<class T> inline typename RVectorPtr<T>::const_iterator RVectorPtr<T>::begin() const
 {
 	return (const_iterator)Parent::begin();
 }
 
-template<class T> inline RVector<T>::iterator RVectorPtr<T>::end()
+template<class T> inline typename RVectorPtr<T>::iterator RVectorPtr<T>::end()
 {
 	return (iterator)Parent::end();
 }
 
-template<class T> inline RVector<T>::const_iterator RVectorPtr<T>::end() const
+template<class T> inline typename RVectorPtr<T>::const_iterator RVectorPtr<T>::end() const
 {
 	return (const_iterator)Parent::end();
 }

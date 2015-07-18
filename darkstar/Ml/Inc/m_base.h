@@ -177,7 +177,7 @@ inline RealF m_log2f( const RealF val )
 
 inline RealF m_pow2( const RealF val )
 {
-   return (RealF)(pow(2.0, val));
+   return (RealF)(powf(2.0, val));
 }
 
 inline RealF m_pow2f( const RealF val )
