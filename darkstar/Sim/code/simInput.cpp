@@ -253,9 +253,9 @@ void SimInputManager::enumerate()
    if (pDirectInput)  
    {
       SimInputDevice::init();
-      pDirectInput->EnumDevices(DIDEVTYPE_MOUSE, EnumDevicesProc, this, DIEDFL_ATTACHEDONLY);
-      pDirectInput->EnumDevices(DIDEVTYPE_KEYBOARD, EnumDevicesProc, this, DIEDFL_ATTACHEDONLY);
-      pDirectInput->EnumDevices(DIDEVTYPE_JOYSTICK, EnumDevicesProc, this, DIEDFL_ATTACHEDONLY);
+      pDirectInput->EnumDevices(DI8DEVTYPE_MOUSE, EnumDevicesProc, this, DIEDFL_ATTACHEDONLY);
+      pDirectInput->EnumDevices(DI8DEVTYPE_KEYBOARD, EnumDevicesProc, this, DIEDFL_ATTACHEDONLY);
+      pDirectInput->EnumDevices(DI8DEVTYPE_JOYSTICK, EnumDevicesProc, this, DIEDFL_ATTACHEDONLY);
    }
 }   
 

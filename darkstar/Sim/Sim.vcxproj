@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D919B44A-88B8-4F5E-A7D1-4F2AC8833F5A}</ProjectGuid>
+    <RootNamespace>Sim</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetExt>.lib</TargetExt>
+    <IncludePath>$(SolutionDir)VolumeDark\data;$(SolutionDir)Ml\inc;$(SolutionDir)Window\inc;$(SolutionDir)console\inc;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>false</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\inc;$(SolutionDir)Core\inc;$(SolutionDir)volumeEdit\data;$(SolutionDir)Interior\inc;$(SolutionDir)Terrain2\inc;$(SolutionDir)Ts3\inc;$(SolutionDir)Terrain\inc;$(SolutionDir)DNet\inc;$(SolutionDir)Dgfx\inc</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="code\generic.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="code\genericActions.cpp" />
+    <ClCompile Include="code\inspect.cpp" />
+    <ClCompile Include="code\inspectWindow.cpp" />
+    <ClCompile Include="code\netCSDelegate.cpp" />
+    <ClCompile Include="code\netEventManager.cpp" />
+    <ClCompile Include="code\netGhostManager.cpp" />
+    <ClCompile Include="code\netPacketStream.cpp" />
+    <ClCompile Include="code\netTemplates.cpp" />
+    <ClCompile Include="code\simAction.cpp" />
+    <ClCompile Include="code\simBase.cpp" />
+    <ClCompile Include="code\simCanvas.cpp" />
+    <ClCompile Include="code\simCollideable.cpp" />
+    <ClCompile Include="code\simCollision.cpp" />
+    <ClCompile Include="code\simCollisionImages.cpp" />
+    <ClCompile Include="code\simConsoleEvent.cpp" />
+    <ClCompile Include="code\simConsolePlugin.cpp" />
+    <ClCompile Include="code\simContainer.cpp" />
+    <ClCompile Include="code\simCoordDB.cpp" />
+    <ClCompile Include="code\simDictionary.cpp" />
+    <ClCompile Include="code\SimDynamicDataPlugin.cpp" />
+    <ClCompile Include="code\simDynamicLight.cpp" />
+    <ClCompile Include="code\simev.cpp" />
+    <ClCompile Include="code\simGame.cpp" />
+    <ClCompile Include="code\simGuiConsolePlugin.cpp" />
+    <ClCompile Include="code\simInput.cpp" />
+    <ClCompile Include="code\simInputDevice.cpp" />
+    <ClCompile Include="code\simLightGrp.cpp" />
+    <ClCompile Include="code\simMovement.cpp" />
+    <ClCompile Include="code\simNetObject.cpp" />
+    <ClCompile Include="code\simPalette.cpp" />
+    <ClCompile Include="code\simPersman.cpp" />
+    <ClCompile Include="code\simPing.cpp" />
+    <ClCompile Include="code\simPrefs.cpp" />
+    <ClCompile Include="code\simPreLoadManager.cpp" />
+    <ClCompile Include="code\simResource.cpp" />
+    <ClCompile Include="code\simSetIterator.cpp" />
+    <ClCompile Include="code\simTagDictionary.cpp" />
+    <ClCompile Include="code\simTelnetPlugin.cpp" />
+    <ClCompile Include="code\simTemplates.cpp" />
+    <ClCompile Include="code\simTerrain.cpp" />
+    <ClCompile Include="code\simTimerGrp.cpp" />
+    <ClCompile Include="code\simToolwin.cpp" />
+    <ClCompile Include="code\simTreeView.cpp" />
+    <ClCompile Include="code\simVolume.cpp" />
+    <ClCompile Include="code\simWorld.cpp" />
+    <ClCompile Include="code\WinTools.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\genericActions.h" />
+    <ClInclude Include="inc\inspect.h" />
+    <ClInclude Include="inc\inspectWindow.h" />
+    <ClInclude Include="inc\netCSDelegate.h" />
+    <ClInclude Include="inc\netEventManager.h" />
+    <ClInclude Include="inc\netGhostManager.h" />
+    <ClInclude Include="inc\netPacketStream.h" />
+    <ClInclude Include="inc\sim.h" />
+    <ClInclude Include="inc\sim3DEv.h" />
+    <ClInclude Include="inc\simAction.h" />
+    <ClInclude Include="inc\simBase.h" />
+    <ClInclude Include="inc\simCamera.h" />
+    <ClInclude Include="inc\simCanvas.h" />
+    <ClInclude Include="inc\simCollideable.h" />
+    <ClInclude Include="inc\simCollision.h" />
+    <ClInclude Include="inc\simCollisionImages.h" />
+    <ClInclude Include="inc\simConsoleEvent.h" />
+    <ClInclude Include="inc\simConsolePlugin.h" />
+    <ClInclude Include="inc\simContainer.h" />
+    <ClInclude Include="inc\simCoordDB.h" />
+    <ClInclude Include="inc\simDictionary.h" />
+    <ClInclude Include="inc\SimDynamicDataPlugin.h" />
+    <ClInclude Include="inc\simDynamicLight.h" />
+    <ClInclude Include="inc\simEv.h" />
+    <ClInclude Include="inc\simEvDcl.h" />
+    <ClInclude Include="inc\simEvHandler.h" />
+    <ClInclude Include="inc\simGame.h" />
+    <ClInclude Include="inc\simGuiConsolePlugin.h" />
+    <ClInclude Include="inc\simInput.h" />
+    <ClInclude Include="inc\simInputDevice.h" />
+    <ClInclude Include="inc\simLightGrp.h" />
+    <ClInclude Include="inc\simMovement.h" />
+    <ClInclude Include="inc\simNetObject.h" />
+    <ClInclude Include="inc\simObjectTypes.h" />
+    <ClInclude Include="inc\simPalette.h" />
+    <ClInclude Include="inc\simPersistTags.h" />
+    <ClInclude Include="inc\simPersman.h" />
+    <ClInclude Include="inc\simPing.h" />
+    <ClInclude Include="inc\simPrefs.h" />
+    <ClInclude Include="inc\simPreLoadManager.h" />
+    <ClInclude Include="inc\simRenderGrp.h" />
+    <ClInclude Include="inc\simResource.h" />
+    <ClInclude Include="inc\simSetIterator.h" />
+    <ClInclude Include="inc\simTagDictionary.h" />
+    <ClInclude Include="inc\simTelnetPlugin.h" />
+    <ClInclude Include="inc\simTerrain.h" />
+    <ClInclude Include="inc\simTime.h" />
+    <ClInclude Include="inc\simTimerGrp.h" />
+    <ClInclude Include="inc\simToolwin.h" />
+    <ClInclude Include="inc\SimTreeView.h" />
+    <ClInclude Include="inc\simVolume.h" />
+    <ClInclude Include="inc\simWorld.h" />
+    <ClInclude Include="inc\testGui.h" />
+    <ClInclude Include="inc\wintools.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

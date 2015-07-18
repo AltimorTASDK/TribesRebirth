@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CFE3D950-7A8D-41BD-845A-E0F1D318C5E4}</ProjectGuid>
+    <RootNamespace>SimGui</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetExt>.lib</TargetExt>
+    <IncludePath>$(SolutionDir)VolumeDark\data;$(SolutionDir)Ml\inc;$(SolutionDir)Window\inc;$(SolutionDir)Sim\inc;$(SolutionDir)console\inc;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>false</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)Sim\inc;$(SolutionDir)$(ProjectName)\inc;$(SolutionDir)Core\inc;$(SolutionDir)volumeEdit\data;$(SolutionDir)Interior\inc;$(SolutionDir)Terrain2\inc;$(SolutionDir)Ts3\inc;$(SolutionDir)Terrain\inc;$(SolutionDir)DNet\inc;$(SolutionDir)Dgfx\inc</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="code\chunkedBitmap.cpp" />
+    <ClCompile Include="code\simGuiActiveCtrl.cpp" />
+    <ClCompile Include="code\SimGuiAnimateBMA.cpp" />
+    <ClCompile Include="code\simGuiArrayCtrl.cpp" />
+    <ClCompile Include="code\simGuiBase.cpp" />
+    <ClCompile Include="code\simGuiBitmapBox.cpp" />
+    <ClCompile Include="code\simGuiBitmapCtrl.cpp" />
+    <ClCompile Include="code\simGuiCanvas.cpp" />
+    <ClCompile Include="code\simGuiComboBox.cpp" />
+    <ClCompile Include="code\simGuiCtrl.cpp" />
+    <ClCompile Include="code\simGuiDelegate.cpp" />
+    <ClCompile Include="code\simGuiEditCtrl.cpp" />
+    <ClCompile Include="code\SimGuiHelpCtrl.cpp" />
+    <ClCompile Include="code\SimGuiMatrixCtrl.cpp" />
+    <ClCompile Include="code\simGuiPaletteCtrl.cpp" />
+    <ClCompile Include="code\simGuiPersTags.cpp" />
+    <ClCompile Include="code\simGuiPlugin.cpp" />
+    <ClCompile Include="code\simGuiProgressCtrl.cpp" />
+    <ClCompile Include="code\simGuiScrollCtrl.cpp" />
+    <ClCompile Include="code\simGuiSimpleText.cpp" />
+    <ClCompile Include="code\simGuiSlider.cpp" />
+    <ClCompile Include="code\simGuiTestButton.cpp" />
+    <ClCompile Include="code\simguitestcheck.cpp" />
+    <ClCompile Include="code\simGuiTestCtrl.cpp" />
+    <ClCompile Include="code\simGuiTestRadial.cpp" />
+    <ClCompile Include="code\simGuiTextEdit.cpp" />
+    <ClCompile Include="code\SimGuiTextFormat.cpp" />
+    <ClCompile Include="code\simGuiTextList.cpp" />
+    <ClCompile Include="code\simGuiTextWrap.cpp" />
+    <ClCompile Include="code\simGuiTimerCtrl.cpp" />
+    <ClCompile Include="code\simGuiTSCtrl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\chunkedBitmap.h" />
+    <ClInclude Include="inc\simGuiActiveCtrl.h" />
+    <ClInclude Include="inc\SimGuiAnimateBMA.h" />
+    <ClInclude Include="inc\simGuiArrayCtrl.h" />
+    <ClInclude Include="inc\simGuiBase.h" />
+    <ClInclude Include="inc\simGuiBitmapBox.h" />
+    <ClInclude Include="inc\simGuiBitmapCtrl.h" />
+    <ClInclude Include="inc\simGuiBulletSimpleText.h" />
+    <ClInclude Include="inc\simGuiBulletTextWrap.h" />
+    <ClInclude Include="inc\simGuiCanvas.h" />
+    <ClInclude Include="inc\simGuiComboBox.h" />
+    <ClInclude Include="inc\simGuiCtrl.h" />
+    <ClInclude Include="inc\simGuiDelegate.h" />
+    <ClInclude Include="inc\simGuiEditCtrl.h" />
+    <ClInclude Include="inc\SimGuiHelpCtrl.h" />
+    <ClInclude Include="inc\SimGuiMatrixCtrl.h" />
+    <ClInclude Include="inc\simGuiPaletteCtrl.h" />
+    <ClInclude Include="inc\simGuiPlugin.h" />
+    <ClInclude Include="inc\simGuiProgressCtrl.h" />
+    <ClInclude Include="inc\simGuiScrollCtrl.h" />
+    <ClInclude Include="inc\simGuiSimpleText.h" />
+    <ClInclude Include="inc\simGuiSlider.h" />
+    <ClInclude Include="inc\simGuiTestButton.h" />
+    <ClInclude Include="inc\simGuiTestCheck.h" />
+    <ClInclude Include="inc\simGuiTestCtrl.h" />
+    <ClInclude Include="inc\simGuiTestRadial.h" />
+    <ClInclude Include="inc\simGuiTextEdit.h" />
+    <ClInclude Include="inc\SimGuiTextFormat.h" />
+    <ClInclude Include="inc\simGuiTextList.h" />
+    <ClInclude Include="inc\simGuiTextWrap.h" />
+    <ClInclude Include="inc\simGuiTimerCtrl.h" />
+    <ClInclude Include="inc\simGuiTSCtrl.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

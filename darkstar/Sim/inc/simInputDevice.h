@@ -17,10 +17,10 @@
 
 
 // device constants (from DirectInput)    (n <= 31) !!!
-#define SI_DEVICE    DIDEVTYPE_DEVICE    
-#define SI_MOUSE     DIDEVTYPE_MOUSE     
-#define SI_KEYBOARD  DIDEVTYPE_KEYBOARD  
-#define SI_JOYSTICK  DIDEVTYPE_JOYSTICK  
+#define SI_DEVICE    DI8DEVTYPE_DEVICE    
+#define SI_MOUSE     DI8DEVTYPE_MOUSE     
+#define SI_KEYBOARD  DI8DEVTYPE_KEYBOARD  
+#define SI_JOYSTICK  DI8DEVTYPE_JOYSTICK  
 #define SI_POINTER   (16)
 
 // Device Event Action Types

@@ -3,8 +3,8 @@
 
 //--------------------------------------------------------------------------- 
 
-#pragma warn -inl
-#pragma warn -aus
+//#pragma warn -inl
+//#pragma warn -aus
 
 #include <ts.h>
 #include <base.h>

@@ -204,13 +204,14 @@ bool CSDelegate::processArguments(int argc, const char **argv)
 DNet::Transport *CSDelegate::activate(const char *transportName, int port)
 {
    
-#ifdef _MSC_VER
+	// Altimor: not anymore
+/*#ifdef _MSC_VER
    // microsoft has error in compiler here - need to call through ptr to member function
    DNet::Transport * (DNet::Session::*fp)(const char *, int) = DNet::Session::activate;
    DNet::Transport * transport = (this->*fp)(transportName, port);
-#else   
+#else*/
    DNet::Transport *transport = DNet::Session::activate(transportName, port);
-#endif
+//#endif
    return transport;
 }
 
