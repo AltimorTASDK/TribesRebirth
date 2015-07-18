@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimGui", "SimGui\SimGui.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimObjects", "SimObjects\SimObjects.vcxproj", "{D40BB1E8-37EB-467E-9B16-B060942AAEA8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Landscape", "Landscape\Landscape.vcxproj", "{DE5875BB-15A2-473B-8FB9-44FFB8779EAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -69,6 +71,10 @@ Global
 		{D40BB1E8-37EB-467E-9B16-B060942AAEA8}.Debug|Win32.Build.0 = Debug|Win32
 		{D40BB1E8-37EB-467E-9B16-B060942AAEA8}.Release|Win32.ActiveCfg = Release|Win32
 		{D40BB1E8-37EB-467E-9B16-B060942AAEA8}.Release|Win32.Build.0 = Release|Win32
+		{DE5875BB-15A2-473B-8FB9-44FFB8779EAC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DE5875BB-15A2-473B-8FB9-44FFB8779EAC}.Debug|Win32.Build.0 = Debug|Win32
+		{DE5875BB-15A2-473B-8FB9-44FFB8779EAC}.Release|Win32.ActiveCfg = Release|Win32
+		{DE5875BB-15A2-473B-8FB9-44FFB8779EAC}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

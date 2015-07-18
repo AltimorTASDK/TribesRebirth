@@ -1041,8 +1041,8 @@ void LandScape::flatten(Point2I &origin, LS_ROT_90S rot, Vector<Point2I> *tileLi
         tile += origin;
 
         // now, flatten the four vertices of the tile
-        static x_offset[] = { 0, 1, 1, 0 };
-        static y_offset[] = { 0, 0, 1, 1 };
+        static int x_offset[] = { 0, 1, 1, 0 };
+        static int y_offset[] = { 0, 0, 1, 1 };
         int x, y;
         if (tile.x<size-1 && tile.y<size-1)
            for (int i = 0; i < 4; i++) 
