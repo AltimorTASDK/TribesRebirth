@@ -101,7 +101,7 @@ class MultiHashMap {
    entry_type  m_freeList;
    entry_type* m_pSentries;
 
-   HashedCache(); // _must_ pass a hash function to the constructor...
+   int HashedCache(); // _must_ pass a hash function to the constructor...
 };
 
 template<class Key, class Value>
@@ -149,7 +149,7 @@ MultiHashMap<Key, Value>::clear()
 }
 
 template<class Key, class Value>
-inline MultiHashMap<Key, Value>::entry_type* 
+inline typename MultiHashMap<Key, Value>::entry_type* 
 MultiHashMap<Key, Value>::getFreeEntry()
 {
    AssertFatal(m_freeList.pNext != NULL,
@@ -174,7 +174,7 @@ MultiHashMap<Key, Value>::releaseEntry(entry_type* in_pRelease)
 
 
 template<class Key, class Value>
-MultiHashMap<Key, Value>::iterator 
+typename MultiHashMap<Key, Value>::iterator 
 MultiHashMap<Key, Value>::find(const Key& in_findKey)
 {
    UInt16 rawKey = m_hashFunction(in_findKey);
@@ -199,7 +199,7 @@ MultiHashMap<Key, Value>::find(const Key& in_findKey)
 }
 
 template<class Key, class Value>
-MultiHashMap<Key, Value>::iterator 
+typename MultiHashMap<Key, Value>::iterator 
 MultiHashMap<Key, Value>::find(const Key&   in_findKey,
                                const Value& in_findValue)
 {

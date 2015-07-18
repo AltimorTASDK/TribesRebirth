@@ -56,8 +56,8 @@ public:
 	typedef Element& reference;
 	typedef const Element& const_reference;
 
-	typedef SortableVector<Element>::iterator iterator;
-	typedef SortableVector<Element>::const_iterator const_iterator;
+	typedef typename SortableVector<Element>::iterator iterator;
+	typedef typename SortableVector<Element>::const_iterator const_iterator;
 	typedef int difference_type;
 	typedef int size_type;
 
@@ -102,7 +102,7 @@ Map<Key,Value>::~Map()
 }
 
 template<class Key, class Value>
-inline Map<Key,Value>::size_type Map<Key,Value>::size () const
+inline typename Map<Key,Value>::size_type Map<Key,Value>::size () const
 {
 	return data.size();
 }
@@ -114,25 +114,25 @@ inline bool Map<Key,Value>::empty () const
 }
 
 template<class Key, class Value>
-inline Map<Key,Value>::value_type& Map<Key,Value>::front()
+inline typename Map<Key,Value>::value_type& Map<Key,Value>::front()
 {
 	return data.front();
 }
 
 template<class Key, class Value>
-inline const Map<Key,Value>::value_type& Map<Key,Value>::front() const
+inline const typename Map<Key,Value>::value_type& Map<Key,Value>::front() const
 {
 	return data.front();
 }
 
 template<class Key, class Value>
-inline Map<Key,Value>::value_type& Map<Key,Value>::back()
+inline typename Map<Key,Value>::value_type& Map<Key,Value>::back()
 {
 	return data.back();
 }
 
 template<class Key, class Value>
-inline const Map<Key,Value>::value_type& Map<Key,Value>::back() const
+inline const typename Map<Key,Value>::value_type& Map<Key,Value>::back() const
 {
 	return data.back();
 }
@@ -145,7 +145,7 @@ inline void Map<Key,Value>::erase(const iterator itr)
 }
 
 template<class Key, class Value>
-inline Map<Key,Value>::iterator Map<Key,Value>::find(const Key& first)
+inline typename Map<Key,Value>::iterator Map<Key,Value>::find(const Key& first)
 {
 	searchKey.first = first;
 	return data.find(searchKey);

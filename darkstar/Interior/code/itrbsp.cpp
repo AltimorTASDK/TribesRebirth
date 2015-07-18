@@ -29,7 +29,7 @@ namespace ITRBSPBuild
    struct Node
    {
       bool solid;             // only used in leaves, is solid?
-      static nodeCount;       // Total nodes constructed
+      static int nodeCount;   // Total nodes constructed
       int planeIndex;         // Buffer planeList
       Node* front;
       Node* back;

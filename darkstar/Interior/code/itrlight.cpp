@@ -156,7 +156,7 @@ int main(int argc,char** argv)
       AssertISV( itrLightOptions, avar("File: %s does not containt an ITRLightingOptions.\n", argv[4]));
 
       // fill in the data...
-      itrLightingOptions->m_lightingType = itrLightOptions->m_lightingType;
+      itrLightingOptions->m_lightingType = (ITRLightingOptions::LightingType)itrLightOptions->m_lightingType;
       itrLightingOptions->m_geometryScale = itrLightOptions->m_geometryScale;
       itrLightingOptions->m_lightScale = itrLightOptions->m_lightScale;
       itrLightingOptions->m_useNormals = itrLightOptions->m_useNormals;
@@ -366,7 +366,7 @@ void loadMaterialProperties(FILE* fp, ITRBasicLighting::MaterialPropList* matPro
    char buff[256];
    int  matIndex;
 
-   if (!fscanf(fp,"%s",buff) == EOF)
+   if (fscanf(fp,"%s",buff) == EOF)
       return;
    
    while (!stricmp(buff,"Material")) {

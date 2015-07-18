@@ -292,7 +292,7 @@ getCosRandDeflectedNormal(const Point3F& in_normal,
    float epsilon1 = rand1 / float(0xffffffff);
    float epsilon2 = rand2 / float(0xffffffff);
 
-   cosRandTheta = acos(pow((1.0f - epsilon1),1.0/(1+phongExp)));
+   cosRandTheta = acos(powf((1.0f - epsilon1),1.0/(1+phongExp)));
    cosRandPhi   = 2 * M_PI * epsilon2;
 
    // Deflect the surface normal

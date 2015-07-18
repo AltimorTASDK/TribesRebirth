@@ -13,6 +13,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DNet", "DNet\DNet.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Terrain", "Terrain\Terrain.vcxproj", "{01536585-62C3-4EEA-BDD8-B6143FFF20FA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Terrain2", "Terrain2\Terrain2.vcxproj", "{E64B7065-CFAF-43FC-AC8E-667A040070C0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Interior", "Interior\Interior.vcxproj", "{C40B8BA3-8E50-4A5D-AD62-1E9E9A4EB08F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -39,6 +43,14 @@ Global
 		{01536585-62C3-4EEA-BDD8-B6143FFF20FA}.Debug|Win32.Build.0 = Debug|Win32
 		{01536585-62C3-4EEA-BDD8-B6143FFF20FA}.Release|Win32.ActiveCfg = Release|Win32
 		{01536585-62C3-4EEA-BDD8-B6143FFF20FA}.Release|Win32.Build.0 = Release|Win32
+		{E64B7065-CFAF-43FC-AC8E-667A040070C0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E64B7065-CFAF-43FC-AC8E-667A040070C0}.Debug|Win32.Build.0 = Debug|Win32
+		{E64B7065-CFAF-43FC-AC8E-667A040070C0}.Release|Win32.ActiveCfg = Release|Win32
+		{E64B7065-CFAF-43FC-AC8E-667A040070C0}.Release|Win32.Build.0 = Release|Win32
+		{C40B8BA3-8E50-4A5D-AD62-1E9E9A4EB08F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C40B8BA3-8E50-4A5D-AD62-1E9E9A4EB08F}.Debug|Win32.Build.0 = Debug|Win32
+		{C40B8BA3-8E50-4A5D-AD62-1E9E9A4EB08F}.Release|Win32.ActiveCfg = Release|Win32
+		{C40B8BA3-8E50-4A5D-AD62-1E9E9A4EB08F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

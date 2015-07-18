@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C40B8BA3-8E50-4A5D-AD62-1E9E9A4EB08F}</ProjectGuid>
+    <RootNamespace>Interior</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)console\inc;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>false</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\inc;$(SolutionDir)Core\inc;$(SolutionDir)Ml\inc;$(SolutionDir)Dgfx\inc;$(SolutionDir)Ts3\inc;</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="code\generic.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="code\itr3dmimport.cpp" />
+    <ClCompile Include="code\itrbasiclighting.cpp" />
+    <ClCompile Include="code\itrbit.cpp" />
+    <ClCompile Include="code\itrbsp.cpp" />
+    <ClCompile Include="code\itrbuild.cpp" />
+    <ClCompile Include="code\itrcollision.cpp" />
+    <ClCompile Include="code\itrgeometry.cpp" />
+    <ClCompile Include="code\itrinstance.cpp" />
+    <ClCompile Include="code\itrlight.cpp" />
+    <ClCompile Include="code\itrlighting.cpp" />
+    <ClCompile Include="code\itrmatrix.cpp" />
+    <ClCompile Include="code\itrmetrics.cpp" />
+    <ClCompile Include="code\itrportal.cpp" />
+    <ClCompile Include="code\itrrender.cpp" />
+    <ClCompile Include="code\itrshape.cpp" />
+    <ClCompile Include="code\itrShapeEdit.cpp" />
+    <ClCompile Include="code\polyBSPClip.cpp" />
+    <ClCompile Include="code\tplane.cpp" />
+    <ClCompile Include="code\zedPersLight.cpp" />
+    <ClCompile Include="code\zedSParse.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\itr3dmimport.h" />
+    <ClInclude Include="inc\itrbasiclighting.h" />
+    <ClInclude Include="inc\itrbit.h" />
+    <ClInclude Include="inc\itrbsp.h" />
+    <ClInclude Include="inc\itrcache.h" />
+    <ClInclude Include="inc\itrcollision.h" />
+    <ClInclude Include="inc\itrDynamicLight.h" />
+    <ClInclude Include="inc\itrgeometry.h" />
+    <ClInclude Include="inc\itrinstance.h" />
+    <ClInclude Include="inc\itrlighting.h" />
+    <ClInclude Include="inc\itrmaterial.h" />
+    <ClInclude Include="inc\itrmetrics.h" />
+    <ClInclude Include="inc\itrplane.h" />
+    <ClInclude Include="inc\itrportal.h" />
+    <ClInclude Include="inc\itrradiositylighting.h" />
+    <ClInclude Include="inc\itrrender.h" />
+    <ClInclude Include="inc\itrres.h" />
+    <ClInclude Include="inc\itrshape.h" />
+    <ClInclude Include="inc\itrShapeEdit.h" />
+    <ClInclude Include="inc\itrtsimport.h" />
+    <ClInclude Include="inc\polyBSPClip.h" />
+    <ClInclude Include="inc\tplane.h" />
+    <ClInclude Include="inc\tpoly.h" />
+    <ClInclude Include="inc\zedPersLight.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
