@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7A40EAEC-1BC4-46B8-BEA3-59180B042F9B}</ProjectGuid>
+    <RootNamespace>Dgfx</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>false</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\glide;$(SolutionDir)$(ProjectName)\inc;$(SolutionDir)Ml\inc;$(SolutionDir)console\inc;$(SolutionDir)Core\inc</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <CustomBuild>
+      <Command>ml /c /nologo /Cp /coff /D__MASM__ /DMSVC /I"inc" /I"..\Core\inc" /I"..\Ml\inc" "%(FullPath)"</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>%(Filename).obj</Outputs>
+    </CustomBuild>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="code\b_blit.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\c_raster.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\g_bm.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\g_cleara.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\g_contxt.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\g_timer.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\l_raster.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\p_rastdc.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\p_rastn.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\p_scane.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\p_txrc.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\rn_fill.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\rn_filln.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\rn_nontx.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\rn_nptex.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\rn_persp.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="code\r_raster.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <None Include="inc\g_contxt.inc" />
+    <None Include="inc\g_macros.inc" />
+    <None Include="inc\g_raster.inc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="code\b_draw.cpp" />
+    <ClCompile Include="code\c_draw.cpp" />
+    <ClCompile Include="code\ddrawerr.cpp" />
+    <ClCompile Include="code\fn_table.cpp" />
+    <ClCompile Include="code\gbase.cpp" />
+    <ClCompile Include="code\gdevice.cpp" />
+    <ClCompile Include="code\gdmanag.cpp" />
+    <ClCompile Include="code\gfxRes.cpp" />
+    <ClCompile Include="code\gglidedev.cpp" />
+    <ClCompile Include="code\glidein.cpp" />
+    <ClCompile Include="code\glidesfc.cpp" />
+    <ClCompile Include="code\glidetx.cpp" />
+    <ClCompile Include="code\glLoader.cpp" />
+    <ClCompile Include="code\gOGLDev.cpp" />
+    <ClCompile Include="code\gOGLFn.cpp" />
+    <ClCompile Include="code\gOGLSfc.cpp" />
+    <ClCompile Include="code\gOGLTCache.cpp" />
+    <ClCompile Include="code\gOGLTx.cpp" />
+    <ClCompile Include="code\gsdevice.cpp" />
+    <ClCompile Include="code\g_barray.cpp" />
+    <ClCompile Include="code\g_bitmap.cpp" />
+    <ClCompile Include="code\g_cds.cpp" />
+    <ClCompile Include="code\g_clear.cpp" />
+    <ClCompile Include="code\g_clip.cpp" />
+    <ClCompile Include="code\g_ddraw.cpp" />
+    <ClCompile Include="code\g_font.cpp" />
+    <ClCompile Include="code\g_fontrend.cpp" />
+    <ClCompile Include="code\g_mem.cpp" />
+    <ClCompile Include="code\g_pal.cpp" />
+    <ClCompile Include="code\g_point.cpp" />
+    <ClCompile Include="code\g_sub.cpp" />
+    <ClCompile Include="code\g_surfac.cpp" />
+    <ClCompile Include="code\l_draw.cpp" />
+    <ClCompile Include="code\m_random.cpp" />
+    <ClCompile Include="code\palMap.cpp" />
+    <ClCompile Include="code\p_edge.cpp" />
+    <ClCompile Include="code\p_funcs.cpp" />
+    <ClCompile Include="code\p_txcach.cpp" />
+    <ClCompile Include="code\r_draw.cpp" />
+    <ClCompile Include="code\writfunc.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\ddrawerr.h" />
+    <ClInclude Include="inc\d_caps.h" />
+    <ClInclude Include="inc\d_defs.h" />
+    <ClInclude Include="inc\d_funcs.h" />
+    <ClInclude Include="inc\fn_all.h" />
+    <ClInclude Include="inc\fn_table.h" />
+    <ClInclude Include="inc\gdevice.h" />
+    <ClInclude Include="inc\gdmanag.h" />
+    <ClInclude Include="inc\gfxmetrics.h" />
+    <ClInclude Include="inc\gfxRes.h" />
+    <ClInclude Include="inc\gglidedev.h" />
+    <ClInclude Include="inc\glidesfc.h" />
+    <ClInclude Include="inc\glidetx.h" />
+    <ClInclude Include="inc\gOGLDev.h" />
+    <ClInclude Include="inc\gOGLSfc.h" />
+    <ClInclude Include="inc\gOGLTCache.h" />
+    <ClInclude Include="inc\gOGLTx.h" />
+    <ClInclude Include="inc\gsdevice.h" />
+    <ClInclude Include="inc\gSGLDev.h" />
+    <ClInclude Include="inc\gSGLSfc.h" />
+    <ClInclude Include="inc\g_barray.h" />
+    <ClInclude Include="inc\g_bitmap.h" />
+    <ClInclude Include="inc\g_cds.h" />
+    <ClInclude Include="inc\g_contxt.h" />
+    <ClInclude Include="inc\g_ddraw.h" />
+    <ClInclude Include="inc\g_font.h" />
+    <ClInclude Include="inc\g_fontedit.h" />
+    <ClInclude Include="inc\g_mem.h" />
+    <ClInclude Include="inc\g_pal.h" />
+    <ClInclude Include="inc\g_raster.h" />
+    <ClInclude Include="inc\g_sub.h" />
+    <ClInclude Include="inc\g_surfac.h" />
+    <ClInclude Include="inc\g_timer.h" />
+    <ClInclude Include="inc\g_types.h" />
+    <ClInclude Include="inc\palMap.h" />
+    <ClInclude Include="inc\p_edge.h" />
+    <ClInclude Include="inc\p_funcs.h" />
+    <ClInclude Include="inc\p_tce.h" />
+    <ClInclude Include="inc\p_txcach.h" />
+    <ClInclude Include="inc\rn_manag.h" />
+    <ClInclude Include="inc\r_clip.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

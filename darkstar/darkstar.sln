@@ -33,6 +33,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dgfx", "Dgfx\Dgfx.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ml", "Ml\Ml.vcxproj", "{5C362F98-AC5A-4428-9224-A93A6579004F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{28A3B570-9525-4332-B1F6-96D5C0484E77}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FontEdit", "Tools\FontEdit\FontEdit.vcxproj", "{EA9B472F-C2F5-4086-B519-8189D3DB1340}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -99,8 +103,15 @@ Global
 		{5C362F98-AC5A-4428-9224-A93A6579004F}.Debug|Win32.Build.0 = Debug|Win32
 		{5C362F98-AC5A-4428-9224-A93A6579004F}.Release|Win32.ActiveCfg = Release|Win32
 		{5C362F98-AC5A-4428-9224-A93A6579004F}.Release|Win32.Build.0 = Release|Win32
+		{EA9B472F-C2F5-4086-B519-8189D3DB1340}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EA9B472F-C2F5-4086-B519-8189D3DB1340}.Debug|Win32.Build.0 = Debug|Win32
+		{EA9B472F-C2F5-4086-B519-8189D3DB1340}.Release|Win32.ActiveCfg = Release|Win32
+		{EA9B472F-C2F5-4086-B519-8189D3DB1340}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EA9B472F-C2F5-4086-B519-8189D3DB1340} = {28A3B570-9525-4332-B1F6-96D5C0484E77}
 	EndGlobalSection
 EndGlobal

@@ -317,7 +317,7 @@ void GWCanvas::fitParent()
 //------------------------------------------------------------------------------
 void GWCanvas::paint()
 {
-	if (current->getSurface()) 
+	if (current && current->getSurface()) 
 	{
 		lock();
 		render();

@@ -142,7 +142,7 @@ void GFXFontEdit::packBitmaps()
 	// The second phase is to use the sort table to one by one
 	// insert the char bitmaps into new bitmap sheets
 
-	int         currentSheet, charIndex, ascii, placeY, firstOnThisSheet;
+	int         currentSheet, charIndex/*, ascii*/, placeY, firstOnThisSheet;
 	int         linePos[LARGEST_PACKING_SHEET_SIZE];
 	GFXBitmap **newArray = new GFXBitmap*[fi.numChars];
 	GFXBitmap  *sheet, *charBitmap;

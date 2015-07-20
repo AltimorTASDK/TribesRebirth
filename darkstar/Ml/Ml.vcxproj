@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5C362F98-AC5A-4428-9224-A93A6579004F}</ProjectGuid>
+    <RootNamespace>Ml</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)..\$(Configuration)\</OutDir>
+    <TargetExt>.lib</TargetExt>
+    <IncludePath>$(SolutionDir)$(ProjectName)\inc;$(SolutionDir)Core\inc;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>false</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)$(ProjectName)\inc;</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <CustomBuild>
+      <Command>ml /c /nologo /Cp /coff /D__MASM__ /DMSVC /I"$(ProjectDir)inc" /I"$(SolutionDir)Core\inc" /I"$(SolutionDir)Ml\inc" "%(FullPath)"</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>%(Filename).obj</Outputs>
+    </CustomBuild>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Code\m_coll.cpp" />
+    <ClCompile Include="Code\m_collision.cpp" />
+    <ClCompile Include="Code\m_euler.cpp" />
+    <ClCompile Include="Code\m_mulf.cpp" />
+    <ClCompile Include="Code\m_plane.cpp" />
+    <ClCompile Include="Code\m_quat.cpp" />
+    <ClCompile Include="Code\m_random.cpp" />
+    <ClCompile Include="Code\m_reduce.cpp" />
+    <ClCompile Include="Code\template.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Code\m_atan.asm">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ml /c /Cx /coff /D __MASM__ /I "$(ProjectDir)inc"  "%(FullPath)"</Command>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_atrig.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_base.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_bscan.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_div.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_dot.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_fix.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_fpuCW.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_log.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_map.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_matf.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_mdiv.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_mul.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_quatf.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_sqrt.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <CustomBuild Include="Code\m_trig.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
+    <None Include="Inc\m_mat.inc" />
+    <None Include="Inc\m_quat.inc" />
+    <None Include="Inc\m_trig.inc" />
+    <None Include="Inc\m_vec.inc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Inc\ml.h" />
+    <ClInclude Include="Inc\m_base.h" />
+    <ClInclude Include="Inc\m_box.h" />
+    <ClInclude Include="Inc\m_coll.h" />
+    <ClInclude Include="Inc\m_collision.h" />
+    <ClInclude Include="Inc\m_dist.h" />
+    <ClInclude Include="Inc\m_dot.h" />
+    <ClInclude Include="Inc\m_euler.h" />
+    <ClInclude Include="Inc\m_lseg.h" />
+    <ClInclude Include="Inc\m_mat2.h" />
+    <ClInclude Include="Inc\m_mat3.h" />
+    <ClInclude Include="Inc\m_mul.h" />
+    <ClInclude Include="Inc\m_plane.h" />
+    <ClInclude Include="Inc\m_plist.h" />
+    <ClInclude Include="Inc\m_point.h" />
+    <ClInclude Include="Inc\m_quat.h" />
+    <ClInclude Include="Inc\m_random.h" />
+    <ClInclude Include="Inc\m_rect.h" />
+    <ClInclude Include="Inc\m_sphere.h" />
+    <ClInclude Include="Inc\m_trig.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

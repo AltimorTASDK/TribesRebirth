@@ -14,7 +14,7 @@
 #ifndef  _WINTOOLS_H_
 #define  _WINTOOLS_H_
 
-#include <windows>
+#include <windows.h>
 
 BOOL CALLBACK GenericDlg(HWND, UINT, WPARAM, LPARAM);
 
