@@ -53,6 +53,12 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <CustomBuild>
+      <Command>ml /c /nologo /Cp /coff /D__MASM__ /DMSVC /I"$(ProjectDir)inc" /I"$(SolutionDir)Core\inc" /I"$(SolutionDir)Ml\inc" "%(FullPath)"</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>%(Filename).obj</Outputs>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -98,7 +104,9 @@
     <ClCompile Include="code\volstrm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="code\types.asm" />
+    <CustomBuild Include="code\types.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
     <None Include="inc\types.inc" />
   </ItemGroup>
   <ItemGroup>

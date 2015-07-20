@@ -303,7 +303,7 @@ Surface::Surface()
    m_alphaSource = GFX_ALPHA_NONE;
    m_zTest       = GFX_NO_ZTEST;
 
-   m_nearClipPlane = 0.1;
+   m_nearClipPlane = 0.1f;
    m_farClipPlane  = 10000.0f;
 
    m_alphaBlend = 0.0f;

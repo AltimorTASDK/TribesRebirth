@@ -105,7 +105,7 @@ float Random::getNormal()
 		// Calls sqrt instead of m_sqrt because of linking
 		// problems with with gfx dll.
       //w = float(sqrt( -2.0f * m_log2(w) / w ));
-      w = float(sqrt( -2.0f * (log(w)/log(2)) / w ));
+      w = float(sqrt( -2.0f * (log(w)/logf(2)) / w ));
       normalStore = v2 * w;
       return ( v1 * w);
    }

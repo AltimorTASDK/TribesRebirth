@@ -55,6 +55,20 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <CustomBuild>
+      <Command>ml /c /nologo /Cp /coff /D__MASM__ /DMSVC /I"inc" /I"..\Core\inc" /I"..\Ml\inc" "%(FullPath)"</Command>
+    </CustomBuild>
+    <CustomBuild>
+      <Outputs>%(Filename).obj</Outputs>
+    </CustomBuild>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -114,7 +128,9 @@
     <ClCompile Include="code\ts_vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="code\ts_fast.asm" />
+    <CustomBuild Include="code\ts_fast.asm">
+      <FileType>Document</FileType>
+    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

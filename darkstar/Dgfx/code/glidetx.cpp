@@ -270,7 +270,8 @@ void TMU::downloadTranslucentBitmap88(GFXBitmap *bmp, GFXPalette *pal, GFXBitmap
    ci.textureFormat = GR_TEXFMT_AP_88;
    advanceCurrentTexturePtr(ci); // allocate memory on the card...
 
-   int i, j, k;
+   // Altimor: Unused
+   int /*i,*/ j, k;
    UInt8* destPtr = (UInt8*) tCache->downloadBuffer;
 
    for(k = 0; k < bmp->detailLevels; k++)
@@ -522,7 +523,8 @@ TextureCache::TextureCache(int tmuc, int in_tableSize)
       tmuCount = MAX_TMUS;
 	tableSize = in_tableSize;
 
-	int i, j;
+	// Altimor: Unused
+	int i/*, j*/;
 	downloadBuffer = new BYTE[174762]; // Maximum 256x256x16 image mip-mapped to 1x1
 
    for(i = 0; i < tmuCount; i++)

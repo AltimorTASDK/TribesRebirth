@@ -98,9 +98,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="code\types.asm">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="inc\types.inc">
       <Filter>Header Files</Filter>
     </None>
@@ -241,5 +238,10 @@
     <ClInclude Include="inc\volstrm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="code\types.asm">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

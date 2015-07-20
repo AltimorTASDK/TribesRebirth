@@ -73,10 +73,9 @@
     <ClCompile Include="code\console.cpp" />
     <ClCompile Include="code\consoleInternal.cpp" />
     <ClCompile Include="code\eval.cpp" />
-    <ClCompile Include="code\GRAM.CPP" />
-    <ClCompile Include="code\scan.cpp" />
+    <CustomBuild Include="code\GRAM.CPP" />
+    <CustomBuild Include="code\scan.cpp" />
     <ClCompile Include="code\tagDictionary.cpp" />
-    <ClCompile Include="code\test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\ast.h" />

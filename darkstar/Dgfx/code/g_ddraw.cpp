@@ -145,7 +145,7 @@ GFXDDSurface::~GFXDDSurface()
       pDDPalette->Release();
    pDDPalette = NULL;
 
-   if (pSurface != NULL && isPrimary == true)
+   if (pSurface != NULL && isPrimary)
       pSurface->Release();
    pSurface     = NULL;
    pBackSurface = NULL;

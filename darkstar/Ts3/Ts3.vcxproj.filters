@@ -136,8 +136,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="code\ts_fast.asm">
+    <CustomBuild Include="code\ts_fast.asm">
       <Filter>Source Files</Filter>
-    </None>
+    </CustomBuild>
   </ItemGroup>
 </Project>

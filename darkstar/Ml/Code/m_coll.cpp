@@ -1,9 +1,10 @@
 #include "ml.h"
 #include "m_coll.h"
 
+// Altimor: It does now
 //-------------------------------------- MSVC Does not have proper floating fabs
 //
-#ifdef _MSC_VER
+/*#ifdef _MSC_VER
 namespace {
 
 float
@@ -13,7 +14,7 @@ fabs(float in_abs)
 }
 
 };
-#endif
+#endif*/
 
 
 //------------------------------------------------------------------------------------

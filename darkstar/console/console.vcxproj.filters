@@ -24,16 +24,7 @@
     <ClCompile Include="code\eval.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="code\scan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="code\tagDictionary.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="code\GRAM.CPP">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,5 +44,13 @@
     <ClInclude Include="inc\tagDictionary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="code\GRAM.CPP">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="code\scan.cpp">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

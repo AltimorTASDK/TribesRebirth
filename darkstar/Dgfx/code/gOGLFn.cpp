@@ -625,7 +625,8 @@ EmitPoly2Pass(Surface* io_pSurface)
 
       glBegin(GL_TRIANGLE_FAN);
       for (i = 0; i < io_pSurface->getCurrVertexIndex(); i++) {
-         float coords[2];
+	      // Altimor: Unused
+         //float coords[2];
 
          Point2F lmapCoord(io_pSurface->m_pTexCoord0Array[i].s,
                            io_pSurface->m_pTexCoord0Array[i].t);
@@ -960,8 +961,9 @@ RegisterTextureTer(GFXSurface*           io_pSurface,
 
    float realDim = float(max(realSizeX, 8L));
 
-   float m0[3][3];
-   float temp[3][3];
+   // Altimor: Unused
+   //float m0[3][3];
+   //float temp[3][3];
 
    Point2F lmapScale, lmapTrans;
    lmapTrans.x = (float(in_rSubSection.upperL.x) + 0.5f) / realDim;
@@ -1134,8 +1136,9 @@ RegisterTextureCBTer(GFXSurface*           io_pSurface,
 
    float realDim = float(max(realSizeX, 8L));
 
-   float m0[3][3];
-   float temp[3][3];
+   // Altimor: unused
+   //float m0[3][3];
+   //float temp[3][3];
 
    Point2F lmapScale, lmapTrans;
    lmapTrans.x = (float(in_rSubSection.upperL.x) + 0.5f) / realDim;

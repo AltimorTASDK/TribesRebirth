@@ -244,7 +244,7 @@ void GFXDrawBitmap2d_sf(
 	RectI *lastRect;
    Int32 delta;
 	GFXPalette  *pPalette;
-   Bool FlipX=(in_flip & GFX_FLIP_X != 0);
+   Bool FlipX=((in_flip & GFX_FLIP_X) != 0);
 
 
 	lastRect = io_pSurface->getLastRect();
